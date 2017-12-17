@@ -23,6 +23,7 @@ defmodule VegsochkWeb do
       import Plug.Conn
       import VegsochkWeb.Router.Helpers
       import VegsochkWeb.Gettext
+      import VegsochkWeb.Session
     end
   end
 
@@ -40,6 +41,7 @@ defmodule VegsochkWeb do
       import VegsochkWeb.Router.Helpers
       import VegsochkWeb.ErrorHelpers
       import VegsochkWeb.Gettext
+      import VegsochkWeb.Session
     end
   end
 

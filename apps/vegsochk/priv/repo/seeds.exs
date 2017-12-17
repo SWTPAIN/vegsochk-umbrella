@@ -9,3 +9,18 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Vegsochk.Account
+
+IO.puts "~~~~ INITIALIZING VegsocHK SEEDS ~~~~"
+
+IO.puts "-- CREATING USES --"
+
+IO.puts "---- Author ----"
+{:ok, admin} =
+  Account.register_user(%{
+    avatar_url: "http://www.pi-cube.com/wp-content/uploads/2015/04/team-placeholder.jpg",
+    email: "admin@vegsochk.org",
+    name: "admin",
+    password: "password"
+  })
+{:ok, _} = Account.add_author(admin, %{bio: "Vegsochk Admin", role: "admin"})

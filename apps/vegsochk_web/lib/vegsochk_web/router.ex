@@ -7,10 +7,18 @@ defmodule VegsochkWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug VegsochkWeb.Plugs.CurrentUser
   end
 
   pipeline :api do
     plug :accepts, ["json"]
+  end
+
+  scope "/authors", VegsochkWeb.Admin do
+    pipe_through :browser
+
+    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    get "/logout", SessionController, :delete
   end
 
   scope "/", VegsochkWeb do
