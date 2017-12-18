@@ -28,8 +28,10 @@ defmodule VegsochkWeb.Router do
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     pipe_through :author_required
+
     get "/", PageController, :index
     get "/logout", SessionController, :delete
+    resources "/posts", PostController
   end
 
   scope "/", VegsochkWeb do
