@@ -52,12 +52,14 @@ defmodule Vegsochk.Account do
   end
 
   def add_author(%User{} = user, attrs) do
-    IO.puts "ok"
-    IO.inspect user
     %Author{user_id: user.id}
     |> Author.changeset(attrs)
     |> Repo.insert()
   end
+
+  def is_author?(%User{} = user) do
+    !!Author.find_one_by(%{user_id: user.id})
+  end 
 
   def register_user(attrs) do
     %User{}

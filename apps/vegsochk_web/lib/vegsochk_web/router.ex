@@ -10,14 +10,25 @@ defmodule VegsochkWeb.Router do
     plug VegsochkWeb.Plugs.CurrentUser
   end
 
+  pipeline :admin_layout do
+      plug :put_layout, {VegsochkWeb.LayoutView, :admin}
+  end
+
+  pipeline :author_required do
+    plug VegsochkWeb.Plugs.CheckAuthor
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/authors", VegsochkWeb.Admin do
-    pipe_through :browser
+  scope "/authors", VegsochkWeb.Author do
+    pipe_through [:browser, :admin_layout]
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
+
+    pipe_through :author_required
+    get "/", PageController, :index
     get "/logout", SessionController, :delete
   end
 

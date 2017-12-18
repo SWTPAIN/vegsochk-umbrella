@@ -29,18 +29,14 @@
                 </div>
               </li>
               <li><a href="#">Item</a></li>
+              <%= if current_user(@conn) do %>
+                <li><div><%= current_user(@conn).email %></div></li>
+                <li><a href="/authors/logout">Logout</a></li>
+              <% else %>
+                <li><a href="/authors/sessions/new">Write Posts</a></li>
+              <% end %>
             </ul>
           </div>
-        </nav>
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <%= if current_user(@conn) do %>
-              <li><div><%= current_user(@conn).email %></div></li>
-              <li><a href="/authors/logout">Logout</a></li>
-            <% else %>
-              <li><a href="/authors/sessions/new">Write Posts</a></li>
-            <% end %>
-          </ul>
         </nav>
         <span class="logo"></span>
       </header>
