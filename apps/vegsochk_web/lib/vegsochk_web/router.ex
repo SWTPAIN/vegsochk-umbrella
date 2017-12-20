@@ -10,6 +10,11 @@ defmodule VegsochkWeb.Router do
     plug VegsochkWeb.Plugs.CurrentUser
   end
 
+  pipeline :api do
+    plug :accepts, ["json"]
+    plug VegsochkWeb.Plugs.ApiCurrentUser
+  end
+
   pipeline :admin_layout do
       plug :put_layout, {VegsochkWeb.LayoutView, :admin}
   end
@@ -31,7 +36,7 @@ defmodule VegsochkWeb.Router do
 
     get "/", PageController, :index
     get "/logout", SessionController, :delete
-    resources "/posts", PostController
+    resources "/articles", ArticleController
   end
 
   scope "/", VegsochkWeb do
@@ -40,8 +45,9 @@ defmodule VegsochkWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", VegsochkWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", VegsochkWeb.Api.V1 do
+    pipe_through :api
+
+    resources "/articles", ArticleController, only: [:create]
+  end
 end
