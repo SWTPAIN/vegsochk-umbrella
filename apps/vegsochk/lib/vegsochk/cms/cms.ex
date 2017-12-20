@@ -18,6 +18,12 @@ defmodule Vegsochk.CMS do
     |> Repo.insert()
   end
 
+  def update_article(%Article{} = article, attrs) do
+    article
+    |> Article.auto_slug_changeset(attrs)
+    |> Repo.update()
+  end
+
   def delete_article(%Article{} = article) do
     Repo.delete(article)
   end
