@@ -1,10 +1,9 @@
 defmodule VegsochkWeb.Author.ArticleController do
   use VegsochkWeb, :controller
 
-  alias Vegscohk.CMS
+  alias Vegsochk.CMS
 
-  plug :require_existing_author
-  plug :authorize_page when action in [:edit, :update, :delete]
+  plug :authorize_article when action in [:delete]
 
   def new(conn, _params) do
     render conn, "new.html"
@@ -15,28 +14,21 @@ defmodule VegsochkWeb.Author.ArticleController do
     render conn, "index.html", articles: articles
   end
 
-  def create(conn, %{"page" => page_params}) do
-    case CMS.create_page(conn.assigns.current_author, page_params) do
-      {:ok, article} ->
-        conn
-        |> put_flash(:info, "Article created successfully")
-        |> redirect(to: "/")
-    end
+  def delete(conn, %{"id" => id}) do
+    {:ok, _article} = CMS.delete_article(conn.assigns.article)
+    conn
+    |> put_flash(:info, "Article deleted successfully.")
+    |> redirect(to: article_path(conn, :index))
   end
 
-  defp require_existing_author(conn, _) do
-    author = CMS.ensure_author_exists(conn.assigns.current_user)
-    assign(conn, :current_author, author)
-  end
+  defp authorize_article(conn, _) do
+    article = CMS.get_article!(conn.params["id"])
 
-  defp authorize_page(conn, _) do
-    page = CMS.get_page!(conn.params["id"])
-
-    if conn.assigns.current_author.id == page.author_id do
-      assign(conn, :page, page)
+    if conn.assigns.current_author.id == article.author_id do
+      assign(conn, :article, article)
     else
       conn
-      |> put_flash(:error, "You can't modify that page")
+      |> put_flash(:error, "You can't modify that article")
       |> redirect(to: "/")
       |> halt()
     end

@@ -1,4 +1,4 @@
-defmodule Vegscohk.CMS do
+defmodule Vegsochk.CMS do
 
   import Ecto.Query, warn: false
 
@@ -12,12 +12,36 @@ defmodule Vegscohk.CMS do
     |> Repo.all()
   end
 
-  def create_page(%Author{} = author, attrs \\ %{}) do
-    %Article{}
-    |> Article.changeset(attrs)
-    |> Ecto.Changeset.put_change(:author_id, author.id)
+  def create_article(%Author{} = author, attrs \\ %{}) do
+    %Article{author_id: author.id}
+    |> Article.auto_slug_changeset(attrs)
     |> Repo.insert()
   end
+
+
+  def delete_article(%Article{} = article) do
+    Repo.delete(article)
+  end
+
+  def get_article!(id) do
+    Repo.get_by!(Article, %{slug: id})
+  end
+
+  def get_author!(id), do: Repo.get!(Author, id)
+
+  def get_author(%User{} = user) do
+    Author.find_one_by(%{user_id: user.id})
+  end
+
+  def add_author(%User{} = user, attrs) do
+    %Author{user_id: user.id}
+    |> Author.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def is_author?(%User{} = user) do
+    !!get_author(user)
+  end 
 
   def ensure_author_exists(%User{} = user) do
     %Author{user_id: user.id}

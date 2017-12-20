@@ -19,8 +19,8 @@ defmodule VegsochkWeb.Router do
       plug :put_layout, {VegsochkWeb.LayoutView, :admin}
   end
 
-  pipeline :author_required do
-    plug VegsochkWeb.Plugs.CheckAuthor
+  pipeline :author do
+    plug VegsochkWeb.Plugs.CurrentAuthor
   end
 
   pipeline :api do
@@ -32,11 +32,11 @@ defmodule VegsochkWeb.Router do
 
     resources "/sessions", SessionController, only: [:new, :create, :delete]
 
-    pipe_through :author_required
+    pipe_through :author
 
     get "/", PageController, :index
     get "/logout", SessionController, :delete
-    resources "/articles", ArticleController
+    resources "/articles", ArticleController, only: [:new, :index, :edit, :delete]
   end
 
   scope "/", VegsochkWeb do
@@ -45,8 +45,9 @@ defmodule VegsochkWeb.Router do
     get "/", PageController, :index
   end
 
-  scope "/api", VegsochkWeb.Api.V1 do
+  scope "/api/v1", VegsochkWeb.Api.V1 do
     pipe_through :api
+    pipe_through :author
 
     resources "/articles", ArticleController, only: [:create]
   end

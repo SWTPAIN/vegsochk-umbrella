@@ -4,11 +4,13 @@ import { EditorState, convertToRaw } from 'draft-js';
 import { render } from 'react-dom';
 import { Editor } from 'react-draft-wysiwyg';
 import draftToHtml from 'draftjs-to-html';
+import axios from 'axios';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      title: '',
       editorState: EditorState.createEmpty(),
     };
   }
@@ -17,12 +19,33 @@ class App extends Component {
     this.setState({
       editorState,
     });
-  };
+  }
+
+  handleTitleInputChange(e) {
+    this.setState({title: e.target.value});
+  }
 
   handleCreateButtonClick(e) {
-    console.log('e', e)
     e.preventDefault();
-    console.log('aaa', draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())))
+    const {title, editorState} = this.state;
+    const body = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    axios({
+      method: 'post',
+      url: '/api/v1/articles',
+      headers: {Authorization: `Bearer ${window.localStorage["api_token"]}`},
+      data: {
+        article: {
+          title: title, 
+          body: body
+        }
+      }
+    })
+    .then(function (response) {
+        window.location.href = "/authors/articles";
+      })
+    .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -33,7 +56,10 @@ class App extends Component {
           <fieldset className="uk-fieldset">
             <legend className="uk-legend">Title</legend>
             <div className="uk-margin">
-              <input className="uk-input" type="text" placeholder="Input"/>
+              <input
+                onChange={this.handleTitleInputChange.bind(this)}
+                value={this.state.title}
+                required className="uk-input" type="text" placeholder="Input"/>
             </div>
             <div className="uk-margin">
               <Editor

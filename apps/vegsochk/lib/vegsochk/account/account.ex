@@ -8,17 +8,6 @@ defmodule Vegsochk.Account do
   alias Vegsochk.Repo
 
   alias Vegsochk.Account.{User, Session}
-  alias Vegsochk.CMS.Author
-
-  def list_authors do
-    Repo.all(Author)
-  end
-
-  def get_author!(id), do: Repo.get!(Author, id)
-
-  def get_author(%{user_id: user_id}) do
-    Author.find_one_by(%{user_id: user_id})
-  end
 
   def create_user(attrs \\ %{}) do
     %User{}
@@ -46,7 +35,7 @@ defmodule Vegsochk.Account do
             {:ok, session} = create_session(user.id)
             {:ok, {user, session}}
           _ ->
-            dummy_checkpw
+            dummy_checkpw()
             {:error, :unauthorized}
         end
     end
@@ -56,16 +45,6 @@ defmodule Vegsochk.Account do
     Session.registration_changeset(%Session{}, %{user_id: user_id})
     |> Repo.insert()
   end
-
-  def add_author(%User{} = user, attrs) do
-    %Author{user_id: user.id}
-    |> Author.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  def is_author?(%User{} = user) do
-    !!Author.find_one_by(%{user_id: user.id})
-  end 
 
   def register_user(attrs) do
     %User{}
@@ -78,6 +57,8 @@ defmodule Vegsochk.Account do
   def get_user_by_id(id), do: Repo.get(User, id)
 
   def get_user_by_api_token(token) do
-     Repo.get_by(User, %{api_token: token})
+    if session = Repo.get_by(Session, %{token: token}) |> Repo.preload(:user) do
+      session.user
+    end
   end
 end

@@ -17,7 +17,7 @@ defmodule Vegsochk.CMS.Author do
 
   def find_one_by(%{user_id: user_id}) do
     query = from a in Author,
-      left_join: u in assoc(a, :users),
+      left_join: u in assoc(a, :user),
       where: u.id == ^user_id,
       select: a
     Repo.one(query)

@@ -3,15 +3,21 @@
 <table class="uk-table uk-table-hover uk-table-divider">
 	<thead>
 		<tr>
-			<th>Table Heading</th>
-			<th>Table Heading</th>
-			<th>Table Heading</th>
+			<th>Article Title</th>
+			<th>Created At</th>
+      <th>Actions</th>
 		</tr>
 	</thead>
 	<tbody>
 		<%= for article <- @articles do %>
 			<tr>
 				<td><%= article.title %></td>
+				<td><%= article.inserted_at %></td>
+        <td>
+          <span><%= link "Edit", to: article_path(@conn, :edit, article), class: "uk-button uk-button-secondary" %></span>
+          <span>
+            <%= link "Delete", to: article_path(@conn, :delete, article), class: "uk-button uk-button-danger",  method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
 			</tr>
 		<% end %>
 	</tbody>

@@ -10,6 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 alias Vegsochk.Account
+alias Vegsochk.CMS
 
 IO.puts "~~~~ INITIALIZING VegsocHK SEEDS ~~~~"
 
@@ -23,4 +24,4 @@ IO.puts "---- Author ----"
     name: "admin",
     password: "password"
   })
-{:ok, _} = Account.add_author(admin, %{bio: "Vegsochk Admin", role: "admin"})
+{:ok, _} = CMS.add_author(admin, %{bio: "Vegsochk Admin", role: "admin"})

@@ -17,10 +17,12 @@ defmodule VegsochkWeb.Plugs.ApiCurrentUser do
           authorization
           |> String.replace("Bearer ", "")
 
-        case Accounts.get_user_by_api_token(api_token) do
+        case Account.get_user_by_api_token(api_token) do
           nil ->
+            IO.puts "not found"
             conn
           user ->
+            IO.puts "found it"
             assign(conn, :current_user, user)
         end
     end
