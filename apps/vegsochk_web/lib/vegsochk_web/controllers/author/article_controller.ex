@@ -3,7 +3,7 @@ defmodule VegsochkWeb.Author.ArticleController do
 
   alias Vegsochk.CMS
 
-  plug :authorize_article when action in [:delete]
+  plug :authorize_article when action in [:edit, :delete]
 
   def new(conn, _params) do
     render conn, "new.html"
@@ -14,12 +14,16 @@ defmodule VegsochkWeb.Author.ArticleController do
     render conn, "index.html", articles: articles
   end
 
-  def delete(conn, %{"id" => id}) do
+  def delete(conn, _params) do
     {:ok, _article} = CMS.delete_article(conn.assigns.article)
     conn
     |> put_flash(:info, "Article deleted successfully.")
     |> redirect(to: article_path(conn, :index))
   end
+
+  def edit(conn, _params) do
+    render conn, "edit.html", article: conn.assigns.article
+  end 
 
   defp authorize_article(conn, _) do
     article = CMS.get_article!(conn.params["id"])

@@ -18,7 +18,6 @@ defmodule Vegsochk.CMS do
     |> Repo.insert()
   end
 
-
   def delete_article(%Article{} = article) do
     Repo.delete(article)
   end

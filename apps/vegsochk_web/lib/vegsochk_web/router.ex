@@ -49,6 +49,6 @@ defmodule VegsochkWeb.Router do
     pipe_through :api
     pipe_through :author
 
-    resources "/articles", ArticleController, only: [:create]
+    resources "/articles", ArticleController, only: [:create, :show]
   end
 end
