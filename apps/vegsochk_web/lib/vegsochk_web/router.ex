@@ -37,6 +37,7 @@ defmodule VegsochkWeb.Router do
     get "/", PageController, :index
     get "/logout", SessionController, :delete
     resources "/articles", ArticleController, only: [:new, :index, :edit, :delete]
+    resources "/images", ImageController
   end
 
   scope "/", VegsochkWeb do

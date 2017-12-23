@@ -38,3 +38,10 @@ defmodule VegsochkWeb.Author.ArticleController do
     end
   end
 end
+
+defimpl Phoenix.Param, for: Vegsochk.CMS.Article do
+  def to_param(%{slug: slug}) do
+    "#{slug}"
+  end
+end
+

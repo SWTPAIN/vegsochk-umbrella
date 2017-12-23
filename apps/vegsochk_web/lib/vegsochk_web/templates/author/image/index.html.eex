@@ -1,0 +1,6 @@
+<h1>Images</h1>
+<h4><%= link "Upload new image", to: image_path(@conn, :new) %></h4>
+<%= for image <- @images do %>
+  <img src="<%= image.url %>"><br>
+<% end %>
+

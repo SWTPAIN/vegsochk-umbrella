@@ -44,7 +44,12 @@ defmodule VegsochkWeb.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:vegsochk, in_umbrella: true},
-      {:cowboy, "~> 1.0"}
+      {:cowboy, "~> 1.0"},
+      {:ex_aws, "~> 2.0"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:uuid, "~> 1.1"},
+      {:hackney, "~>1.10"},
+      {:sweet_xml,  "~> 0.6"}
     ]
   end
 
