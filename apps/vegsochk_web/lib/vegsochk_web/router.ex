@@ -27,6 +27,13 @@ defmodule VegsochkWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", VegsochkWeb do
+    pipe_through :browser # Use the default browser stack
+
+    get "/", PageController, :index
+    resources "articles", ArticleController, only: [:show]
+  end
+
   scope "/authors", VegsochkWeb.Author do
     pipe_through [:browser, :admin_layout]
 
@@ -39,12 +46,6 @@ defmodule VegsochkWeb.Router do
     get "/logout", SessionController, :delete
     resources "/articles", ArticleController, only: [:new, :index, :edit, :delete]
     resources "/images", ImageController
-  end
-
-  scope "/", VegsochkWeb do
-    pipe_through :browser # Use the default browser stack
-
-    get "/", PageController, :index
   end
 
   scope "/api/v1", VegsochkWeb.Api.V1 do

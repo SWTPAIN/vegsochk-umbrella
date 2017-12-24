@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <%= render_shared "main-navbar.html" %>
     <%= render @view_module, @view_template, assigns %>
     <%= render_shared "footer.html" %>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>

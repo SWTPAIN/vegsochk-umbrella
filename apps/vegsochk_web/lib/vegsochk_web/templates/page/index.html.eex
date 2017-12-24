@@ -45,39 +45,7 @@
 	</div>
 	<div class="uk-section">
 		<div class="uk-container">
-     <nav class="uk-navbar-container uk-padding-large uk-navbar-transparent" uk-navbar>
-        <div class="uk-navbar-left">
-          <ul class="uk-navbar-nav">
-            <li class="uk-parent">
-              <a href="/why-vegan">為什麼純素</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">動物</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">健康</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">環保和公義</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">純素貼士</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">行動</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">資源</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">關於</a>
-            </li>
-            <li class="uk-parent">
-              <a href="/why-vegan">捐款</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <%= render_shared "main-navbar.html" %>
 			<div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
 				<ul class="uk-slideshow-items">
 					<li>
@@ -127,7 +95,7 @@
           <h6 class="article-title">
             <%= @first_article.title %>
           </h6>
-          <a href="">觀看更多</a>
+          <a href="<%= article_path(@conn, :show, @first_article) %>">觀看更多</a>
         </div>
 				<div>
 					<div class="uk-flex uk-flex-column uk-width-1-3">

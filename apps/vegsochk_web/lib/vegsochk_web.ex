@@ -42,6 +42,11 @@ defmodule VegsochkWeb do
       import VegsochkWeb.ErrorHelpers
       import VegsochkWeb.Gettext
       import VegsochkWeb.Session
+
+      def render_shared(template, assigns \\ []) do
+        VegsochkWeb.SharedView
+        |> render(template, assigns)
+      end
     end
   end
 

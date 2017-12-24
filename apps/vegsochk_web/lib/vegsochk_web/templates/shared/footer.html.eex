@@ -1,0 +1,27 @@
+<div class="uk-section footer-section">
+  <div class="uk-container">
+    <div class="uk-grid">
+      <div class="footer-info-left">
+        <div class="brand-logo">
+          <img src="/images/brand-logo.png">
+        </div>
+        <ul class="uk-list">
+          <li>CLUB O,旺角亞皆老街80-86號昌明大廈7字樓G、H室</li>
+          <li>T: 2619 0000</li>
+          <li>E: INFO@VEGSOCHK.ORG</li>
+        </ul>
+      </div>
+      <div class="footer-info-right">
+        <ul class="uk-list">
+          <li>行動</li>
+          <li>資源</li>
+          <li>關於<li>
+          <li>捐款<li>
+          <li><span uk-icon="icon: facebook"></span>VEGSOCHK<li>
+        </ul>
+        <p>本網站及其內容的版權均屬或相關權利方單獨或共同所有或被授權使用</p>
+      </div>
+    </div>
+  </div>
+</div>
+
