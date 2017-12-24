@@ -3,7 +3,7 @@ defmodule Vegsochk.CMS do
   import Ecto.Query, warn: false
 
   alias Vegsochk.Repo
-  alias Vegsochk.CMS.{Author, Article}
+  alias Vegsochk.CMS.{Author, Article, Image}
   alias Vegsochk.Account.User
 
   def list_articles(%Author{} = author) do
@@ -32,6 +32,18 @@ defmodule Vegsochk.CMS do
     Repo.get_by!(Article, %{slug: id})
   end
 
+  def list_images(%Author{} = author) do
+    Image
+    |> where([i], i.author_id == ^author.id)
+    |> Repo.all()
+  end
+
+  def create_image(%Author{} = author, image_url) do
+    %Image{}
+    |> Image.changeset(%{url: image_url, author_id: author.id})
+    |> Repo.insert()
+  end
+
   def get_author!(id), do: Repo.get!(Author, id)
 
   def get_author(%User{} = user) do
@@ -48,16 +60,4 @@ defmodule Vegsochk.CMS do
     !!get_author(user)
   end 
 
-  def ensure_author_exists(%User{} = user) do
-    %Author{user_id: user.id}
-    |> Ecto.Changeset.change()
-    |> Ecto.Changeset.unique_constraint(:user_id)
-    |> Repo.insert()
-    |> handle_existing_author()
-  end
-
-  defp handle_existing_author({:ok, author}), do: author
-  defp handle_existing_author({:error, changeset}) do
-      Repo.get_by!(Author, user_id: changeset.data.user_id)
-  end
 end

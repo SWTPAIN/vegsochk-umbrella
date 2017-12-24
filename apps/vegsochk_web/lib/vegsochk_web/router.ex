@@ -30,13 +30,15 @@ defmodule VegsochkWeb.Router do
   scope "/authors", VegsochkWeb.Author do
     pipe_through [:browser, :admin_layout]
 
-    resources "/sessions", SessionController, only: [:new, :create, :delete]
+    resources "/sessions", SessionController, only: [:create]
+    get "/login", SessionController, :new
 
     pipe_through :author
 
     get "/", PageController, :index
     get "/logout", SessionController, :delete
     resources "/articles", ArticleController, only: [:new, :index, :edit, :delete]
+    resources "/images", ImageController
   end
 
   scope "/", VegsochkWeb do

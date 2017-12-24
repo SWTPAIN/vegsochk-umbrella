@@ -40,7 +40,7 @@ defmodule Vegsochk.Mixfile do
       {:ecto, "~> 2.1"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:secure_random, "~> 0.5"},
+      {:secure_random, "~> 0.5"}
     ]
   end
 

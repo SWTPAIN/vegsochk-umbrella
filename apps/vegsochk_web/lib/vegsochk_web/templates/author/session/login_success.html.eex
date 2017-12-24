@@ -1,3 +1,2 @@
-<h1>Sign in Succesfully</h1>
 <script>window.localStorage["api_token"] = "<%= assigns[:token] %>"</script>
 

@@ -11,12 +11,12 @@ defmodule VegsochkWeb.Plugs.CurrentAuthor do
 
   def call(conn, _opts) do
     user = conn.assigns[:current_user]
-    if author = CMS.get_author(user) do
+    if user do
       conn
-      |> assign(:current_author, author)
+      |> assign(:current_author, CMS.get_author(user))
     else
       conn
-      |> Phoenix.Controller.redirect(to: "/")
+      |> Phoenix.Controller.redirect(to: "/authors/login")
       |> halt()
     end
   end
