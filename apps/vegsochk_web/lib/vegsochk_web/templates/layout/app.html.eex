@@ -33,7 +33,7 @@
                 <li><div><%= current_user(@conn).email %></div></li>
                 <li><a href="/authors/logout">Logout</a></li>
               <% else %>
-                <li><a href="/authors/sessions/new">Write Posts</a></li>
+                <li><a href="/authors/login">Write Posts</a></li>
               <% end %>
             </ul>
           </div>

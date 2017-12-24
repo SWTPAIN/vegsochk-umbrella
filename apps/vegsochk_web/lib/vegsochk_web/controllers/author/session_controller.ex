@@ -11,11 +11,10 @@ defmodule VegsochkWeb.Author.SessionController do
     case Account.login_user(%{email: email, password: password}) do
        {:ok, {user, session}} ->
          conn
-         |> put_flash(:info, "Welcome back!")
          |> ok_login(user, session)
        {:error, :unauthorized} ->
          conn
-         |> put_flash(:error, "Bad email/password combination")
+         |> put_flash(:danger, "Bad email/password combination")
          |> redirect(to: session_path(conn, :new))
       end
   end
@@ -28,8 +27,9 @@ defmodule VegsochkWeb.Author.SessionController do
 
   defp ok_login(conn, user, session) do
     conn
-    |> put_flash(:info, "Successfully authenticated.")
+    |> put_flash(:success, "Successfully authenticated.")
     |> put_session(:current_user, user)
+    |> assign(:current_user, user)
     |> assign(:token, session.token)
     |> render "login_success.html"
   end

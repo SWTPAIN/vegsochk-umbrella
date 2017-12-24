@@ -1,4 +1,4 @@
-<h1>Posts</h1>
+<h1 class="uk-heading">Articles</h1>
 <span><%= link "Create New Article", to: article_path(@conn, :new) %></span>
 <table class="uk-table uk-table-hover uk-table-divider">
 	<thead>

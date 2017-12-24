@@ -27,7 +27,7 @@ defmodule VegsochkWeb.Author.ImageController do
     case CMS.create_image(conn.assigns.current_author, "https://#{bucket_name}.s3.amazonaws.com/#{unique_filename}") do
 			{:ok, _image} ->
 					conn
-					|> put_flash(:info, "Image uploaded successfully!")
+					|> put_flash(:success, "Image uploaded successfully!")
 					|> redirect(to: image_path(conn, :index))
 			{:error, changeset} ->
 					render conn, "new.html", changeset: changeset
@@ -37,7 +37,7 @@ defmodule VegsochkWeb.Author.ImageController do
   def delete(conn, _params) do
     {:ok, _image} = CMS.delete_image(conn.assigns.image)
     conn
-    |> put_flash(:info, "Article deleted successfully.")
+    |> put_flash(:success, "Article deleted successfully.")
     |> redirect(to: image_path(conn, :index))
   end
 
@@ -52,7 +52,7 @@ defmodule VegsochkWeb.Author.ImageController do
       assign(conn, :image, image)
     else
       conn
-      |> put_flash(:error, "You can't modify that image")
+      |> put_flash(:danger, "You can't modify that image")
       |> redirect(to: "/")
       |> halt()
     end
