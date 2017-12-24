@@ -1,0 +1,30 @@
+$yellow: rgb(243, 232, 44);
+
+.home {
+  .brand-logo {
+    width: 200px;
+  }
+
+  .about-section {
+    background-color: $yellow;
+  }
+
+  .about {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .articles-section {
+    h1 {
+      text-align: center;
+    }
+  }
+  
+  .article-item {
+    border-top: 1px solid #e5e5e5;
+    &:first-child {
+      border: none;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.article-item {
+  padding-top: 20px;
+  border-top: 1px solid #e5e5e5;
+  &:first-child {
+    border: none;
+  }
+  .article-title {
+    font-size: 24px;
+  }
+
+  .category-tag {
+    background-color: red;
+  }
+}

@@ -12,43 +12,13 @@
   </head>
 
   <body>
-    <div class="container">
-      <header class="header">
-        <nav class="uk-navbar-container" uk-navbar>
-          <div class="uk-navbar-left">
-            <ul class="uk-navbar-nav">
-              <li class="uk-active"><a href="#">Active</a></li>
-              <li>
-                <a href="#">Parent</a>
-                <div class="uk-navbar-dropdown">
-                  <ul class="uk-nav uk-navbar-dropdown-nav">
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li><a href="#">Item</a></li>
-                    <li><a href="#">Item</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li><a href="#">Item</a></li>
-              <%= if current_user(@conn) do %>
-                <li><div><%= current_user(@conn).email %></div></li>
-                <li><a href="/authors/logout">Logout</a></li>
-              <% else %>
-                <li><a href="/authors/login">Write Posts</a></li>
-              <% end %>
-            </ul>
-          </div>
-        </nav>
-        <span class="logo"></span>
-      </header>
-
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-
-    </div> <!-- /container -->
+    <%= render @view_module, @view_template, assigns %>
+    <div class="uk-section footer-section">
+      <div class="uk-grid">
+        <div>1</div>
+        <div>2</div>
+      </div>
+    </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

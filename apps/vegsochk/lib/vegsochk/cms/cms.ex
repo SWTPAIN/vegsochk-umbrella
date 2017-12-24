@@ -6,6 +6,13 @@ defmodule Vegsochk.CMS do
   alias Vegsochk.CMS.{Author, Article, Image}
   alias Vegsochk.Account.User
 
+  def list_latest_articles(limit_num \\ 10) do
+    Article
+    |> order_by([a], [desc: a.inserted_at])
+    |> limit(^limit_num)
+    |> Repo.all()
+  end
+
   def list_articles(%Author{} = author) do
     Article
     |> where([a], a.author_id == ^author.id)
