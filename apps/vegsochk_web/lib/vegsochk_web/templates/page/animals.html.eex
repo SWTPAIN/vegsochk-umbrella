@@ -1,4 +1,4 @@
-<div class="uk-section animals-container uk-offcanvas-content">
+<div class="uk-section animals-container">
   <div class="animal-banner">
     <div class="artwork">
       <h4 class="title">動物</h4>
@@ -6,12 +6,9 @@
     </div>
   </div>
   <div class="animal-categories-container">
-		<div class="uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-flex-center">
+		<div class="uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-center">
       <div class="uk-width-1-3">
-        <div
-          id="pig"
-          data-target-overlay="pig-overlay"
-          class="animal-thumbnail"></div>
+        <div id="pig" data-target-overlay="pig-overlay" class="animal-thumbnail"></div>
       </div>
       <div class="uk-width-1-3">
         <div id="cow" data-target-overlay="cow-overlay" class="animal-thumbnail"></div>
@@ -31,48 +28,149 @@
 		</div>
  	</div>
 	<div id="overlay-container" class="overlay">
-		<a href="javascript:void(0)" class="closebtn" id="overlay-close">&times;</a>
+    <a href="javascript:void(0)" class="closebtn" id="overlay-close">
+      <span uk-icon="icon: reply; ratio: 2"></span>返回
+    </a>
 		<!-- overlay content -->
 		<div class="overlay-content-container" id="overlay-content-container">
-      <div class="overlay-content" id="pig-overlay">
-        <div class="back-pane">
-        </div>
-        <div class="overlay-main-content-pane">
-          <h2>豬</h2>
-          <div class="main-img-container pig"></div>
-          <div class="uk-container">
-            <h5>豬是被誤解最嚴重的動物之一。與普遍的刻板印象相反，其實牠非常聰明、 善於交際及充滿好奇心。</h5>
-						<div class="pig-description-1-container">
-							<div class="pig-description-1">
-								<p>在工業化農場，母豬在懷孕期和哺乳期都會被單獨關金屬籠子裡。 在欄裡，母豬擠得無法轉身、動彈不得，因而容易有肌肉會萎縮， 患腿部疾病。她們身心皆遭受重創，有時更會絕望地啃噬著囚禁著 她們的圍欄。</p>
-								<p>牠們幾乎不能移動，更不用談轉身。</p>
-								<p>在自然的情況下，母豬會經常和孩子保持接觸，這有助提高幼豬的 安全感。而最明顯的表現是母豬在離開時始終會用目光注視著自己 的幼豬。但這些機會，在工廠化農場都全部被剝削了。</p>
-								<p>部份資料出處:《工廠化豬場豬欄現狀與設計》作者:劉喜生</p>
-							</div>
-							<div class="pig-description-1-photo-container">
-								<img src="http://via.placeholder.com/160x90">
-								<p>母豬絕望地啃噬囚禁著她的圍欄。</p>
-							</div>
-						</div>
-						<div class="pig-description-remark">
-							<ul class="uk-list">
-								<li>-母豬的妊娠定位欄</li>
-								<li>英國已經完全禁止。瑞典和新西蘭從2015年將也是<li>
-								<li>荷蘭和芬蘭已經實施逐步禁止<li>
-								<li>-小豬出生七天內會被閹割<li>
-								<li>瑞士在2012已經禁止<li>
-								<li>而從2012年起，比利時、德國、意大利等國家己簽署需要麻醉劑和持續的止痛緩解。<li>
-								<li>http://www.ciwf.org.uk/farm-animals/pigs/welfare-issues/castration/<li>
-							</ul>
-						</div>
+      <div id="pig-overlay">
+        <div uk-grid>
+          <div class="back-pane uk-width-1-4">
+          </div>
+          <div class="overlay-main-content-pane uk-width-3-4">
+            <h2 class="overlay-main-content-title">豬</h2>
+            <div class="main-img-container pig"></div>
+            <div class="main-content-block">
+              <h5 class="subtitle">豬是被誤解最嚴重的動物之一。與普遍的刻板印象相反，其實牠非常聰明、 善於交際及充滿好奇心。</h5>
+              <div uk-grid>
+                <div class="uk-width-3-4">
+                  <p>工廠化農場為方便管理，小豬出生不久便在完全沒有麻醉的情況下 被拔牙、剪尾和去勢。</p>
+                  <p>香港每年屠殺高達160萬隻活豬*，94%從中國各省輸入，遠至河 南。長達兩三天的路程上，除了得忍受炎熱與嚴寒等極端天氣，豬 隻更因為缺乏足夠食水和糧食，被逼吃自己的排泄物充飢解渴。</p>
+                  <p>*統計署數字顯示不包括冷凍進口的豬肉</p>
+                </div>
+                <div class="uk-width-1-4">
+                  <div class="image-with-caption">
+                    <img src="/images/piggy-1.jpg">
+                    <p>剪尾巴時痛苦的小豬(圖:Jan van Ijken)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-content-block">
+              <div class="pig-video">
+                <img src="/images/hk-pigs.jpg">
+              </div>
+            </div>
+            <div class="main-img-container pig1"></div>
+            <div class="main-content-block">
+              <p>豬是群居的動物。</p>
+              <p>母豬一生都得在狹欄和分娩欄度過，被限制活動根本無法轉身，容易導致肌 肉萎縮及腿部疾病。她們身心皆遭受重創，有時更會絕望地啃噬著囚禁著她 們的圍欄。</p>
+              <div uk-grid>
+                <div class="uk-width-3-4">
+                  <p>在工業化農場，母豬在懷孕期和哺乳期都會被單獨關金屬籠子裡。 在欄裡，母豬擠得無法轉身、動彈不得，因而容易有肌肉會萎縮， 患腿部疾病。她們身心皆遭受重創，有時更會絕望地啃噬著囚禁著 她們的圍欄。</p>
+                  <p>牠們幾乎不能移動，更不用談轉身。</p>
+                  <p>在自然的情況下，母豬會經常和孩子保持接觸，這有助提高幼豬的 安全感。而最明顯的表現是母豬在離開時始終會用目光注視著自己 的幼豬。但這些機會，在工廠化農場都全部被剝削了。</p>
+                  <p>部份資料出處:《工廠化豬場豬欄現狀與設計》作者:劉喜生</p>
+                </div>
+                <div class="uk-width-1-4">
+                  <img src="http://via.placeholder.com/160x90">
+                  <p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+                </div>
+              </div>
+            </div>
+            <div class="main-content-block ">
+              <ul class="uk-list remark-list">
+                <li>-母豬的妊娠定位欄</li>
+                <li>英國已經完全禁止。瑞典和新西蘭從2015年將也是<li>
+                <li>荷蘭和芬蘭已經實施逐步禁止<li>
+                <li>-小豬出生七天內會被閹割<li>
+                <li>瑞士在2012已經禁止<li>
+                <li>而從2012年起，比利時、德國、意大利等國家己簽署需要麻醉劑和持續的止痛緩解。<li>
+                <li>http://www.ciwf.org.uk/farm-animals/pigs/welfare-issues/castration/<li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
       <div id="cow-overlay">
-        cow
+        <div uk-grid>
+          <div class="back-pane uk-width-1-4">
+          </div>
+          <div class="overlay-main-content-pane uk-width-3-4">
+            <h3 class="overlay-main-content-title">
+              牛及奶製品
+            </h3>
+            <div class="main-img-container cow"></div>
+            <div class="main-content-block">
+              <p>牛是群居動物，一般生活在約二十頭牛的群體裡，有明顯的社交秩序，群 族中也有首領。他們每天會花十小時去吃草，雖移動緩慢但每天也會移動 數公里。他們的自然壽命達18至25年。牛有長期記憶，他們會互相學習， 是聰明又富好奇心的動物。</p>
+              <p>牛的表情並不甚豐富，但每頭牛都有自己鮮明的個性。有些牛之間更有終 生的友誼，他們會哀掉和同伴的去世。牛是非常有愛的媽媽，有時更會互 換替換照顧彼此的子孩。</p>
+            </div>
+            <div class="main-img-container cow2"></div>
+            <div class="main-content-block">
+              <h3 class="overlay-main-content-title">
+                牛奶及奶製品
+              </h3>
+              <p>香港消耗大量的牛奶及奶製品，根據統計署資料，香港2015年淨進口了約 7500萬公斤牛奶、約1.1億公斤的濃縮奶製品(包括奶粉)、970萬公斤 牛油、1400萬公斤芝士製品。香港市面上大多數的鮮奶源自中國內地，在 香港加工製造，本地並無運作的奶場。</p>
+            </div>
+            <div class="main-content-block">
+              <div uk-grid>
+                <div class="uk-width-2-3">
+                  <p>很多人都覺得生產牛奶的過程沒有傷害動物，事實上卻非如此。</p>
+                  <p>世界並沒一種叫「奶牛」的物種，所謂的奶牛是專指被育種而大幅 提高奶產量的母牛，她們因人工受孕才不斷泌乳。牛分娩後產奶的 原因就和人類一樣，是為了哺育牠們的下一代。</p>
+                  <p>在大自然，母牛每天約生產八升牛奶，這足夠小牛的需要。但現在 ，奶牛每天生產高達30至50升的牛奶(視乎不同的品種而異)， 這代表一年生產1萬至1.5萬升牛奶。有畜牧業協會曾將奶牛的功能 性比喻為鐵人三項賽，要產出一公升的牛奶，奶牛的心臟需要打出 五百公升的血液，而如果一天要出三十公升，就要一萬五千公升的 血液</p>
+                  <p>永無止盡的受孕和擠奶，被注射抗生素和激素去催谷奶量，令母牛 的身體承受巨大的壓力。牠們容易乳房感染、鈣質耗盡、腳跛等。 身體不堪重負，牠們本來的壽命約二十年，能夠產奶八至九年。但 在奶場，當牠們約四歲時產奶量下降，就會被汰換，被屠殺製成廉 價肉類。</p>
+                </div>
+                <div class="uk-width-1-3">
+                  <div class="image-with-caption">
+                    <img src="/images/cow-milk-1.jpg">
+                    <p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+                  </div>
+                  <div class="image-with-caption">
+                    <img src="/images/cow-milk-2.jpg">
+                    <p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+                  </div>
+                  <div class="image-with-caption">
+                    <img src="/images/cow-milk-3.jpg">
+                    <p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-content-block">
+              <div class="main-img-container cow3">
+              </div>
+            </div>
+            <div class="main-content-block">
+              <p>母牛需要九個月才能生出一胎，彼此有很深的羈絆。但在養殖場，為防止 母子之間產生感情，當母牛誕下小牛後，數小時就會被迫分開。業界搶走 小牛，為了讓牛奶留給人類。分離的過程令母牛和小牛都充滿痛苦，很多 母牛會不斷嚎叫，焦慮不安地尋找自己的孩子，小牛也會不斷哀叫尋找媽媽。</p>
+            </div>
+            <div class="main-content-block">
+              <div uk-grid>
+                <div class="uk-width-2-5">
+                  <div class="image-with-caption">
+                    <img src="/images/calf-alone-1.jpg">
+                    <p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+                  </div>
+                  <div class="image-with-caption">
+                    <img src="/images/calf-alone-2.jpg">
+                    <p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+                  </div>
+                </div>
+                <div class="uk-width-3-5">
+                  <p>小牛出生後多被單獨囚禁在一個狹小的箱子裡， 不少都會被處理掉。雌性小牛就像像她們的母親 一樣，會成為未來的產奶機器。飼養奶場的雄性 小牛無利可圖，牠們除了不會生產牛奶，也並非 肉牛品種，肌肉的增長緩慢沒效率。小牛並不值 錢，所以往往都得不到關注，那些雄性的小牛和 「過多」的雌性小牛，都會被賣走，牠們多數他 們多數十六至十八週就會被宰殺。<p>
+                  <p>牛鼻刺是帶有尖角的塑膠或金屬環，鎖在鼻軟骨 或套在嘴巴。讓小牛不能吸到母親的奶，並讓母 牛因為刺痛而不靠近。小牛有吸吮的天性，這是 防止牠們彼此吸吮，誤吞髮毛影響消化。這些鼻 環令剝奪了小牛從彼此身上取得安慰和親密。</p>
+                  <p>野蠻的去角和斷尾</p>
+                  <p>雄性和雌性的牛都有牛角，牛角有溝通和解決衝 突的作用。在農場為了方便管理，小牛出生不久 ，就會被進行去角。去角的過程非常劇痛，牛角 根部連著神經叢，卻不會施加止痛或麻醉劑。養 殖場使用腐蝕性的化學物質、電烙鐵、鉗子、圓 筒刀或鋸刀等等不同手法去燒毀或截掉牛角。</p>
+                  <p>同樣地，牛一般都會被斷尾，被剪去部份的尾巴 。養殖場用橡筋圈勒緊截斷血液，或是用利刀或 燙鐵截掉尾巴。除了過程中為牛隻帶來痛苦，也 令牛隻失去尾巴去驅趕蒼蠅，令牠們容易變得焦 躁不安。</p>
+                </div>
+              </div>
+            </div>
+            <div class="main-content-block">
+              <p>你可以幫助牠們</p>
+              <p>我們不需要喝牛奶也能吸取足夠的鈣質。不少的植物都含有豐富的鈣質 ，有些植物的含鈣量比牛奶的更高，甚至更容易被人體吸收。</p>
+            </div>
+          </div>
+        </div>
       </div>
 		</div>
 	</div>
-
 </div>
-
