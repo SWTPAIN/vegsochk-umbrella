@@ -1,6 +1,10 @@
 .footer-section {
   background-color: $grey;
   color: $white;
+  
+  .footer-section-main {
+    max-width: $main-area-max-width;
+  }
 
   .brand-logo {
     height: 140px;
@@ -14,5 +18,13 @@
 
   .footer-info-right {
     text-align: right;
+  }
+}
+
+.main-navbar {
+  li {
+    a {
+      color: $brand-color;
+    }
   }
 }

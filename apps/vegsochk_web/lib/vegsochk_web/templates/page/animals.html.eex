@@ -1,0 +1,38 @@
+<div class="uk-section animals-container uk-offcanvas-content">
+  <div class="animal-banner">
+    <div class="artwork">
+      <h4 class="title">動物</h4>
+      <p>畜牧業每令數以百億隻動物承 受巨大的身體和精神痛苦，牠 們痛不欲生，被剝削了最基本 的需求，忍受極端狹窄和骯髒 的生活環境，被虐待及屠殺。</p>
+    </div>
+  </div>
+  <div class="animal-categories-container">
+		<div class="uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
+      <div
+				id="pig"
+				data-target-overlay="pig-overlay"
+        class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+      <div
+        id="cow"
+				data-target-overlay="cow-overlay"
+        class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+		</div>
+ 	</div>
+	<div id="overlay-container" class="overlay">
+		<a href="javascript:void(0)" class="closebtn" id="overlay-close">&times;</a>
+		<!-- overlay content -->
+		<div class="overlay-content" id="overlay-content-container">
+      <div id="pig-overlay">
+        pig
+      </div>
+      <div id="cow-overlay">
+        cow
+      </div>
+		</div>
+	</div>
+
+</div>
+

@@ -11,4 +11,10 @@ defmodule VegsochkWeb.PageController do
 
     render conn, "index.html", first_article: first_article, rest_articles: rest_articles
   end
+
+  def show(conn, %{"page_name" => page_name}) do
+    conn
+    |> Phoenix.Controller.put_layout("article.html")
+    |> render "#{page_name}.html"
+  end
 end

@@ -1,11 +1,11 @@
- <nav class="uk-navbar-container uk-padding-large uk-navbar-transparent" uk-navbar>
+ <nav class="uk-navbar-container main-navbar uk-padding-large uk-navbar-transparent" uk-navbar>
     <div class="uk-navbar-left">
       <ul class="uk-navbar-nav">
         <li class="uk-parent">
           <a href="/why-vegan">為什麼純素</a>
         </li>
         <li class="uk-parent">
-          <a href="/why-vegan">動物</a>
+          <a href="/animals">動物</a>
         </li>
         <li class="uk-parent">
           <a href="/why-vegan">健康</a>

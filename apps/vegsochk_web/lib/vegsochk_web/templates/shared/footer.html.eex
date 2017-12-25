@@ -1,9 +1,11 @@
 <div class="uk-section footer-section">
-  <div class="uk-container">
+  <div class="uk-container footer-section-main">
     <div class="uk-grid">
       <div class="footer-info-left">
         <div class="brand-logo">
-          <img src="/images/brand-logo.png">
+          <a href="/">
+            <img src="/images/brand-logo.png">
+          </a>
         </div>
         <ul class="uk-list">
           <li>CLUB O,旺角亞皆老街80-86號昌明大廈7字樓G、H室</li>
