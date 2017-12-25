@@ -22,6 +22,8 @@
 }
 
 .main-navbar {
+	max-width: $main-area-max-width;
+  margin: 0 auto;
   li {
     a {
       color: $brand-color;

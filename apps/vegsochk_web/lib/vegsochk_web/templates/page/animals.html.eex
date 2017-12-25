@@ -6,27 +6,67 @@
     </div>
   </div>
   <div class="animal-categories-container">
-		<div class="uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-height-medium">
-      <div
-				id="pig"
-				data-target-overlay="pig-overlay"
-        class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
-      <div
-        id="cow"
-				data-target-overlay="cow-overlay"
-        class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
-      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
-      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
-      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
-      <div class="uk-width-1-3 uk-card uk-card-default uk-card-body uk-card-small"><img src="http://via.placeholder.com/160x90"></div>
+		<div class="uk-flex uk-flex-wrap uk-flex-wrap-around uk-background-muted uk-flex-center">
+      <div class="uk-width-1-3">
+        <div
+          id="pig"
+          data-target-overlay="pig-overlay"
+          class="animal-thumbnail"></div>
+      </div>
+      <div class="uk-width-1-3">
+        <div id="cow" data-target-overlay="cow-overlay" class="animal-thumbnail"></div>
+      </div>
+      <div class="uk-width-1-3">
+        <div id="chicken" class="animal-thumbnail"></div>
+      </div>
+      <div class="uk-width-1-3">
+        <div id="chick" class="animal-thumbnail"></div>
+      </div>
+      <div class="uk-width-1-3">
+        <div id="fish" class="animal-thumbnail"></div>
+      </div>
+      <div class="uk-width-1-3">
+        <div id="bee" class="animal-thumbnail"></div>
+      </div>
 		</div>
  	</div>
 	<div id="overlay-container" class="overlay">
 		<a href="javascript:void(0)" class="closebtn" id="overlay-close">&times;</a>
 		<!-- overlay content -->
-		<div class="overlay-content" id="overlay-content-container">
-      <div id="pig-overlay">
-        pig
+		<div class="overlay-content-container" id="overlay-content-container">
+      <div class="overlay-content" id="pig-overlay">
+        <div class="back-pane">
+        </div>
+        <div class="overlay-main-content-pane">
+          <h2>豬</h2>
+          <div class="main-img-container pig"></div>
+          <div class="uk-container">
+            <h5>豬是被誤解最嚴重的動物之一。與普遍的刻板印象相反，其實牠非常聰明、 善於交際及充滿好奇心。</h5>
+						<div class="pig-description-1-container">
+							<div class="pig-description-1">
+								<p>在工業化農場，母豬在懷孕期和哺乳期都會被單獨關金屬籠子裡。 在欄裡，母豬擠得無法轉身、動彈不得，因而容易有肌肉會萎縮， 患腿部疾病。她們身心皆遭受重創，有時更會絕望地啃噬著囚禁著 她們的圍欄。</p>
+								<p>牠們幾乎不能移動，更不用談轉身。</p>
+								<p>在自然的情況下，母豬會經常和孩子保持接觸，這有助提高幼豬的 安全感。而最明顯的表現是母豬在離開時始終會用目光注視著自己 的幼豬。但這些機會，在工廠化農場都全部被剝削了。</p>
+								<p>部份資料出處:《工廠化豬場豬欄現狀與設計》作者:劉喜生</p>
+							</div>
+							<div class="pig-description-1-photo-container">
+								<img src="http://via.placeholder.com/160x90">
+								<p>母豬絕望地啃噬囚禁著她的圍欄。</p>
+							</div>
+						</div>
+						<div class="pig-description-remark">
+							<ul class="uk-list">
+								<li>-母豬的妊娠定位欄</li>
+								<li>英國已經完全禁止。瑞典和新西蘭從2015年將也是<li>
+								<li>荷蘭和芬蘭已經實施逐步禁止<li>
+								<li>-小豬出生七天內會被閹割<li>
+								<li>瑞士在2012已經禁止<li>
+								<li>而從2012年起，比利時、德國、意大利等國家己簽署需要麻醉劑和持續的止痛緩解。<li>
+								<li>http://www.ciwf.org.uk/farm-animals/pigs/welfare-issues/castration/<li>
+							</ul>
+						</div>
+          </div>
+        </div>
       </div>
       <div id="cow-overlay">
         cow

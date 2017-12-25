@@ -38,13 +38,16 @@
 	}
 
 	/* Position the content inside the overlay */
-	.overlay-content {
+	.overlay-content-container {
 			position: relative;
-			top: 25%; /* 25% from the top */
 			width: 100%; /* 100% width */
-			text-align: center; /* Centered text/links */
-			margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+			text-align: left; /* Centered text/links */
+      height: 100%;
 	}
+
+  .overlay-content {
+    height: 100%;
+  }
 
 	/* The navigation links inside the overlay */
 	.overlay a {
@@ -65,8 +68,70 @@
 	.overlay .closebtn {
 			position: absolute;
 			top: 20px;
-			right: 45px;
+			left: 45px;
 			font-size: 60px;
+      z-index: 100;
+	}
+
+  .back-pane {
+    height: 100%;
+    width: 25%;
+    float: left;
+    background-color: $brand-color;
+  }
+
+  .overlay-main-content-pane {
+    height: 100%;
+    width: 75%;
+    float: left;
+    background-color: $grey;
+		overflow: scroll;
+
+    .main-img-container {
+      width: 100%;
+
+      &.pig {
+        background: url('http://via.placeholder.com/160x90') no-repeat center center;
+      }
+    }
+  }
+
+  .animal-categories-container {
+    padding-top: 200px;
+    #pig {
+      background: url('/images/pig-thumbnail.jpg') no-repeat center center;
+    }
+    #cow {
+      background: url('/images/calf-thumbnail.jpg') no-repeat center center;
+    }
+    #chicken {
+      background: url('/images/chicken-thumbnail.jpg') no-repeat center center;
+    }
+    #chick {
+      background: url('/images/chick-thumbnail.jpg') no-repeat center center;
+    }
+    #fish {
+      background: url('/images/fish-thumbnail.jpg') no-repeat center center;
+    }
+    #bee {
+      background: url('/images/bee-thumbnail.jpg') no-repeat center center;
+    }
+    .animal-thumbnail {
+      height: 140px;
+      max-width: 200px;
+      margin: 0 auto;
+      background-size: cover !important;
+    }
+  }
+  .pig-description-1-container { }
+  .pig-description-1 {
+		float: left;
+    width: 70%;
+	}
+
+	.pig-description-1-photo-container {
+		float: left;
+    width: 30%;
 	}
 
 	/* When the height of the screen is less than 450 pixels, change the font-size of the links and position the close button again, so they don't overlap */

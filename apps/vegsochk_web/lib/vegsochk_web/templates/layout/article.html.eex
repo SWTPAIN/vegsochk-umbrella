@@ -15,6 +15,7 @@
     <%= render_shared "main-navbar.html" %>
     <%= render @view_module, @view_template, assigns %>
     <%= render_shared "footer.html" %>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render_existing @view_module, "scripts." <> @view_template, assigns %>
 
 
