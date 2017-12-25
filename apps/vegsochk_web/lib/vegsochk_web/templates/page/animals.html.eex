@@ -8,10 +8,10 @@
   <div class="animal-categories-container">
 		<div class="uk-flex uk-flex-wrap uk-flex-wrap-around uk-flex-center">
       <div class="uk-width-1-3">
-        <div id="pig" data-target-overlay="pig-overlay" class="animal-thumbnail"></div>
+        <div id="pig" class="animal-thumbnail"></div>
       </div>
       <div class="uk-width-1-3">
-        <div id="cow" data-target-overlay="cow-overlay" class="animal-thumbnail"></div>
+        <div id="cow" class="animal-thumbnail"></div>
       </div>
       <div class="uk-width-1-3">
         <div id="chicken" class="animal-thumbnail"></div>
@@ -171,6 +171,130 @@
           </div>
         </div>
       </div>
+
+      <div id="chicken-overlay">
+        <div uk-grid>
+          <div class="back-pane uk-width-1-4">
+          </div>
+          <div class="overlay-main-content-pane uk-width-3-4">
+            <h3 class="overlay-main-content-title">
+              雞
+            </h3>
+            <div class="main-img-container chicken1"></div>
+            <div class="main-content-block">
+              <p>在香港街市，一般雞隻都在未未經擊昏的情況下，在意識清醒下被割斷喉 嚨放血。有研究顯示*，不少雞隻被割喉後在20秒或更長的時間依然有知覺 ，死前飽受痛楚和苦痛。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="chick-overlay">
+        <div uk-grid>
+          <div class="back-pane uk-width-1-4">
+          </div>
+          <div class="overlay-main-content-pane uk-width-3-4">
+            <h3 class="overlay-main-content-title">
+              雞蛋
+            </h3>
+            <div class="main-img-container chick1"></div>
+            <div class="main-content-block">
+              <p>在香港街市，一般雞隻都在未未經擊昏的情況下，在意識清醒下被割斷喉 嚨放血。有研究顯示*，不少雞隻被割喉後在20秒或更長的時間依然有知覺 ，死前飽受痛楚和苦痛。</p>
+            </div>
+            <div class="main-content-block">
+              <div uk-grid>
+                <div class="uk-width-2-3">
+                  <p>雞蛋工廠的小公雞在孵化不久後，因為不能下蛋，又不是「肉雞」 品種(肉質不佳、長肉沒效率等理由)，所以出生不久，在辨別性 別之後，就會被殺死，牠們可能是被活活碾碎成肉醬、也可能是用 塑膠袋焗死，又或者被燙死浸死等等。</p>
+                  <p>在香港也不例外，估計每年本地有120萬隻小公雞，被丟進垃圾袋 活生生地焗死。[1]不計本地生產，每年香港約進口21億隻新鮮雞 蛋(出口只佔約1%)，其中過半來自大陸，其次是美國和泰國; 而在美國，估計每年都有超過二億隻雄性小雞被撲殺!香港每年進 口約3億隻美國雞蛋，這當中多少小雞是因為我們埋單?據德國 University of Vechta大學家禽研究所估計[2]，估計全球每年約 有25億隻小公雞，因為生產雞蛋被殺死(包括所謂的「自由放養」 、「有機」和「動物褔利」雞蛋)</p>
+                </div>
+                <div class="uk-width-1-3">
+                  <div class="image-with-caption">
+                    <img src="/images/egg-stat.png">
+                    <p>剪尾巴時痛苦的小豬(圖:Jan van Ijken)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-content-block">
+              <p>初生小雞的聰明才智</p>
+              <p>有研究指出，初生的小雞已有數字的概念，最高能數至十，牠們也明白未來的概念，牠們會放棄一個 小的奬賞，去換取未來更大的奬賞。[3]</p>
+              <p>高密度的禁錮</p>
+              <p>蛋雞被關在密集的層式籠子禁錮，往往可高至三至九層高，密不透風，一隻雞能夠得到的空間甚至少 於一張A4紙的面積，空間極度擠迫，牠們難以轉身也無法展開翅膀。牠們長期站在鐵籠上，導致腳部 畸形。沒有新鮮空氣，承受糞便和臭味。雞棚的空氣非常骯髒，充斥著阿摩尼亞 ，令雞隻的眼睛受到 強烈刺激，濃度過高甚至會使雞隻眼睛失明。</p>
+              <p>在格子籠裡，雞被剝削了一切對牠們而言重要和自然的一切。研究指出這種牢籠系統導致嚴重的動物 權益問題，築巢、棲息在樹上、覓食以及砂浴等。不能跑動、飛翔及持續走動。[3]</p>
+              <p>瘋狂的產蛋機器</p>
+              <p>透過基因篩選操控，現在的蛋雞下蛋量比過去任何時期都要高!現在每隻蛋雞一年的下蛋量高達三百 顆，比50年前的雞多出了一倍有多。現在某些極端的品種，甚至能年產五百隻蛋!身體負荷太重，在 籠中又無法運動，母雞容易罹患生殖器官疾病，如子宮垂脫和骨質疏鬆等。要形成蛋殻，需要抽取母 雞體內很多鈣質，但由於過量的產蛋令母雞非常虛弱，有時她們體內已經沒有足夠的鈣質去應付，無 法形成正常的蛋殼，令到蛋破裂，在生殖器官裡腐爛，引致腫痛和感染。</p>
+              <p>有人形容:「母雞猶如自己身體的囚犯」，她們除了肉體被囚在一個擠迫的監獄，更可憐的是，她們 一生下來，靈魂就被囚禁在一個被設計好了的身體，被設計成不斷反常地產蛋，永不停歇，直至死亡 。由於牠們身體過早地衰退，約一兩年就會被屠宰，一生身心盡受剝削，最後淪為廉價的肉類。她們 本可有超過8年的壽命，有些雞更可活至長達15年。</p>
+              <p>強迫換羽</p>
+              <p>是一個殘忍的催蛋手法，目的是為了延長產蛋率的高峰。母雞被斷水、斷糧、斷光數天至數週，令牠 們受到壓力和驚嚇，羽毛就會脫落。倖存的母雞，就會開始新的下蛋週期。這在大陸是很常見的飼養 手法。</p>
+              <p>被剪去雞嘴喙尖</p>
+              <p>雞的喙尖集中了很多神經，在小雞出生約一星期，就會被高溫刀片或燒烙器切斷嘴喙尖，燒死血管神 經，過程極度痛苦，而且痛苦持續不斷!雞的生長期大約會被去喙兩次。這是因為在密集式飼養下， 動物承受巨大壓力，去喙能減少她們相互啄咬攻擊。</p>
+              <p>雞蛋的替代選擇</p>
+              <p>現在愈來愈多人選擇不吃雞蛋，也有很多純素的烘焙、無蛋奶的食譜和貼士，包括純素的烘焙。例如 芙蓉蛋也可以用腐竹來替代蛋漿，有喜馬拉雅山「黑鹽」具有蛋黃的味道。雞蛋的營養在其他植物， 例如蔬果、豆類、五榖類、果仁種子類等，都含有豐富的營養和植物性蛋白質。</p>
+            </div>
+            <div class="main-content-block ">
+              <ul class="uk-list remark-list">
+								<li>[1] 太陽日報:每月濫殺10萬雞仔 漁署塞責 http://www.the-sun.on.cc/cnt/news/20151119/00410_004.html</li>
+								<li>[2] http://www.wing-vechta.de/en/themen/sexing/schnabelbehandlung_vor_dem_aus_1_1_1.html</li>
+								<li>[3] http://www.livescience.com/49633-chicks-count-like-humans.html</li>
+								<li>[4] European Food Safety Authority Journal (2005) 197, 1-23</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="fish-overlay">
+        <div uk-grid>
+          <div class="back-pane uk-width-1-4">
+          </div>
+          <div class="overlay-main-content-pane uk-width-3-4">
+            <h3 class="overlay-main-content-title">
+              魚
+            </h3>
+            <div class="main-img-container fish1"></div>
+            <div class="main-content-block">
+              <p>魚類，作為有感受痛楚能力的動物，是動物界裏最容易被忽略的群體之一 ，無論是捕魚或養殖魚，都對動物福利和生態有嚴重的影響。</p>
+              <p>魚‥能感受痛苦和驚慌的動物</p>
+              <p>已經有越來越多證據指出，魚類的腦部結構跟哺乳類動物一樣能感受痛楚、驚慌和壓力，並有一定的 社交智慧，例如互相合作對抗掠食者和覓食。雖然魚類不能發出叫聲，但當牠們被殘酷的捕漁手法傷 害、被養殖場的惡劣環境折磨時，數量龐大的牠們每天都在受苦。</p>
+              <p>過度捕魚</p>
+              <p>魚類的演化大約由5億3000萬年前開始，比人類的目前推斷的700萬年的歷史更久遠。牠們克服了許多 困難，偏佈了海洋，並形成複雜而精妙的生態系統。</p>
+              <p>隨著一些發展中國家的人均收入上升，各種肉類消耗都在穩步上升，魚肉也不例外。香港每年的人均 海鮮消耗量為65.5kg，是全球人均消耗量的3倍有多。至2014年，全球海洋的捕撈收穫的總數有8155 萬噸，而內陸水域的捕撈收穫有1190萬噸。捕撈的規模前所未有，在2013年，海洋的魚類有約58%被 捕撈，而約31%的海洋魚類被視為過渡捕撈。不少被人類食用的魚類已經面臨生存危機，包括秘魯鯷 魚、阿拉斯加鱈魚、大西洋鱈魚及鯡魚、鯖魚和吞拿魚。除此之外，一般的捕漁作業如拖網、圍網等 ，都會造成很多混穫(by catch)，導致很多非目標魚類和海洋生物被殺害，令該區的生態做成極大破 壞。內陸魚同時面對過度捕魚，還有環境污染、土壤侵蝕、水資源問題等，也令牠們受到極大威脅。</p>
+              <p>各種捕魚方法都是殘酷的折磨</p>
+              <p>現在一般的捕魚方法有以下幾種‥</p>
+              <p>拖網(trawling)‥由兩艘船各拉著漁網的一邊，同時前進，並用機器將網連同漁獲一同拉上船，深海拖網同時會破壞海床的生態環境，例如珊瑚群。</p>
+              <p>圍網(purse seining)‥由兩艘船將大型漁網繞成一個大圈後收緊，然後漁獲連同大網一起撈上船。</p>
+              <p>刺網(gill nets)‥將一道漁網橫置於海中，當體型比網孔較大的魚類游過時就會被困住，試圖掙扎
+              將令牠們被困得更緊。</p>
+              <p>這三種方法的作業時間由數小時到幾天不等，同時又會造成混獲問題(bycatch)，以拖網法最嚴重。 除目標魚穫外，亦令很多非目標海洋生物(例如海龜、鯊魚)被困住，不能呼吸甚至淹死。牠們在被困 住的漫長時間，和被撈上船的時候會經歷極大的恐懼，與其他生物強力擠壓而受到撞擊和擦傷，即使 有些生物被投回海中，之前受的折磨會令牠們變得虛弱，並降低生存率。</p>
+              <p>另外，有一種被稱為「較人道和可持續」的竿釣法，即傳統的釣魚法，雖沒有混穫問題，但被釣上來 的非目標魚類，同樣因為掙扎時會經歷恐慌、消耗體力和口部受傷，仍然會令牠們的生存能力大打折 扣。</p>
+              <p>養殖魚場‥海上版工廠式農場</p>
+              <p>至2014年，全球養殖魚穫已達7380萬噸，已佔人類食用的魚類接近一半。亞洲的養殖魚以內陸為主， 而歐洲養殖魚則以海上養殖為主，但無論哪種養殖魚都有一個共通點，就是需要以捕捉其他魚類製成 魚粉和飼料去飼養。要養殖一公噸的三文魚就至少要三至五公噸的小魚，捕捉野生小魚製作魚粉，會 破壞海洋的食物鏈，令許多中型及大型魚失去食物來源，魚粉廠也會排出油脂廢棄物到海裏，形成污 染，而各種海洋污染會令吃下魚粉的養殖魚將污染物積聚在體內脂肪，並進入人類的食物鏈。</p>
+              <p>此外，無論是內陸養殖還是海上養殖，都是使用密集養殖方式，容易滋生傳染病和寄生蟲，業者就會 投入大量抗生素和殺蟲劑去控制環境，但同時也令養殖場變成超級抗藥性病菌和寄生蟲演化的溫床， 所以養殖魚體內不單含有抗生素，也有抗藥性病菌。海上養殖場的污染會直接排放到海洋，歐洲和加 拿大的三文魚養殖場產生富含藥物和化學物的生物廢料和大量海蝨，還有逃脫的養殖魚，正是令野生 三文魚和其他魚類數量急劇下降的原因之一。</p>
+              <p>將水域還給魚類和水中生物</p>
+              <p>魚類是已經歷長時間演化的動物，有感受痛苦的能力，卻因為人類的工業化捕漁和養殖作業，在短時 間內數量大幅下降，令許多物種面臨絕種危機，破壞海洋生態。同時，這樣的行為又反過來以污染和 食安問題影響著人類。事實上，植物性飲食可以取代魚肉的營養，對環境的影響更少，又可以讓海洋 和內陸水域得到更多休養生息的機會，你我都可以從飲食習慣開始作出改變。</p>
+              <div class="image-with-caption">
+                <img src="/images/fish-stat.png">
+                <p>水產養殖一年比一年多，對海洋和淡水域施加的壓力也越多。(FAO, 2016)</p>
+              </div>
+            </div>
+            <div class="main-content-block ">
+              <ul class="uk-list remark-list">
+                <li>[1] “Supporting sustainable seafood”, WWF Hong Kong, 2016</li>
+                <li>[2] “The State of World Fisheries and Aquaculture, 2016”, FAO, 2016</li>
+                <li>[3] "Overfishing of Inalnd Waters”, J.David Allan, Robin Abell, Zeb Hogan, Carmen Ravenga, B.W. Taylor, Robin L. Welcomme, Kirk O Winemiller, BioScience 55(12)</li>
+                <li>[4] “Worse things happen at sea: the welfare of wild caught fish, 2010” fishcount.org.uk</li>
+                <li>[5] 《動物的內心生活》, Peter Wohlleben, 商周出版, 2017年2月</li>
+                <li>[6] “Worse things happen at sea: the welfare of wild caught fish, 2010” fishcount.org.uk</li>
+                <li>[7] “The State of World Fisheries and Aquaculture, 2016”, FAO, 2016</li>
+                <li>[8]《壞農業..廉價肉品背後的恐怖真相》第五章..水產養殖業，Philip Lymbery & Isabel Oakeshott著，鄭襄憶、游卉庭，如果出版</li>
+                <li>[9] "How sea lice from salmon farms may cause wild salmonid declines in Europe and North America and be a threat to fishes elsewhere", Mark J. Costello, The Royal Society, July 2009</li>
+                <li>[10] “Sea Trout Loss Linked to Salmon Farm Parasite”, James Owens, National Geographic News, Oct 2002</li>
+                <li>[11] “Farmed Salmon Industry Causing Global Sea Lice Crisis”. Lorraine Chow, April 2017</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
 		</div>
 	</div>
 </div>

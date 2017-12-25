@@ -124,7 +124,15 @@ $max-text-width: 800px;
       &.cow3 {
         background: url('/images/cows-staring.jpg') no-repeat center center;
       }
-
+      &.chicken1 {
+        background: url('/images/chicken-starting.jpg') no-repeat center center;
+      }
+      &.chick1 {
+        background: url('/images/eggs.png') no-repeat center center;
+      }
+      &.fish1 {
+        background: url('/images/fish.png') no-repeat center center;
+      }
       background-size: cover !important;
     }
     .main-content-block {
