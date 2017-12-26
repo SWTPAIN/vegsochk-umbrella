@@ -39,7 +39,8 @@ module.exports = {
           }
         ]
       })
-    }, {
+    },
+    {
       test: /\.(js|jsx)$/,
       include: /js/,
       use: [

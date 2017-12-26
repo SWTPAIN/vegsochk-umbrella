@@ -25,8 +25,18 @@
 	max-width: $main-area-max-width;
   margin: 0 auto;
   li {
+    padding: 0 10px;
     a {
       color: $brand-color;
+      height: 40px;
+      padding: 0;
+    }
+    &.active {
+      a {
+        color: $orange;
+        border-bottom: 4px solid $orange;
+        margin-top: 2px;
+      }
     }
   }
 }

@@ -1,0 +1,47 @@
+.why-vegan-container {
+  max-width: $main-area-max-width;
+  margin: 0 auto;
+  padding-top: 0;
+  .artwork {
+    position: relative;
+    height: 700px;
+    margin: 0 auto;
+
+  }
+  .artwork-block-1, .artwork-block-2, .artwork-block-3 {
+    position: absolute;
+    padding: 20px;
+  }
+  .artwork-block-1 {
+    height: 400px;
+    width: 700px;
+    top: 0px;
+    left: 0px;
+    color: $brown;
+  }
+  .artwork-block-2 {
+    top: 360px;
+    right:0px;
+    height: 200px;
+    width: 500px;
+    background-color: $orange;
+    opacity: 0.9;
+  }
+  .artwork-block-3 {
+    bottom: 0px;
+    right: 240px;
+    height: 100px;
+    width: 400px;
+    background-color: $green;
+    opacity: 0.9;
+  }
+  .accordion-title, .title, .label-title {
+    color: $brand-color;
+  }
+	.accordion-title {
+    border-bottom: 1px solid $brand-color;
+  }
+	.label-title {
+		text-align: center;
+	}
+}
