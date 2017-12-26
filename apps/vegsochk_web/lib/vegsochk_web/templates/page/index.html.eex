@@ -45,7 +45,7 @@
 	</div>
 	<div class="uk-section">
 		<div class="uk-container">
-      <%= render_shared "main-navbar.html" %>
+      <%= render_shared "main-navbar.html", conn: @conn%>
 			<div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
 				<ul class="uk-slideshow-items">
 					<li>

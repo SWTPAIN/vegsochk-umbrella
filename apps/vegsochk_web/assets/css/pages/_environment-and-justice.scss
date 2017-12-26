@@ -1,0 +1,84 @@
+.environment-and-justice-container {
+  color: $grey;
+  p {
+    font-size: 18px;
+    &.main {
+      font-size: 22px;
+    }
+  }
+
+  .table {
+    text-align: center;
+    th {
+      text-align: center;
+    }
+  }
+
+ 	.banner {
+		position: relative;
+		height: 500px;
+		background: url("/images/roya-ann-miller-171297.jpg") no-repeat center center;
+		background-size: cover;
+    margin-bottom: 330px;
+
+		.artwork-1, .artwork-2 {
+      h1 {
+        font-size: 30px;
+        color: rgb(134, 114, 98);
+      }
+      p {
+        color: rgb(134, 114, 98);
+      }
+      padding: 20px 30px;
+			position: absolute;
+      opacity: 0.9;
+		}
+
+    .artwork-1 {
+			height:280px;
+      width: 500px;
+			top: 400px;
+      right: 200px;
+      background-color: $orange;
+    }
+
+    .artwork-2 {
+			height:140px;
+      width: 500px;
+			top: 600px;
+      right: 400px;
+      background-color: $green;
+    }
+	}
+
+  .main-section {
+    max-width: $main-area-max-width;
+    margin: 60px auto;
+  }
+
+  .grey-text {
+    color: $grey;
+  }
+  
+  .accordion-title, .title, .label-title {
+    color: $brand-color;
+  }
+	.accordion-title {
+    border-bottom: 1px solid $brand-color;
+  }
+
+  .image-with-caption {
+    padding: 20px;
+  }
+
+	.veggie-image {
+		height: 300px;
+	}
+
+  .remark-list {
+    li {
+      font-size: 12px;
+    }
+  }
+
+}

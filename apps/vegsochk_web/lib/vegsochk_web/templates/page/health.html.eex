@@ -1,7 +1,74 @@
-<div class="uk-section why-vegan-container">
-  <div class="uk-container">
-     健康
-     進食過多肉類會增加多種都市病風 險，如心臟病、中風、糖尿病和癌 症等等。肉食也是大部份食物中毒 的原因，密集式飼養是流感病毒的 溫床，產生更強的抗生素耐藥性。
+<div class="uk-section health-container">
+  <div class="banner">
+    <div class="artwork">
+      <p>健康</p>
+      <p>進食過多肉類會增加多種都市病風 險，如心臟病、中風、糖尿病和癌 症等等。肉食也是大部份食物中毒 的原因，密集式飼養是流感病毒的 溫床，產生更強的抗生素耐藥性。</p>
+    </div>
+  </div>
+  <div class="main-section">
+    <div class="post-item full-row">
+      <div class="post-main-image">
+        <img src="/images/francesco-gallarotti-72602.jpg">
+      </div>
+
+      <div class="post-main-brief-container">
+        <div uk-grid>
+          <div class="post-main-brief uk-width-expand">
+            <p class="post-title">中醫如何看肉食與素食?</p>
+            <p class="post-short-description">隨着素食日益普及，人們逐漸知道素食對健康的好處，不過這方面的資訊大都來自西方營養學的知 識，反而很少從中國傳統醫學的角度探討此問題，中醫是否反對素食呢?中醫認為人應該吃甚麼?</p>
+            <button class="uk-button uk-button-default detail-button" href="#">了解更多</button>
+          </div>
+          <div class="post-main-author-avatar">
+            <img src="/images/vincent-lee.jpg">
+            <p>李宇銘博士</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="uk-child-width-expand uk-grid-divider post-item-list" uk-grid>
+      <div>
+        <div class="post-item">
+          <div class="post-main-image">
+            <img src="/images/francesco-gallarotti-72602.jpg">
+          </div>
+          <div class="post-main-brief-container">
+            <div uk-grid>
+              <div class="post-main-brief uk-width-expand">
+                <p class="post-title">動物性飲食帶來的問題到底 有多嚴重?</p>
+                <p class="post-short-description">肉食(動物性飲食)危害身體健康的 程度，其實超乎你我想像!</p>
+                <button class="uk-button uk-button-default detail-button" href="#">了解更多</button>
+              </div>
+              <div class="post-main-author-avatar">
+                <img src="/images/vincent-lee.jpg">
+                <p>盧麗愛醫生</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="post-item">
+          <div class="post-main-image">
+            <img src="/images/francesco-gallarotti-72602.jpg">
+          </div>
+          <div class="post-main-brief-container">
+            <div uk-grid>
+              <div class="post-main-brief uk-width-expand">
+                <p class="post-title">非吃雞蛋不可?打破雞蛋的 神話</p>
+                <p class="post-short-description">肉食(動物性飲食)危害身體健康的 程度，其實超乎你我想像!</p>
+                <button class="uk-button uk-button-default detail-button" href="#">了解更多</button>
+              </div>
+              <div class="post-main-author-avatar">
+                <img src="/images/vincent-lee.jpg">
+                <p>盧麗愛醫生</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
