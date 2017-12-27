@@ -10,7 +10,8 @@ module.exports = {
     'app': ['./js/app.js', './css/app.scss'],
 		'pages/authors-articles-new': ['./js/pages/authors/articles/new.js'],
 		'pages/authors-articles-edit': ['./js/pages/authors/articles/edit.js'],
-		'animals': ['./js/pages/animals.js']
+		'animals': ['./js/pages/animals.js'],
+    'vegan-tips': ['./js/pages/vegan-tips.js']
   },
   output: {
     path: path.resolve(__dirname, '../priv/static/'),

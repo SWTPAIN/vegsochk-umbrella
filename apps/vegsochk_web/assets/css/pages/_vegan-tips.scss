@@ -1,0 +1,64 @@
+.vegan-tips-container {
+  color: $grey;
+  p {
+    font-size: 18px;
+    &.main {
+      font-size: 22px;
+    }
+  }
+
+ 	.banner {
+		position: relative;
+		height: 500px;
+		background: url("/images/tips/tip-1.jpg") no-repeat center center;
+		background-size: cover;
+    margin-bottom: 330px;
+
+    .message-container {
+      font-size: 30px;
+      color: rgb(134, 114, 98);
+      padding: 20px 30px;
+			position: absolute;
+      top: 35%;
+      left: 38%;
+      h1 {
+        font-size: 0.8em;
+        font-weight: 300;
+      }
+    }
+
+	}
+
+  .main-section {
+    max-width: $main-area-max-width;
+    margin: 60px auto;
+  }
+
+  .tab-item {
+    &.active {
+      color: $brand-color;
+    }
+  }
+
+  .outside-eating-tips {
+    .tip-category {
+      padding: 10px;
+      text-align: center;
+
+      .tip-category-icon-container {
+        img {
+          object-fit: cover;
+        }
+      }
+      p {
+        text-align: center;
+        color: $brand-color;
+      }
+      .down-icon-container {
+        color: $green;
+      }
+    }
+
+  }
+
+}
