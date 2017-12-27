@@ -30,3 +30,4 @@ defmodule Vegsochk.CMS.Article do
   end
 
 end
+
