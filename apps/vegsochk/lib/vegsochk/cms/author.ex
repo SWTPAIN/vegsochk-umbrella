@@ -1,7 +1,6 @@
 defmodule Vegsochk.CMS.Author do
   use Ecto.Schema
   import Ecto.{Query, Changeset}
-  import Comeonin.Bcrypt, only: [hashpwsalt: 1]
   alias Vegsochk.CMS.Author
   alias Vegsochk.Account.User
   alias Vegsochk.Repo
@@ -28,6 +27,7 @@ defmodule Vegsochk.CMS.Author do
     author
     |> cast(attrs, [:bio, :role, :user_id])
     |> validate_required([:bio, :role, :user_id])
+    |> unique_constraint(:user_id)
   end
 
 end

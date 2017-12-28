@@ -1,6 +1,6 @@
 <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-  <h3 class="uk-card-title">VegsocHK Author</h3>
-  <%= form_for @conn, author_session_path(@conn, :create), [method: :post, as: :user], fn f -> %>
+  <h3 class="uk-card-title">VegsocHK Admin</h3>
+  <%= form_for @conn, admin_session_path(@conn, :create), [method: :post, as: :admin], fn f -> %>
     <fieldset class="uk-fieldset">
       <div class="uk-margin">
         <%= text_input f, :email, placeholder: "Email", class: "uk-input" %>

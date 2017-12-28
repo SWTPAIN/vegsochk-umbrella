@@ -3,6 +3,7 @@ defmodule VegsochkWeb.Author.ImageController do
 
   alias Vegsochk.CMS
 	alias Vegsochk.CMS.Image
+  alias VegsochkWeb.Uploader
 
   plug :authorize_image when action in [:edit, :delete]
 
@@ -16,19 +17,13 @@ defmodule VegsochkWeb.Author.ImageController do
     render conn, "index.html", images: images
   end
 
-	def create(conn, %{"image" => %{"image" => %{filename: filename, path: path}}}) do
-		unique_filename = "#{UUID.uuid4(:hex)}-#{filename}"
-		{:ok, image_binary} = File.read(path)
-		bucket_name = System.get_env("BUCKET_NAME")
-		image = 
-			ExAws.S3.put_object(bucket_name, unique_filename, image_binary)          
-			|> ExAws.request!
-		
-    case CMS.create_image(conn.assigns.current_author, "https://#{bucket_name}.s3.amazonaws.com/#{unique_filename}") do
+	def create(conn, %{"image" => %{"image" => upload_param}}) do
+    image_url = Uploader.upload_image!(upload_param)
+    case CMS.create_image(conn.assigns.current_author, image_url) do
 			{:ok, _image} ->
 					conn
 					|> put_flash(:success, "Image uploaded successfully!")
-					|> redirect(to: image_path(conn, :index))
+					|> redirect(to: author_image_path(conn, :index))
 			{:error, changeset} ->
 					render conn, "new.html", changeset: changeset
     end
@@ -38,7 +33,7 @@ defmodule VegsochkWeb.Author.ImageController do
     {:ok, _image} = CMS.delete_image(conn.assigns.image)
     conn
     |> put_flash(:success, "Article deleted successfully.")
-    |> redirect(to: image_path(conn, :index))
+    |> redirect(to: author_image_path(conn, :index))
   end
 
   def edit(conn, _params) do

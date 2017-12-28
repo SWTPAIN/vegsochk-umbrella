@@ -15,10 +15,16 @@ defmodule Vegsochk.CMS.Restaurant do
   end
 
   @doc false
-  def changeset(%Restaurant{} = article, attrs) do
-    article
+  def changeset(%Restaurant{} = restaurant, attrs \\ :invalid) do
+    restaurant
     |> cast(attrs, [:name, :address, :territory, :telephone_number, :image])
     |> validate_required([:name, :address, :territory, :telephone_number, :image])
   end
-
 end
+
+defimpl Phoenix.Param, for: Vegsochk.CMS.Restaurant do
+  def to_param(%{id: id}) do
+    to_string id
+  end
+end
+

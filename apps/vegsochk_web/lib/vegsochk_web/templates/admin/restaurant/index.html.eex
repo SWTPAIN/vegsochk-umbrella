@@ -1,0 +1,33 @@
+<h1 class="uk-heading">Restaurant</h1>
+<span><%= link "Create New Restaurant", to: admin_restaurant_path(@conn, :new) %></span>
+<table class="uk-table uk-table-hover uk-table-divider">
+	<thead>
+		<tr>
+			<th>Name</th>
+      <th>Address</th>
+      <th>Territory</th>
+      <th>Telephone Number</th>
+      <th>Image</th>
+			<th>Created At</th>
+      <th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= for restaurant <- @restaurants do %>
+			<tr>
+				<td><%= restaurant.name %></td>
+				<td><%= restaurant.address %></td>
+				<td><%= restaurant.territory %></td>
+				<td><%= restaurant.telephone_number %></td>
+        <td><img style="height: 100px;" src="<%= restaurant.image %>"></td>
+				<td><%= restaurant.inserted_at %></td>
+        <td>
+          <span><%= link "Edit", to: admin_restaurant_path(@conn, :edit, restaurant), class: "uk-button uk-button-secondary" %></span>
+          <span>
+            <%= link "Delete", to: admin_restaurant_path(@conn, :delete, restaurant), class: "uk-button uk-button-danger",  method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+

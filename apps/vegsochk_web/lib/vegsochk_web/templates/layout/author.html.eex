@@ -18,9 +18,10 @@
         <nav class="uk-navbar-container" uk-navbar>
           <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-              <li class="uk"><a href="<%= admin_page_path(@conn, :index) %>">Admin Panel</a></li>
+              <li class="uk"><a href="/authors">Author Panel</a></li>
               <%= if current_user(@conn) do %>
-                <li><a href="<%= admin_restaurant_path(@conn, :index) %>">Restaurant</a></li>
+                <li><a href="<%= author_article_path(@conn, :index) %>">Articles</a></li>
+                <li><a href="<%= author_image_path(@conn, :index) %>">Images</a></li>
               <% end %>
             </ul>
           </div>
@@ -33,10 +34,12 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li class="uk-active"><a><%= current_user(@conn).email %></a></li>
                       <li class="uk-nav-divider"></li>
-                      <li><a href="<%= admin_session_path(@conn, :delete) %>">Logout</a></li>
+                      <li><a href="<%= author_session_path(@conn, :delete)%>">Logout</a></li>
                     </ul>
                   </div>
                 </li>
+              <% else %>
+                <li><a href="<%= author_session_path(@conn, :delete) %>">Logout</a></li>
               <% end %>
             </ul>
           </div>

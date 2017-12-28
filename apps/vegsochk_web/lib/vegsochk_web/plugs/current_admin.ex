@@ -1,4 +1,4 @@
-defmodule VegsochkWeb.Plugs.CurrentAuthor do
+defmodule VegsochkWeb.Plugs.CurrentAdmin do
   @moduledoc """
     A `Plug` to assign `:current_user` based on the session
   """
@@ -6,7 +6,7 @@ defmodule VegsochkWeb.Plugs.CurrentAuthor do
   import Plug.Conn
   import VegsochkWeb.Session
   alias VegsochkWeb.Router.Helpers, as: Routes
-  alias Vegsochk.CMS
+  alias Vegsochk.Account
 
   def init(options), do: options
 
@@ -14,10 +14,10 @@ defmodule VegsochkWeb.Plugs.CurrentAuthor do
     user = conn.assigns[:current_user]
     if user do
       conn
-      |> assign(:current_author, CMS.get_author(user))
+      |> assign(:current_admin, Account.get_admin(user))
     else
       conn
-      |> Phoenix.Controller.redirect(to: Routes.author_session_path(conn, :new))
+      |> Phoenix.Controller.redirect(to: Routes.admin_session_path(conn, :new))
       |> halt()
     end
   end

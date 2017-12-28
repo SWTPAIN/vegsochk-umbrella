@@ -16,19 +16,40 @@ defmodule VegsochkWeb.Router do
   end
 
   pipeline :admin_layout do
-      plug :put_layout, {VegsochkWeb.LayoutView, :admin}
+    plug :put_layout, {VegsochkWeb.LayoutView, :admin}
+  end
+
+  pipeline :author_layout do
+    plug :put_layout, {VegsochkWeb.LayoutView, :author}
   end
 
   pipeline :author do
     plug VegsochkWeb.Plugs.CurrentAuthor
   end
 
+  pipeline :admin do
+    plug VegsochkWeb.Plugs.CurrentAdmin
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
 
-  scope "/authors", VegsochkWeb.Author do
+	scope "/admin", VegsochkWeb.Admin, as: :admin do
     pipe_through [:browser, :admin_layout]
+
+    resources "/sessions", SessionController, only: [:create]
+    get "/login", SessionController, :new
+
+    pipe_through :admin
+
+    get "/", PageController, :index
+    get "/logout", SessionController, :delete
+    resources "/restaurants", RestaurantController
+	end
+
+  scope "/author", VegsochkWeb.Author, as: :author do
+    pipe_through [:browser, :author_layout]
 
     resources "/sessions", SessionController, only: [:create]
     get "/login", SessionController, :new
@@ -53,6 +74,7 @@ defmodule VegsochkWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/logout_success", PageController, :logout_success
     resources "articles", ArticleController, only: [:show]
     get "/:page_name", PageController, :show
   end

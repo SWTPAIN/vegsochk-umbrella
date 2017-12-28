@@ -14,7 +14,6 @@ defmodule VegsochkWeb.Plugs.CurrentUser do
       conn
     else
       user = get_session(conn, :current_user)
-
       assign(conn, :current_user, get_session(conn, :current_user))
     end
   end

@@ -7,7 +7,7 @@ defmodule Vegsochk.Account do
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
   alias Vegsochk.Repo
 
-  alias Vegsochk.Account.{User, Session}
+  alias Vegsochk.Account.{User, Admin, Session}
 
   def create_user(attrs \\ %{}) do
     %User{}
@@ -41,6 +41,27 @@ defmodule Vegsochk.Account do
     end
   end
 
+  def login_admin(%{email: email, password: password} = login_info) do
+    case get_user_by_email(email) do
+      nil ->
+        {:error, :unauthorized}
+      user ->
+        case checkpw(password, user.password_digest) do
+          true ->
+            case get_admin(user) do
+              nil ->
+                {:error, :unauthorized}
+              admin ->
+                {:ok, session} = create_session(admin.id)
+                {:ok, {admin, session}}
+            end
+          _ ->
+            dummy_checkpw()
+            {:error, :unauthorized}
+        end
+    end
+  end
+
   defp create_session(user_id) do
     Session.registration_changeset(%Session{}, %{user_id: user_id})
     |> Repo.insert()
@@ -61,4 +82,18 @@ defmodule Vegsochk.Account do
       session.user
     end
   end
+
+  def get_admin!(id), do: Repo.get!(Author, id)
+
+  def get_admin(%User{} = user) do
+    Admin.find_one_by(%{user_id: user.id})
+    |> Repo.preload([:user])
+  end
+
+  def add_admin(%User{} = user) do
+    %Admin{user_id: user.id}
+    |> Admin.changeset(%{})
+    |> Repo.insert()
+  end
+
 end

@@ -1,5 +1,5 @@
 <h1 class="uk-heading">Images</h1>
-<div class="container"><%= link "Upload new image", to: image_path(@conn, :new) %></div>
+<div class="container"><%= link "Upload new image", to: author_image_path(@conn, :new) %></div>
 <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide">
 	<%= for image <- @images do %>
 		<div>

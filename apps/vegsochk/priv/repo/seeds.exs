@@ -25,3 +25,7 @@ IO.puts "---- Author ----"
     password: "password"
   })
 {:ok, _} = CMS.add_author(admin, %{bio: "Vegsochk Admin", role: "admin"})
+
+IO.puts "---- Admin ----"
+{:ok, _} = Account.add_admin(admin)
+

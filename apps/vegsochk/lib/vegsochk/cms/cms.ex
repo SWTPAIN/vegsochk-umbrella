@@ -3,7 +3,7 @@ defmodule Vegsochk.CMS do
   import Ecto.Query, warn: false
 
   alias Vegsochk.Repo
-  alias Vegsochk.CMS.{Author, Article, Image}
+  alias Vegsochk.CMS.{Author, Article, Image, Restaurant}
   alias Vegsochk.Account.User
 
   def list_latest_articles(limit_num \\ 10) do
@@ -38,6 +38,37 @@ defmodule Vegsochk.CMS do
   def get_article!(id) do
     Repo.get_by!(Article, %{slug: id})
   end
+
+  def list_restaurants() do
+    Restaurant
+    |> Repo.all()
+  end
+
+  def create_restaurant(attrs \\ %{}) do
+    %Restaurant{}
+    |> Restaurant.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def change_restaurant(restaurant) do
+    restaurant
+    |> Restaurant.changeset(%{})
+  end
+
+  def update_restaurant(%Restaurant{} = restaurant, attrs) do
+    restaurant
+    |> Restaurant.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_restaurant(%Restaurant{} = restaurant) do
+    Repo.delete(restaurant)
+  end
+
+  def get_restaurant!(id) do
+    Repo.get!(Restaurant, id) 
+  end
+
 
   def list_images(%Author{} = author) do
     Image

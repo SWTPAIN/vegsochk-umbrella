@@ -1,0 +1,39 @@
+<%= form_for @changeset, @action, [multipart: true, method: @method, as: :restaurant, class: "uk-form-horizontal uk-margin-large"], fn f -> %>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Name</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :name, placeholder: "Name", class: "uk-input", required: true %>
+      <%= error_tag f, :name %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Address</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :address, placeholder: "Address", class: "uk-input",
+            required: true%>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Territory</label>
+    <div class="uk-form-controls">
+      <%= select f, :territory, ["Hong Kong Island": "hong_kong_island", "Kowloon": "kowloon", "New Territory": "new_territory"], required: true %>
+      <%= error_tag f, :territory %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Telephone Number</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :telephone_number, placeholder: "Telephone Number", class: "uk-input",
+            required: true%>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Image</label>
+    <div class="uk-form-controls">
+      <%= f.data.image %>
+      <%= file_input f, :image %>
+    </div>
+  </div>
+  <%= submit @submit_text, class: "uk-button uk-button-default" %>
+<% end %>
+

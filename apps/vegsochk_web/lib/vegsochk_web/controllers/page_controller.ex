@@ -17,4 +17,8 @@ defmodule VegsochkWeb.PageController do
     |> Phoenix.Controller.put_layout("article.html")
     |> render "#{page_name}.html"
   end
+
+  def logout_success(conn, _params) do
+    render conn, "logout_success.html"
+  end
 end

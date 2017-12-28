@@ -1,0 +1,2 @@
+<script>window.localStorage["api_token"] = "<%= assigns[:token] %>"</script>
+

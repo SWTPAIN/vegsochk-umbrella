@@ -1,11 +1,11 @@
 <div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
-	 <%= form_for @changeset, image_path(@conn, :create), [multipart: true], fn f -> %>
+	 <%= form_for @changeset, author_image_path(@conn, :create), [multipart: true, class: "uk-form-horizontal uk-margin-large"], fn f -> %>
 		<div class="form-group">    
-			<%= label f, :image, class: "control-label" %>    
-			<%= file_input f, :image, class: "form-control" %>    
+			<%= label f, :image, class: "uk-form-label" %>    
+			<%= file_input f, :image %>    
 			<%= error_tag f, :image %>  
 		</div>
-		<%= submit "Upload Image", class: "btn" %>
-	<% end %>   <h3 class="uk-card-title">Default</h3>
+		<%= submit "Upload Image", class: "uk-button uk-button-default" %>
+  <% end %>
 </div>
 

@@ -1,0 +1,13 @@
+<div class="logout-success-container">
+  <div class="uk-card uk-card-default uk-card-body uk-margin-small">
+    <h3 class="uk-card-title">
+      Logout successfully. You will be redirectly to homepage in 2s.
+    </h3>
+  </div>
+</div>
+<script>
+  localStorage.clear();
+  setTimeout(function() {
+    window.location = "/"
+  }, 2000);
+</script>

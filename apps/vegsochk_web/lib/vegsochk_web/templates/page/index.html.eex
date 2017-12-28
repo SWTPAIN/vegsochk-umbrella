@@ -92,10 +92,12 @@
           <div class="uk-flex category-tag-list">
             <li><div class="category-tag">Health</div></li>
           </div>
-          <h6 class="article-title">
-            <%= @first_article.title %>
-          </h6>
-          <a href="<%= article_path(@conn, :show, @first_article) %>">觀看更多</a>
+          <%= if @first_article != nil do %>
+            <h6 class="article-title">
+              <%= @first_article.title %>
+            </h6>
+            <a href="<%= article_path(@conn, :show, @first_article) %>">觀看更多</a>
+          <% end %>
         </div>
 				<div>
 					<div class="uk-flex uk-flex-column uk-width-1-3">

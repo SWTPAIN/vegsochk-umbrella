@@ -9,5 +9,6 @@ defmodule Vegsochk.Repo.Migrations.CreateAuthors do
       add :user_id, references(:users, on_delete: :delete_all), null: false
       timestamps()
     end
+    create index(:authors, [:user_id], unique: true)
   end
 end
