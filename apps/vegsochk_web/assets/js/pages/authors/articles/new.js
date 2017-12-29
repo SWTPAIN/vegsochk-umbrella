@@ -33,7 +33,7 @@ class App extends Component {
       }
     })
     .then(function (response) {
-        window.location.href = "/authors/articles";
+        window.location.href = "/author/articles";
       })
     .catch(function (error) {
         console.log(error);

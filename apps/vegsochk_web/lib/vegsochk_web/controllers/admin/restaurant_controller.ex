@@ -20,6 +20,7 @@ defmodule VegsochkWeb.Admin.RestaurantController do
   def create(conn, %{"restaurant" => %{
     "image" => image_param, 
     "name" => name,
+    "description" => description,
     "address" => address,
     "territory" => territory,
     "telephone_number" => telephone_number 
@@ -28,6 +29,7 @@ defmodule VegsochkWeb.Admin.RestaurantController do
     case CMS.create_restaurant(%{
       image: image_url,
       name: name,
+      description: description,
       address: address,
       territory: territory,
       telephone_number: telephone_number

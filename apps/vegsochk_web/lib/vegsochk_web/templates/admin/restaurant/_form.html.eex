@@ -7,6 +7,13 @@
     </div>
   </div>
   <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Description</label>
+    <div class="uk-form-controls">
+      <%= textarea f, :description, placeholder: "Description", class: "uk-textarea",
+            required: true%>
+    </div>
+  </div>
+  <div class="uk-margin">
     <label class="uk-form-label" for="form-horizontal-text">Address</label>
     <div class="uk-form-controls">
       <%= text_input f, :address, placeholder: "Address", class: "uk-input",

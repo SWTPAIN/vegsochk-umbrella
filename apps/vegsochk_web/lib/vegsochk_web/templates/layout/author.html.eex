@@ -18,7 +18,7 @@
         <nav class="uk-navbar-container" uk-navbar>
           <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-              <li class="uk"><a href="/authors">Author Panel</a></li>
+              <li class="uk"><a href="/author">Author Panel</a></li>
               <%= if current_user(@conn) do %>
                 <li><a href="<%= author_article_path(@conn, :index) %>">Articles</a></li>
                 <li><a href="<%= author_image_path(@conn, :index) %>">Images</a></li>

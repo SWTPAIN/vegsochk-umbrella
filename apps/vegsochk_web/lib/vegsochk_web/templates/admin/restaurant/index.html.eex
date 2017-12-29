@@ -4,6 +4,7 @@
 	<thead>
 		<tr>
 			<th>Name</th>
+      <th>Description</th>
       <th>Address</th>
       <th>Territory</th>
       <th>Telephone Number</th>
@@ -16,6 +17,7 @@
 		<%= for restaurant <- @restaurants do %>
 			<tr>
 				<td><%= restaurant.name %></td>
+				<td><%= restaurant.description %></td>
 				<td><%= restaurant.address %></td>
 				<td><%= restaurant.territory %></td>
 				<td><%= restaurant.telephone_number %></td>

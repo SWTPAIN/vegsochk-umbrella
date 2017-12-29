@@ -10,6 +10,7 @@ defmodule Vegsochk.CMS.Restaurant do
     field :territory, HongKongTerritoryEnum
     field :telephone_number, :string
     field :image, :string
+    field :description, :string
 
     timestamps()
   end
@@ -17,14 +18,7 @@ defmodule Vegsochk.CMS.Restaurant do
   @doc false
   def changeset(%Restaurant{} = restaurant, attrs \\ :invalid) do
     restaurant
-    |> cast(attrs, [:name, :address, :territory, :telephone_number, :image])
-    |> validate_required([:name, :address, :territory, :telephone_number, :image])
+    |> cast(attrs, [:name, :description, :address, :territory, :telephone_number, :image])
+    |> validate_required([:name, :description, :address, :territory, :telephone_number, :image])
   end
 end
-
-defimpl Phoenix.Param, for: Vegsochk.CMS.Restaurant do
-  def to_param(%{id: id}) do
-    to_string id
-  end
-end
-

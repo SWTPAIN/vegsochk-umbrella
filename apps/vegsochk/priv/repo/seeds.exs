@@ -14,8 +14,6 @@ alias Vegsochk.CMS
 
 IO.puts "~~~~ INITIALIZING VegsocHK SEEDS ~~~~"
 
-IO.puts "-- CREATING USES --"
-
 IO.puts "---- Author ----"
 {:ok, admin} =
   Account.register_user(%{
@@ -28,4 +26,15 @@ IO.puts "---- Author ----"
 
 IO.puts "---- Admin ----"
 {:ok, _} = Account.add_admin(admin)
+
+IO.puts "---- Restaurant ----"
+{:ok, _} = CMS.create_restaurant(%{
+  image: 'http://via.placeholder.com/350x250',
+  name: 'LN FORTUNATE COFFEE',
+  description: '一間純素咖啡店，地方寬敞、服務用心，是週末消磨悠閒下午的好地方。',
+  address: '西環西營盤第二街118號地舖',
+  territory: :hong_kong_island,
+  telephone_number: '2858 3898'
+})
+
 

@@ -65,6 +65,9 @@ defmodule VegsochkWeb.Router do
 
   scope "/api/v1", VegsochkWeb.Api.V1 do
     pipe_through :api
+
+    resources "/restaurants", RestaurantController, only: [:index]
+
     pipe_through :author
 
     resources "/articles", ArticleController, only: [:create, :show, :update]
@@ -80,3 +83,16 @@ defmodule VegsochkWeb.Router do
   end
 
 end
+
+defimpl Phoenix.Param, for: Vegsochk.CMS.Restaurant do
+  def to_param(%{id: id}) do
+    to_string id
+  end
+end
+
+defimpl Phoenix.Param, for: Vegsochk.CMS.Article do
+  def to_param(%{slug: slug}) do
+    "#{slug}"
+  end
+end
+

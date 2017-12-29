@@ -1,9 +1,9 @@
 import React from 'react';
 import { Component } from 'react';
 import { render } from 'react-dom';
-import axios from 'axios';
 import { EditorState, ContentState, convertToRaw } from 'draft-js';
 import ArticleForm from './form.js';
+import agent from '../../../agent';
 import draftToHtml from 'draftjs-to-html';
 import htmlToDraft from 'html-to-draftjs';
 
@@ -19,21 +19,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios({
-      method: 'get',
-      url: `/api/v1/articles/${this.articleId}`,
-      headers: {Authorization: `Bearer ${window.localStorage["api_token"]}`}
-    })
-    .then(response => {
-      const {title, body} = response.data
-			const contentBlock = htmlToDraft(body);
-			const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
-			const bodyState = EditorState.createWithContent(contentState);
-      this.setState({title: title, bodyState})
-    })
-    .catch(error => {
-        console.log(error);
-    });
+    agent.Article.get(this.articleId)
+      .then(response => {
+        console.log('a', response.data)
+        const {title, body} = response.data
+        const contentBlock = htmlToDraft(body);
+        const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks);
+        const bodyState = EditorState.createWithContent(contentState);
+        this.setState({title: title, bodyState})
+      })
+      .catch(error => {
+          console.log(error);
+      });
 
   }
 
@@ -41,23 +38,13 @@ class App extends Component {
     const {title, bodyState} = this.state;
     const body = draftToHtml(convertToRaw(bodyState.getCurrentContent()));
 
-    axios({
-      method: 'patch',
-      url: `/api/v1/articles/${this.articleId}`,
-      headers: {Authorization: `Bearer ${window.localStorage["api_token"]}`},
-      data: {
-        article: {
-          title: title, 
-          body: body
-        }
-      }
-    })
-    .then(function (response) {
-        window.location.href = "/authors/articles";
-      })
-    .catch(function (error) {
-        console.log(error);
-      });
+    agent.Article.update(this.articleId, {title, body})
+      .then(function (response) {
+          window.location.href = "/author/articles";
+        })
+      .catch(function (error) {
+          console.log(error);
+        });
   }
 
   handleTitleChange(title) {
