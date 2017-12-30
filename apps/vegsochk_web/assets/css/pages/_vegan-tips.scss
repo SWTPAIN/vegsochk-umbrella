@@ -9,6 +9,26 @@
 
   .tabs {
     margin-bottom: 0;
+    .tab-item {
+      font-size: 24px;
+			margin-bottom: 5px;
+      &.active {
+        color: $brand-color;
+      }
+			&:not(:first-child) {
+				span {
+					&:before {
+						content: " ";
+						margin:0 -12px;
+						position: absolute;
+						top: 0;
+						bottom: 0;
+						width: 1px;
+						background: $grey;
+					}
+				}
+			}
+    }
   }
 
  	.banner {
@@ -16,7 +36,7 @@
 		height: 500px;
 		background: url("/images/tips/tip-1.jpg") no-repeat center center;
 		background-size: cover;
-    margin-bottom: 330px;
+    margin-bottom: 50px;
 
     .message-container {
       font-size: 30px;
@@ -38,17 +58,14 @@
     margin: 60px auto;
   }
 
-  .tab-item {
-    &.active {
-      color: $brand-color;
-    }
-  }
-
   .outside-eating-tips {
     .tip-category {
       padding: 10px;
       text-align: center;
 
+      &.active, &:hover {
+        box-shadow: 0 5px 10px rgba($brand-color, 0.2);
+      }
       .tip-category-icon-container {
         img {
           object-fit: cover;
@@ -91,32 +108,40 @@
       }
     }
 
-    .restaurant-list {
-      border-top: 1px solid $green;
-      .restaurant-item {
-        border-bottom: 1px solid $green;
-        .restaurant-image-container {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          height: 100%;
-          img {
-            margin: 20px 0;
-          }
+  }
+  .item-list {
+    border-top: 1px solid $green;
+    .item {
+      border-bottom: 1px solid $green;
+      .restaurant-image-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        img {
+          margin: 20px 0;
         }
-        .restaurant-info-container {
-          padding: 40px 20px;
+      }
+      .restaurant-info-container, .website-info-container {
+        padding: 40px 20px;
 
-          .restaurant-name {
-            color: $green;
-          }
-          p {
-            margin-top: 0;
-            margin-bottom: 6px;
-          }
+        .restaurant-name, .website-name {
+          color: $green;
+        }
+        p {
+          margin-top: 0;
+          margin-bottom: 6px;
         }
       }
     }
   }
 
+  .app-store-badge {
+    height: 60px;
+  } 
+  .google-play-badge {
+    height: 86px;
+  } 
+
 }
+
