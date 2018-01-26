@@ -28,4 +28,26 @@ $global-border: $brand-color;
 body {
 	font-family: "OpenSans";
 	font-weight: 100;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  h1, h2, h3 {
+    text-align: center;
+  }
+
+  h1 {
+    font-size: $h1-size;
+  }
+
+  h2 {
+    font-size: $h2-size;
+  }
+
+  h3 {
+    font-size: $h3-size;
+  }
+
+  h4 {
+    font-size: $h4-size;
+  }
 }

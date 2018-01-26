@@ -14,8 +14,8 @@
   }
 
   .articles-section {
-    h1 {
-      text-align: center;
+    h3 {
+      color: $brand-color;
     }
   }
   
@@ -24,5 +24,17 @@
     &:first-child {
       border: none;
     }
+  }
+
+  .activity-container {
+    position: relative;
+  }
+
+  .main-navbar-container {
+    background-color: transparent;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
   }
 }

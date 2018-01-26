@@ -5,10 +5,14 @@
     border: none;
   }
   .article-title {
-    font-size: 24px;
+    color: $brand-color;
   }
 
   .category-tag {
-    background-color: red;
+    padding: 2px 5px;
+  }
+
+  .view-more-link {
+    color: $grey;
   }
 }

@@ -32,7 +32,7 @@ defmodule VegsochkWeb.Admin.SessionController do
     |> assign(:current_admin, admin.user)
     |> assign(:current_admin, admin)
     |> assign(:token, session.token)
-    |> render "login_success.html"
+    |> render("login_success.html")
   end
 
 end

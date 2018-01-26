@@ -18,7 +18,7 @@ defmodule VegsochkWeb.Author.ArticleController do
     {:ok, _article} = CMS.delete_article(conn.assigns.article)
     conn
     |> put_flash(:success, "Article deleted successfully.")
-    |> redirect(to: article_path(conn, :index))
+    |> redirect(to: author_article_path(conn, :index))
   end
 
   def edit(conn, _params) do

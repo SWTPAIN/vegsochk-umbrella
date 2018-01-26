@@ -63,7 +63,7 @@ defmodule VegsochkWeb.Router do
     resources "/images", ImageController
   end
 
-  scope "/api/v1", VegsochkWeb.Api.V1 do
+  scope "/api/v1", VegsochkWeb.Api.V1, as: :api_v1 do
     pipe_through :api
 
     resources "/restaurants", RestaurantController, only: [:index]

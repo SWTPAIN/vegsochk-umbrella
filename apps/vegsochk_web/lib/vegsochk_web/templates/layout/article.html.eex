@@ -13,7 +13,13 @@
 
   <body>
     <%= render_shared "main-navbar.html", conn: @conn %>
-    <%= render @view_module, @view_template, assigns %>
+    <div class="article-container">
+      <div class="uk-section">
+        <div class="uk-container">
+          <%= render @view_module, @view_template, assigns %>
+        </div>
+      </div>
+    </div>
     <%= render_shared "footer.html" %>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render_existing @view_module, "scripts." <> @view_template, assigns %>

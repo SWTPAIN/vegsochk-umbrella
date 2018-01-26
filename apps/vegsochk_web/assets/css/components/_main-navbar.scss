@@ -1,0 +1,9 @@
+.main-navbar {
+  font-weight: 500;
+  a {
+    &:hover, &:active, &:hover {
+      color: white !important;
+    }
+  }
+}
+  
