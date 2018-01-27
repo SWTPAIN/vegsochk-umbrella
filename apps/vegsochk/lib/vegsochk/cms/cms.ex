@@ -3,7 +3,7 @@ defmodule Vegsochk.CMS do
   import Ecto.Query, warn: false
 
   alias Vegsochk.Repo
-  alias Vegsochk.CMS.{Author, Article, Image, Restaurant}
+  alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Category}
   alias Vegsochk.Account.User
 
   def list_latest_articles(limit_num \\ 10) do
@@ -19,15 +19,22 @@ defmodule Vegsochk.CMS do
     |> Repo.all()
   end
 
-  def create_article(%Author{} = author, attrs \\ %{}) do
+  def create_article(%Author{} = author, %{"category_ids" => category_ids} = attrs) do
     %Article{author_id: author.id}
     |> Article.auto_slug_changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:categories, _get_categories!(category_ids))
     |> Repo.insert()
   end
 
-  def update_article(%Article{} = article, attrs) do
+  defp _get_categories!(category_ids) do
+    category_ids
+    |> Enum.map(&get_category!/1)
+  end
+
+  def update_article(%Article{} = article, %{"category_ids" => category_ids} = attrs) do
     article
     |> Article.auto_slug_changeset(attrs)
+    |> Ecto.Changeset.put_assoc(:categories, _get_categories!(category_ids))
     |> Repo.update()
   end
 
@@ -37,6 +44,7 @@ defmodule Vegsochk.CMS do
 
   def get_article!(id) do
     Repo.get_by!(Article, %{slug: id})
+    |> Repo.preload([:categories])
   end
 
   def list_restaurants() do
@@ -69,6 +77,35 @@ defmodule Vegsochk.CMS do
     Repo.get!(Restaurant, id) 
   end
 
+  def list_categories() do
+    Category
+    |> Repo.all()
+  end
+
+  def create_category(attrs \\ %{}) do
+    %Category{}
+    |> Category.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def change_category(category) do
+    category
+    |> Category.changeset(%{})
+  end
+
+  def update_category(%Category{} = category, attrs) do
+    category
+    |> Category.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_category(%Category{} = category) do
+    Repo.delete(category)
+  end
+
+  def get_category!(id) do
+    Repo.get!(Category, id) 
+  end
 
   def list_images(%Author{} = author) do
     Image

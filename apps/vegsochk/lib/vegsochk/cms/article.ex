@@ -1,7 +1,7 @@
 defmodule Vegsochk.CMS.Article do
   use Ecto.Schema
   import Ecto.{Query, Changeset}
-  alias Vegsochk.CMS.{Article, Author}
+  alias Vegsochk.CMS.{Article, Author, Category}
   alias Vegsochk.Repo
 
   schema "articles" do
@@ -10,6 +10,7 @@ defmodule Vegsochk.CMS.Article do
     field :slug, :string
 
     belongs_to :author, Author
+    many_to_many :categories, Category, join_through: "articles_categories",  on_replace: :delete
     timestamps()
   end
 

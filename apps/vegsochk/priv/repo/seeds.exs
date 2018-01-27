@@ -29,12 +29,11 @@ IO.puts "---- Admin ----"
 
 IO.puts "---- Restaurant ----"
 {:ok, _} = CMS.create_restaurant(%{
-  image: 'http://via.placeholder.com/350x250',
-  name: 'LN FORTUNATE COFFEE',
-  description: '一間純素咖啡店，地方寬敞、服務用心，是週末消磨悠閒下午的好地方。',
-  address: '西環西營盤第二街118號地舖',
-  territory: :hong_kong_island,
-  telephone_number: '2858 3898'
+  image: "http://via.placeholder.com/350x250",
+  name: "LN FORTUNATE COFFEE",
+  description: "一間純素咖啡店，地方寬敞、服務用心，是週末消磨悠閒下午的好地方。",
+  address: "西環西營盤第二街118號地舖",
+  territory: 0, 
+  telephone_number: "2858 3898"
 })
-
 

@@ -1,0 +1,18 @@
+<%= form_for @changeset, @action, [multipart: true, method: @method, as: :category, class: "uk-form-horizontal uk-margin-large"], fn f -> %>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Name</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :name, placeholder: "Name", class: "uk-input", required: true %>
+      <%= error_tag f, :name %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Color</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :color, placeholder: "Any valid color in css", class: "uk-input", required: true %>
+      <%= error_tag f, :color %>
+    </div>
+  </div>
+  <%= submit @submit_text, class: "uk-button uk-button-default" %>
+<% end %>
+

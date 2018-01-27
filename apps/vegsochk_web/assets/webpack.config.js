@@ -8,9 +8,9 @@ var isProduction = (env === 'prod')
 module.exports = {
   entry: {
     'app': ['./js/app.js', './css/app.scss'],
-		'pages/authors-articles-new': ['./js/pages/authors/articles/new.js'],
-		'pages/authors-articles-edit': ['./js/pages/authors/articles/edit.js'],
-		'animals': ['./js/pages/animals.js'],
+    'pages/authors-articles-new': ['./js/pages/authors/articles/new.js'],
+    'pages/authors-articles-edit': ['./js/pages/authors/articles/edit.js'],
+    'animals': ['./js/pages/animals.js'],
     'vegan-tips': ['./js/pages/vegan-tips.js']
   },
   output: {
@@ -53,9 +53,9 @@ module.exports = {
     new CopyWebpackPlugin([{ from: './static' }]),
     new ExtractTextPlugin('css/app.css'),
     new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
+      $: 'jquery',
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default']
     })
   ]

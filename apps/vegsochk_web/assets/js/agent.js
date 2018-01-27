@@ -1,15 +1,23 @@
-import axios from 'axios';
+import axios from 'axios'
+import humps from 'humps'
 
 const generateAuthHeader = () => (
-  {Authorization: `Bearer ${window.localStorage["api_token"]}`}
+  {Authorization: `Bearer ${window.localStorage['api_token']}`}
 )
 
-const requests = {
+const _requests = {
   get: url =>
     axios({
       method: 'get',
       url,
       headers: generateAuthHeader()
+    }),
+  post: (url, data) =>
+    axios({
+      method: 'post',
+      url,
+      headers: generateAuthHeader(),
+      data
     }),
   put: (url, data) =>
     axios({
@@ -20,11 +28,23 @@ const requests = {
     })
 }
 
+const requests = new Proxy(_requests, {
+  get (target, propKey) {
+    return propKey in target
+      ? (url, data, ...args) =>
+        target[propKey].apply(this, [url, humps.decamelizeKeys(data), ...args])
+          .then(humps.camelizeKeys)
+      : undefined
+  }
+})
+
 const Article = {
   get: id =>
     requests.get(`/api/v1/articles/${id}`),
   update: (id, article) =>
-    requests.put(`/api/v1/articles/${id}`, {article})
+    requests.put(`/api/v1/articles/${id}`, {article}),
+  create: article =>
+    requests.post('/api/v1/articles', {article})
 }
 
 const Restaurant = {
@@ -33,8 +53,14 @@ const Restaurant = {
       .then(r => r.data.restaurants)
 }
 
-export default {
-  Article,
-  Restaurant
+const Category = {
+  getAll: () =>
+    requests.get('/api/v1/categories')
+      .then(r => r.data.categories)
 }
 
+export default {
+  Article,
+  Restaurant,
+  Category
+}

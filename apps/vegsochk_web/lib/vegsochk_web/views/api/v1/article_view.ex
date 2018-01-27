@@ -3,10 +3,13 @@ defmodule VegsochkWeb.Api.V1.ArticleView do
 
   alias Vegsochk.CMS.Article
 
-  def render("show.json", %Article{id: id, title: title, body: body}) do
+  def render("show.json",
+             %Article{id: id, title: title, body: body, categories: categories})
+  do
     %{id: id,
       title: title,
-      body: body
+      body: body,
+      category_ids: Enum.map(categories, &(&1.id))
     }
   end
 end
