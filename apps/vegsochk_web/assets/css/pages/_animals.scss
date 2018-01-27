@@ -185,6 +185,9 @@ $max-text-width: 800px;
       max-width: 200px;
       margin: 10px auto;
       background-size: cover !important;
+      &:hover {
+        cursor: pointer
+      }
     }
   }
 

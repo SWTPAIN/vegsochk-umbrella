@@ -37,7 +37,7 @@
           </h2>
 					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
 						<div class="uk-width-auto@m">
-							<img src="http://via.placeholder.com/120x120">
+              <img class="reason-image" src="./images/pig.png">
 							<p class="label-title">動物</p>
 						</div>
 						<div class="uk-width-expand@m">
@@ -48,7 +48,7 @@
 					</div>
 					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
 						<div class="uk-width-auto@m">
-							<img src="http://via.placeholder.com/120x120">
+              <img class="reason-image" src="./images/heart.png">
 							<p class="label-title">健康</p>
 						</div>
 						<div class="uk-width-expand@m">
@@ -58,7 +58,7 @@
 					</div>
 					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
 						<div class="uk-width-auto@m">
-							<img src="http://via.placeholder.com/120x120">
+              <img class="reason-image" src="./images/tree.png">
 							<p class="label-title">環境</p>
 						</div>
 						<div class="uk-width-expand@m">
@@ -68,7 +68,7 @@
 					</div>
 					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
 						<div class="uk-width-auto@m">
-							<img src="http://via.placeholder.com/120x120">
+              <img class="reason-image" src="./images/fork.png">
 							<p class="label-title">舒緩糧食危機</p>
 						</div>
 						<div class="uk-width-expand@m">
