@@ -35,7 +35,7 @@
           <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
               <li class="uk-parent">
-                <a class="uk-button uk-button-default" href="">SUPPORT OUT WORK DONATE HERE</a>
+                <a class="uk-button uk-button-default donate-button" href="">SUPPORT OUR WORK DONATE HERE</a>
               </li>
             </ul>
           </div>
@@ -44,7 +44,7 @@
 		</div>
 	</div>
 	<div class="activity-container">
-		<div class="main-navbar-container">
+		<div uk-sticky class="main-navbar-container">
       <%= render_shared "main-navbar.html", conn: @conn%>\
     </div>
     <div class="uk-position-relative uk-visible-toggle uk-light" uk-slideshow>
@@ -88,29 +88,13 @@
         &mdash; 文章 &mdash;
       </h3>
       <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
-        <div class="article-item">
-          <div class="uk-flex category-tag-list">
-            <li><div class="category-tag">Health</div></li>
-          </div>
-          <%= if @first_article != nil do %>
-            <h4 class="article-title">
-              <%= @first_article.title %>
-            </h4>
-            <a class="view-more-link" href="<%= article_path(@conn, :show, @first_article) %>">觀看更多</a>
-          <% end %>
-        </div>
+        <%= if @first_article != nil do %>
+          <%= render VegsochkWeb.ArticleView, "_article_item.html", article: @first_article, conn: @conn %>
+        <% end %>
 				<div>
 					<div class="uk-flex uk-flex-column">
             <%= for article <- @rest_articles do %>
-              <div class="article-item">
-                <div class="uk-flex category-tag-list">
-                  <li><div class="category-tag">Health</div></li>
-                </div>
-                <h4 class="article-title">
-                  <%= article.title %>
-                </h4>
-                <a class="view-more-link" href="<%= article_path(@conn, :show, article) %>">觀看更多</a>
-              </div>
+              <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, conn: @conn %>
             <% end %> 
 					</div>
 				</div>

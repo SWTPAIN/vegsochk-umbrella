@@ -8,8 +8,19 @@
     color: $brand-color;
   }
 
-  .category-tag {
-    padding: 2px 5px;
+  .category-tag-list {
+    display: flex;
+    flex-direction: row;
+
+    .category-tag {
+      margin-left: 10px;
+      padding: 2px 5px;
+      color: $white;
+      &:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+    }
   }
 
   .view-more-link {

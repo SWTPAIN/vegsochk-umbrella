@@ -6,3 +6,15 @@
     background-color: rgba($white, .5 )
   }
 }
+
+.donate-button {
+  border-color: $orange;
+  color: $orange !important;
+  font-weight: 700;
+  border-width: 2px;
+  &:hover {
+    border-color: $orange;
+    background-color: $orange;
+    color: $white !important;
+  }
+}

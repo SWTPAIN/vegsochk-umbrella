@@ -1,0 +1,16 @@
+<div class="article-item">
+  <div class="uk-flex category-tag-list">
+    <%= for category <- @article.categories do %>
+      <div
+        style="background-color: <%= category.color %>"
+   class="category-tag">
+        <%= category.name %>
+      </div>
+    <% end %>
+  </div>
+  <h4 class="article-title">
+    <%= @article.title %>
+  </h4>
+  <a class="view-more-link" href="<%= article_path(@conn, :show, @article) %>">觀看更多</a>
+</div>
+

@@ -15,9 +15,7 @@
     <%= render_shared "main-navbar.html", conn: @conn %>
     <div class="article-container">
       <div class="uk-section">
-        <div class="uk-container">
-          <%= render @view_module, @view_template, assigns %>
-        </div>
+        <%= render @view_module, @view_template, assigns %>
       </div>
     </div>
     <%= render_shared "footer.html" %>

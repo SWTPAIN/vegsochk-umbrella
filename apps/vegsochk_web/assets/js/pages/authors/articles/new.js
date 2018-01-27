@@ -27,11 +27,9 @@ class App extends Component {
     const body = draftToHtml(convertToRaw(bodyState.getCurrentContent()))
 
     agent.Article.create({
-      article: {
-        title,
-        body,
-        categoryIds
-      }
+      title,
+      body,
+      categoryIds
     })
     .then(function (response) {
       window.location.href = '/author/articles'

@@ -31,10 +31,18 @@
   }
 
   .main-navbar-container {
-    background-color: transparent;
     position: absolute;
     top: 0;
     z-index: 10;
     width: 100%;
+    &.uk-sticky-below {
+      background: linear-gradient(rgba($brand-color, 0.3), rgba($brand-color, 0.2), 40%, rgba($brand-color, 0));
+      a {
+        color: $white;
+        &:hover {
+          color: $brand-color;
+        }
+      }
+    }
   }
 }

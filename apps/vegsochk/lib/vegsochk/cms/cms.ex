@@ -11,6 +11,7 @@ defmodule Vegsochk.CMS do
     |> order_by([a], [desc: a.inserted_at])
     |> limit(^limit_num)
     |> Repo.all()
+    |> Repo.preload([:categories])
   end
 
   def list_articles(%Author{} = author) do
