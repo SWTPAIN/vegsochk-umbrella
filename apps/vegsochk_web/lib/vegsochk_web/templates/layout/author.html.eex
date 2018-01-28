@@ -33,13 +33,12 @@
                   <div class="uk-navbar-dropdown">
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li class="uk-active"><a><%= current_user(@conn).email %></a></li>
+                      <li><a href="<%= author_profile_path(@conn, :edit)%>">Edit Profile</a></li>
                       <li class="uk-nav-divider"></li>
                       <li><a href="<%= author_session_path(@conn, :delete)%>">Logout</a></li>
                     </ul>
                   </div>
                 </li>
-              <% else %>
-                <li><a href="<%= author_session_path(@conn, :delete) %>">Logout</a></li>
               <% end %>
             </ul>
           </div>

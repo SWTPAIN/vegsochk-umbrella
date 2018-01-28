@@ -3,6 +3,7 @@ defmodule Vegsochk.CMS do
   import Ecto.Query, warn: false
 
   alias Vegsochk.Repo
+  alias Ecto.Multi
   alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Category}
   alias Vegsochk.Account.User
 
@@ -120,7 +121,10 @@ defmodule Vegsochk.CMS do
     |> Repo.insert()
   end
 
-  def get_author!(id), do: Repo.get!(Author, id)
+  def get_author!(id) do
+    Repo.get!(Author, id)
+    |> Repo.preload([:user])
+  end
 
   def get_author(%User{} = user) do
     Author.find_one_by(%{user_id: user.id})
@@ -130,6 +134,26 @@ defmodule Vegsochk.CMS do
     %Author{user_id: user.id}
     |> Author.changeset(attrs)
     |> Repo.insert()
+  end
+
+  def change_author(author) do
+    author
+    |> Author.changeset(%{})
+  end
+
+  def update_author_profile(%Author{} = author, %{bio: bio, avatar: avatar}) do
+    result = Multi.new
+    |> Multi.update(:author, Author.changeset(author, %{bio: bio}))
+    |> Multi.update(:user, User.changeset(author.user, %{avatar: avatar}))
+    |> Repo.transaction
+    case result do
+      {:ok, %{author: author}} -> {:ok, author}
+      {:error, _, failed_changeset, _} -> {:error, failed_changeset}
+    end
+  end
+
+  def update_author_profile(%Author{} = author, %{bio: bio}) do
+    Repo.update(Author.changeset(author, %{bio: bio}))
   end
 
   def is_author?(%User{} = user) do

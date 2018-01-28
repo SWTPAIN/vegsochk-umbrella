@@ -17,12 +17,12 @@ IO.puts "~~~~ INITIALIZING VegsocHK SEEDS ~~~~"
 IO.puts "---- Author ----"
 {:ok, admin} =
   Account.register_user(%{
-    avatar_url: "http://www.pi-cube.com/wp-content/uploads/2015/04/team-placeholder.jpg",
+    avatar: "http://www.pi-cube.com/wp-content/uploads/2015/04/team-placeholder.jpg",
     email: "admin@vegsochk.org",
     name: "admin",
     password: "password"
   })
-{:ok, _} = CMS.add_author(admin, %{bio: "Vegsochk Admin", role: "admin"})
+{:ok, _} = CMS.add_author(admin, %{bio: "Vegsochk Admin", role: "writer"})
 
 IO.puts "---- Admin ----"
 {:ok, _} = Account.add_admin(admin)

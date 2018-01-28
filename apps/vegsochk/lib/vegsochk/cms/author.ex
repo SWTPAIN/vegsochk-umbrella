@@ -20,6 +20,7 @@ defmodule Vegsochk.CMS.Author do
       where: u.id == ^user_id,
       select: a
     Repo.one(query)
+    |> Repo.preload([:user])
   end
 
   @doc false

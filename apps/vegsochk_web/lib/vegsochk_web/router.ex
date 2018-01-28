@@ -47,6 +47,7 @@ defmodule VegsochkWeb.Router do
     get "/logout", SessionController, :delete
     resources "/restaurants", RestaurantController
     resources "/categories", CategoryController
+    resources "/authors", AuthorController
 	end
 
   scope "/author", VegsochkWeb.Author, as: :author do
@@ -58,8 +59,9 @@ defmodule VegsochkWeb.Router do
     pipe_through :author
 
     get "/", PageController, :index
-
     get "/logout", SessionController, :delete
+
+    resources "/profile", ProfileController, singleton: true, only: [:edit, :update]
     resources "/articles", ArticleController, only: [:new, :index, :edit, :delete]
     resources "/images", ImageController
   end

@@ -9,12 +9,6 @@ defmodule Vegsochk.Account do
 
   alias Vegsochk.Account.{User, Admin, Session}
 
-  def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
-  end
-
   def update_author(%User{} = author, attrs) do
     author
     |> User.changeset(attrs)
@@ -69,7 +63,7 @@ defmodule Vegsochk.Account do
 
   def register_user(attrs) do
     %User{}
-    |> User.changeset(attrs)
+    |> User.registration_changeset(attrs)
     |> Repo.insert()
   end
 
@@ -81,6 +75,10 @@ defmodule Vegsochk.Account do
     if session = Repo.get_by(Session, %{token: token}) |> Repo.preload(:user) do
       session.user
     end
+  end
+
+  def change_user(user) do
+    User.changeset(user, %{})
   end
 
   def get_admin!(id), do: Repo.get!(Author, id)

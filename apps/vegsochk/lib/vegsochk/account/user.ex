@@ -7,7 +7,7 @@ defmodule Vegsochk.Account.User do
 
 
   schema "users" do
-    field :avatar_url, :string
+    field :avatar, :string
     field :email, :string
     field :name, :string
     field :password_digest, :string
@@ -24,12 +24,18 @@ defmodule Vegsochk.Account.User do
   end
 
   @doc false
+  def registration_changeset(%User{} = user, attrs) do
+    changeset(user, attrs)
+    |> cast(attrs, [:password])
+    |> validate_length(:password, min: 6)
+    |> hashed_password
+  end
+
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:name, :avatar_url, :email, :password])
-    |> validate_required([:name, :avatar_url, :email, :password])
+    |> cast(attrs, [:name, :avatar, :email])
+    |> validate_required([:name, :avatar, :email,])
     |> unique_constraint(:email)
-    |> hashed_password
   end
 
   defp hashed_password(changeset) do

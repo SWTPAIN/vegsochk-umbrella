@@ -1,0 +1,25 @@
+<h1>Edit Profile</h1>
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+  <%= form_for @changeset, author_profile_path(@conn, :update), [multipart: true, method: :put, as: :author, class: "uk-form-horizontal uk-margin-large"], fn a -> %>
+    <%= inputs_for a, :user, fn u -> %>
+      <div class="uk-margin">
+        <label class="uk-form-label" for="form-horizontal-text">Avatar</label>
+        <div class="uk-form-controls">
+          <img src="<%= u.data.avatar%>">
+          <%= file_input u, :avatar%>
+          <%= error_tag u, :avatar%>
+        </div>
+      </div>
+    <% end %>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Bio</label>
+      <div class="uk-form-controls">
+        <%= text_input a, :bio, placeholder: "Your bio", class: "uk-input", required: true %>
+        <%= error_tag a, :bio %>
+      </div>
+    </div>
+    <%= submit "Update", class: "uk-button uk-button-default" %>
+  <% end %>
+</div>
+
+
