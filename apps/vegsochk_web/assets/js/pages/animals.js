@@ -19,9 +19,8 @@ const setOverlayContentHandler = (overlayContainer, overlayContentContainer, id)
   const overlayElement = document.getElementById(id + '-overlay')
 
   element.onclick = () => {
-    overlayContainer.style.width = '100%'
-    hideAllChildren(overlayContentContainer)
     showElement(overlayElement)
+    overlayContainer.style.transform = 'none'
   }
 }
 
@@ -30,7 +29,10 @@ const bootstrap = () => {
   const overlayContentContainer = document.getElementById('overlay-content-container')
   const closeOverlayButton = document.getElementById('overlay-close')
   closeOverlayButton.onclick = () => {
-    overlayContainer.style.width = '0%'
+    overlayContainer.style.transform = 'translateX(-100%)'
+    setTimeout(() => {
+      hideAllChildren(overlayContentContainer)
+    }, 600)
   }
   const ids = ['pig', 'cow', 'chicken', 'chick', 'fish']
   ids.forEach(setOverlayContentHandler.bind(null, overlayContainer, overlayContentContainer))

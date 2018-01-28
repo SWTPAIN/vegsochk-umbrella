@@ -10,8 +10,12 @@
   .tabs {
     margin-bottom: 0;
     .tab-item {
-      font-size: 24px;
+      font-size: $h4-size;
 			margin-bottom: 5px;
+      &:hover {
+        color: $brand-color;
+        cursor: pointer;
+      }
       &.active {
         color: $brand-color;
       }
