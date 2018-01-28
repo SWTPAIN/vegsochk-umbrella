@@ -9,10 +9,17 @@
 			position: absolute;
 			height:200px;
       width: 300px;
+      padding: 20px 30px;
 			top: 100px;
 			left: 300px;
       background-color: $orange;
       opacity: 0.8;
+      h3 {
+        text-align: left;
+      }
+      p {
+        font-size: $h4-size;
+      }
 		}
 	}
 

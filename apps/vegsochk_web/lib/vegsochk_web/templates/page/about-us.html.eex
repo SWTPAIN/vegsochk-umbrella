@@ -1,0 +1,60 @@
+<%= render_shared "main-navbar.html", conn: @conn %>
+<div class="uk-section">
+  <div class="about-us-container">
+    <div class="main-banner">
+      <div class="main-message">
+        <h3>我們希望透過推廣純素飲食對動物、環境與人類健康的好處，鼓勵大眾選擇富同理心的生活方式<h3>
+      </div>
+    </div>
+    <div class="main-area-container">
+      <ul class='tabs' uk-tab>
+        <li class="tab-item active">
+          <span class='tab-text'>關於我們</span>
+        </li>
+      </ul>
+      <div class="about-us-description-container">
+        <p>香港素食會(hong kong vegetarian society)為「綠色生活教育基金」屬下項目，自1995年成立以來致力推動香港
+        素食文化。</p>
+        <p>歷史</p>
+        <p>1995年成立時名為「香港素食學會」，2005年易名為「香港素食會」，保留原有宗旨、繼續推廣純素生活，並加入於 2004年12月在香港創立的註冊慈善團體「綠色生活教育基金」，與club o及club o店聯合運作。</p>
+        <p>架構</p>
+        <p>香港素食會現屆執委會共31名成員，全為義務工作。其中各組的組長及副組長為核心成員，負責本會主要決策。</p>
+      </div>
+      <ul class='tabs' uk-tab>
+        <li class="tab-item active">
+          <span class='tab-text'>聯絡我們</span>
+        </li>
+      </ul>
+      <div class="uk-container">
+        <div class="uk-child-width-1-2 uk-text-center" uk-grid>
+          <div class="contact-methods-container">
+            <p>地址:香港九龍旺角亞皆老街80 - 86號昌明大廈7字樓G室</p>
+            <p>電話:+852 2619-0000</p>
+            <p>電郵:info@vegsochk.org</p>
+            <p>Facebook:https://www.facebook.com/vegsochk</p>
+          </div>
+          <div class="location-map-container">
+            <div id="location-map"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+	function initMap() {
+		var vegsoc = {lat: 22.319576, lng: 114.172078};
+		var map = new google.maps.Map(document.getElementById('location-map'), {
+			zoom: 14,
+			center: vegsoc
+		});
+		var marker = new google.maps.Marker({
+			position: vegsoc,
+			map: map
+		});
+	}
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOJqsjW0cMKwJNxG3JbKD-UmPp0GMAOhY&callback=initMap">
+</script>
+

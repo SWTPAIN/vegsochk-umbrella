@@ -4,7 +4,7 @@ import agent from '../agent'
 import OutsideEatingTips from './veganTips/OutsideEatingTips.js'
 import RestaurantTips from './veganTips/RestaurantTips.js'
 
-const tabNames = ['在外素食貼士', '素食餐廳名錄', '健康錦囊']
+const tabNames = ['在外素食貼士', '素食餐廳名錄']
 
 const Tabs = ({activeTabIndex, handleTabOnClick}) =>
   <ul className='tabs' uk-tab='true'>

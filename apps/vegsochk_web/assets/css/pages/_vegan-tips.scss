@@ -96,6 +96,9 @@
           margin-left: 10px;
           margin-right: 10px;
           color: $brand-color;
+          &:hover {
+            border-color: rgba($brand-color, 0.5);
+          }
           &.selected {
             background-color: $brand-color;
             color: $white;

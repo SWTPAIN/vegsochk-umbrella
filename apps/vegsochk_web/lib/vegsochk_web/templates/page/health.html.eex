@@ -1,7 +1,8 @@
+<%= render_shared "main-navbar.html", conn: @conn %>
 <div class="uk-section health-container">
   <div class="banner">
     <div class="artwork">
-      <p>健康</p>
+      <h3>健康</h3>
       <p>進食過多肉類會增加多種都市病風 險，如心臟病、中風、糖尿病和癌 症等等。肉食也是大部份食物中毒 的原因，密集式飼養是流感病毒的 溫床，產生更強的抗生素耐藥性。</p>
     </div>
   </div>
