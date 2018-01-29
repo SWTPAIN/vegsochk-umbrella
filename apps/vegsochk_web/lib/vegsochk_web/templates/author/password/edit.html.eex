@@ -1,0 +1,29 @@
+<h1>Edit Password</h1>
+<div class="uk-card uk-card-default uk-card-body uk-width-1-2@m">
+  <%= form_for @conn, author_password_path(@conn, :update), [multipart: true, method: :put, as: :password, class: "uk-form-horizontal uk-margin-large"], fn a -> %>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Existing Password</label>
+      <div class="uk-form-controls">
+        <%= password_input a, :existing_password, placeholder: "Existing Password", class: "uk-input", required: true %>
+        <%= error_tag a, :bio %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">New Password</label>
+      <div class="uk-form-controls">
+        <%= password_input a, :password, placeholder: "New Password", class: "uk-input", required: true %>
+        <%= error_tag a, :bio %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Confirm Password</label>
+      <div class="uk-form-controls">
+        <%= password_input a, :password_confirmation, placeholder: "Confirm Password", class: "uk-input", required: true %>
+        <%= error_tag a, :bio %>
+      </div>
+    </div>
+    <%= submit "Update", class: "uk-button uk-button-default" %>
+  <% end %>
+</div>
+
+

@@ -62,6 +62,7 @@ defmodule VegsochkWeb.Router do
     get "/logout", SessionController, :delete
 
     resources "/profile", ProfileController, singleton: true, only: [:edit, :update]
+    resources "/password", PasswordController, singleton: true, only: [:edit, :update]
     resources "/articles", ArticleController, only: [:new, :index, :edit, :delete]
     resources "/images", ImageController
   end

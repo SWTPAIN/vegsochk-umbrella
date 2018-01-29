@@ -81,6 +81,18 @@ defmodule Vegsochk.Account do
     User.changeset(user, %{})
   end
 
+  def update_user_password(%User{} = user, existing_password, new_password) do
+    case checkpw(existing_password, user.password_digest) do
+      true ->
+        user
+        |> User.registration_changeset(%{password: new_password})
+        |> Repo.update
+      _ ->
+        dummy_checkpw()
+        {:error, :incorrect_password}
+    end
+  end
+
   def get_admin!(id), do: Repo.get!(Author, id)
 
   def get_admin(%User{} = user) do
