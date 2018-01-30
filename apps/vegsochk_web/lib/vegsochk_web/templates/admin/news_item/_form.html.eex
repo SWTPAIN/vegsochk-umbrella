@@ -1,0 +1,42 @@
+<%= form_for @changeset, @action, [multipart: true, method: @method, as: :news_item, class: "uk-form-horizontal uk-margin-large"], fn f -> %>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Headline</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :headline, placeholder: "Headline", class: "uk-input", required: true %>
+      <%= error_tag f, :headline %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Story</label>
+    <div class="uk-form-controls">
+      <%= textarea f, :story, placeholder: "Story", class: "uk-textarea",
+            required: true%>
+      <%= error_tag f, :story %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Url</label>
+    <div class="uk-form-controls">
+      <%= text_input f, :url, placeholder: "url", class: "uk-input",
+            required: true%>
+      <%= error_tag f, :url %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Status</label>
+    <div class="uk-form-controls">
+      <%= select f, :status, ["Suspended": "suspended", "Draft": "draft", "Published": "published"], required: true %>
+      <%= error_tag f, :status %>
+    </div>
+  </div>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Image</label>
+    <div class="uk-form-controls">
+      <%= f.data.image %>
+      <%= file_input f, :image %>
+      <%= error_tag f, :image %>
+    </div>
+  </div>
+  <%= submit @submit_text, class: "uk-button uk-button-default" %>
+<% end %>
+

@@ -8,8 +8,10 @@ defmodule VegsochkWeb.PageController do
       [] -> {nil, []}
       [first | rest] -> {first, rest}
     end
+    news_items = CMS.list_latest_news_items(5)
 
-    render conn, "index.html", first_article: first_article, rest_articles: rest_articles
+    render conn, "index.html", first_article: first_article,
+      rest_articles: rest_articles, news_items: news_items
   end
 
   def show(conn, %{"page_name" => page_name}) when page_name in ["about_us", "health"] do

@@ -1,0 +1,33 @@
+<h1 class="uk-heading">NewsItem</h1>
+<span><%= link "Create New NewsItem", to: admin_news_item_path(@conn, :new) %></span>
+<table class="uk-table uk-table-hover uk-table-divider">
+	<thead>
+		<tr>
+			<th>Headline</th>
+      <th>Story</th>
+      <th>Url</th>
+      <th>Story</th>
+      <th>Image</th>
+			<th>Created At</th>
+      <th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%= for news_item <- @news_items do %>
+			<tr>
+				<td><%= news_item.headline %></td>
+				<td><%= news_item.story %></td>
+				<td><%= news_item.url%></td>
+				<td><%= news_item.status %></td>
+        <td><img style="height: 100px;" src="<%= news_item.image %>"></td>
+				<td><%= news_item.inserted_at %></td>
+        <td>
+          <span><%= link "Edit", to: admin_news_item_path(@conn, :edit, news_item), class: "uk-button uk-button-secondary" %></span>
+          <span>
+            <%= link "Delete", to: admin_news_item_path(@conn, :delete, news_item), class: "uk-button uk-button-danger",  method: :delete, data: [confirm: "Are you sure?"] %></span>
+        </td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+

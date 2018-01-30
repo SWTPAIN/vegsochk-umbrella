@@ -5,6 +5,8 @@
 
   .about-section {
     background-color: $yellow;
+    position: relative;
+    padding-top: 60px;
   }
 
   .about {
@@ -24,10 +26,6 @@
     &:first-child {
       border: none;
     }
-  }
-
-  .activity-container {
-    position: relative;
   }
 
   .main-navbar-container {

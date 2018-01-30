@@ -4,7 +4,7 @@ defmodule Vegsochk.CMS do
 
   alias Vegsochk.Repo
   alias Ecto.Multi
-  alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Category}
+  alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Category, NewsItem}
   alias Vegsochk.Account.User
 
   def list_latest_articles(limit_num \\ 10) do
@@ -159,5 +159,42 @@ defmodule Vegsochk.CMS do
   def is_author?(%User{} = user) do
     !!get_author(user)
   end 
+
+  def list_news_items() do
+    NewsItem
+    |> Repo.all()
+  end
+
+  def create_news_item(attrs \\ %{}) do
+    %NewsItem{}
+    |> NewsItem.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def change_news_item(news_item) do
+    news_item
+    |> NewsItem.changeset(%{})
+  end
+
+  def update_news_item(%NewsItem{} = news_item, attrs) do
+    news_item
+    |> NewsItem.changeset(attrs)
+    |> Repo.update()
+  end
+
+  def delete_news_item(%NewsItem{} = news_item) do
+    Repo.delete(news_item)
+  end
+
+  def get_news_item!(id) do
+    Repo.get!(NewsItem, id) 
+  end
+
+  def list_latest_news_items(limit_num \\ 10) do
+    NewsItem
+    |> order_by([n], [desc: n.inserted_at])
+    |> limit(^limit_num)
+    |> Repo.all()
+  end
 
 end

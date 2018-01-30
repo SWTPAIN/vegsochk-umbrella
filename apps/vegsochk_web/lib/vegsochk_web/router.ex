@@ -48,6 +48,7 @@ defmodule VegsochkWeb.Router do
     resources "/restaurants", RestaurantController
     resources "/categories", CategoryController
     resources "/authors", AuthorController
+    resources "/news_items", NewsItemController
 	end
 
   scope "/author", VegsochkWeb.Author, as: :author do
