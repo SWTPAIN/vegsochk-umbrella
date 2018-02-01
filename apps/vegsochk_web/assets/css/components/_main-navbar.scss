@@ -3,6 +3,11 @@
   margin: 0 auto;
   padding-bottom: 0;
   li {
+    &.logo {
+      img {
+        height: 60px;
+      }
+    }
     padding: 0 10px;
     a {
       color: $brand-color;

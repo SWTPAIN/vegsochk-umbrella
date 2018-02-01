@@ -65,16 +65,9 @@
         &mdash; 文章 &mdash;
       </h3>
       <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
-        <%= if @first_article != nil do %>
-          <%= render VegsochkWeb.ArticleView, "_article_item.html", article: @first_article, conn: @conn %>
-        <% end %>
-				<div>
-					<div class="uk-flex uk-flex-column">
-            <%= for article <- @rest_articles do %>
-              <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, conn: @conn %>
-            <% end %> 
-					</div>
-				</div>
+        <%= for article <- @articles do %>
+          <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, conn: @conn %>
+        <% end %> 
       </div>
     </div>
   </div>

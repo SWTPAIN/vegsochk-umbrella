@@ -4,15 +4,25 @@ defmodule Vegsochk.CMS do
 
   alias Vegsochk.Repo
   alias Ecto.Multi
-  alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Category, NewsItem}
+  alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Tag, NewsItem}
   alias Vegsochk.Account.User
 
-  def list_latest_articles(limit_num \\ 10) do
+  def list_latest_articles(limit_num \\ 10) when is_integer(limit_num) do
     Article
-    |> order_by([a], [desc: a.inserted_at])
+    |> Article.newest_first
     |> limit(^limit_num)
     |> Repo.all()
-    |> Repo.preload([:categories])
+    |> Article.preload_tags
+    |> Article.preload_author
+  end
+
+  def list_latest_articles(%{tag: %Tag{} = tag}, limit_num) do
+    Article
+    |> Article.newest_first
+    |> Article.with_tag(tag)
+    |> limit(^limit_num)
+    |> Repo.all()
+    |> Article.preload_author
   end
 
   def list_articles(%Author{} = author) do
@@ -21,22 +31,22 @@ defmodule Vegsochk.CMS do
     |> Repo.all()
   end
 
-  def create_article(%Author{} = author, %{"category_ids" => category_ids} = attrs) do
+  def create_article(%Author{} = author, %{"tag_ids" => tag_ids} = attrs) do
     %Article{author_id: author.id}
     |> Article.auto_slug_changeset(attrs)
-    |> Ecto.Changeset.put_assoc(:categories, _get_categories!(category_ids))
+    |> Ecto.Changeset.put_assoc(:tags, _get_tags!(tag_ids))
     |> Repo.insert()
   end
 
-  defp _get_categories!(category_ids) do
-    category_ids
-    |> Enum.map(&get_category!/1)
+  defp _get_tags!(tag_ids) do
+    tag_ids
+    |> Enum.map(&get_tag!/1)
   end
 
-  def update_article(%Article{} = article, %{"category_ids" => category_ids} = attrs) do
+  def update_article(%Article{} = article, %{"tag_ids" => tag_ids} = attrs) do
     article
     |> Article.auto_slug_changeset(attrs)
-    |> Ecto.Changeset.put_assoc(:categories, _get_categories!(category_ids))
+    |> Ecto.Changeset.put_assoc(:tags, _get_tags!(tag_ids))
     |> Repo.update()
   end
 
@@ -46,7 +56,7 @@ defmodule Vegsochk.CMS do
 
   def get_article!(id) do
     Repo.get_by!(Article, %{slug: id})
-    |> Repo.preload([:categories])
+    |> Repo.preload([:tags])
   end
 
   def list_restaurants() do
@@ -79,34 +89,39 @@ defmodule Vegsochk.CMS do
     Repo.get!(Restaurant, id) 
   end
 
-  def list_categories() do
-    Category
+  def list_tags() do
+    Tag
     |> Repo.all()
   end
 
-  def create_category(attrs \\ %{}) do
-    %Category{}
-    |> Category.changeset(attrs)
+  def create_tag(attrs \\ %{}) do
+    %Tag{}
+    |> Tag.changeset(attrs)
     |> Repo.insert()
   end
 
-  def change_category(category) do
-    category
-    |> Category.changeset(%{})
+  def change_tag(tag) do
+    tag
+    |> Tag.changeset(%{})
   end
 
-  def update_category(%Category{} = category, attrs) do
-    category
-    |> Category.changeset(attrs)
+  def update_tag(%Tag{} = tag, attrs) do
+    tag
+    |> Tag.changeset(attrs)
     |> Repo.update()
   end
 
-  def delete_category(%Category{} = category) do
-    Repo.delete(category)
+  def delete_tag(%Tag{} = tag) do
+    Repo.delete(tag)
   end
 
-  def get_category!(id) do
-    Repo.get!(Category, id) 
+  def get_tag!(%{name: name}) do
+    Tag.with_name(name)
+    |> Repo.one!
+  end
+
+  def get_tag!(id) do
+    Repo.get!(Tag, id) 
   end
 
   def list_images(%Author{} = author) do

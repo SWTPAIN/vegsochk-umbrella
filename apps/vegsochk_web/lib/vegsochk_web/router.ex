@@ -46,7 +46,7 @@ defmodule VegsochkWeb.Router do
     get "/", PageController, :index
     get "/logout", SessionController, :delete
     resources "/restaurants", RestaurantController
-    resources "/categories", CategoryController
+    resources "/tags", TagController
     resources "/authors", AuthorController
     resources "/news_items", NewsItemController
 	end
@@ -72,7 +72,7 @@ defmodule VegsochkWeb.Router do
     pipe_through :api
 
     resources "/restaurants", RestaurantController, only: [:index]
-    resources "/categories", CategoryController, only: [:index]
+    resources "/tags", TagController, only: [:index]
 
     pipe_through :author
 
@@ -85,6 +85,7 @@ defmodule VegsochkWeb.Router do
     get "/", PageController, :index
     get "/logout_success", PageController, :logout_success
     resources "articles", ArticleController, only: [:show]
+    resources "tags", TagController, only: [:show]
     get "/:page_name", PageController, :show
   end
 
@@ -101,4 +102,11 @@ defimpl Phoenix.Param, for: Vegsochk.CMS.Article do
     "#{slug}"
   end
 end
+
+defimpl Phoenix.Param, for: Vegsochk.CMS.Tag do
+  def to_param(%{name: name}) do
+    name
+  end
+end
+
 

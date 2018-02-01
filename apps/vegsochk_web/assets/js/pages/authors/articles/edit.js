@@ -11,38 +11,40 @@ class App extends Component {
     super(props)
     this.state = {
       title: '',
+      tldr: '',
+      coverImage: '',
       bodyState: EditorState.createEmpty(),
-      categories: [],
-      selectedCategoryIds: []
+      tags: [],
+      selectedTagIds: []
     }
     this.articleId = window.location.href.split('/')[5]
   }
 
   componentDidMount () {
-    agent.Category.getAll()
-      .then(categories => {
-        console.log('categories', categories)
-        this.setState({categories})
+    agent.Tag.getAll()
+      .then(tags => {
+        console.log('tags', tags)
+        this.setState({tags})
       })
     agent.Article.get(this.articleId)
       .then(response => {
         console.log('response', response)
 
-        const {title, body, categoryIds: selectedCategoryIds} = response.data
+        const {title, tldr, coverImage, body, tagIds: selectedTagIds} = response.data
         const contentBlock = htmlToDraft(body)
         const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
         const bodyState = EditorState.createWithContent(contentState)
-        this.setState({title: title, bodyState, selectedCategoryIds})
+        this.setState({title, tldr, coverImage, bodyState, selectedTagIds})
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  handleFormSubmit (title, bodyState, categoryIds) {
+  handleFormSubmit ({title, tldr, coverImage, bodyState, tagIds}) {
     const body = draftToHtml(convertToRaw(bodyState.getCurrentContent()))
 
-    agent.Article.update(this.articleId, {title, body, categoryIds})
+    agent.Article.update(this.articleId, {title, tldr, coverImage, body, tagIds})
       .then(function (response) {
         window.location.href = '/author/articles'
       })
@@ -51,26 +53,21 @@ class App extends Component {
       })
   }
 
-  handleTitleChange (title) {
-    this.setState({title: title})
-  }
-
-  handleBodyStateChange (bodyState) {
-    this.setState({bodyState})
-  }
-
   render () {
-    const {title, bodyState, categories, selectedCategoryIds} = this.state
+    const {title, tldr, coverImage, bodyState, tags, selectedTagIds} = this.state
     return (
       <ArticleForm
-        categories={categories}
-        selectedCategoryIds={selectedCategoryIds}
+        tags={tags}
+        selectedTagIds={selectedTagIds}
         submitButtonText='Edit'
         title={title}
+        tldr={tldr}
+        coverImage={coverImage}
         bodyState={bodyState}
-        handleCategoriesChange={selectedCategoryIds => this.setState({selectedCategoryIds})}
-        handleTitleChange={this.handleTitleChange.bind(this)}
-        handleBodyStateChange={this.handleBodyStateChange.bind(this)}
+        handleTagsChange={selectedTagIds => this.setState({selectedTagIds})}
+        handleTitleChange={title => this.setState({title})}
+        handleTldrChange={tldr => this.setState({tldr})}
+        handleBodyStateChange={bodyState => this.setState({bodyState})}
         handleSubmit={this.handleFormSubmit.bind(this)} />)
   }
 }

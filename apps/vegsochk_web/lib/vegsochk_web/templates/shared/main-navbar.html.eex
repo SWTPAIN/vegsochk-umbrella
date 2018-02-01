@@ -1,14 +1,19 @@
  <nav  class="uk-navbar-container main-navbar uk-padding-large uk-navbar-transparent" uk-navbar>
-    <div class="uk-navbar-left">
-      <ul class="uk-navbar-nav">
-        <%= render "_navbar_item.html", conn: @conn, text: "為什麼純素 ？", url: "/why-vegan" %>
-       <%= render "_navbar_item.html", conn: @conn, text: "動物", url: "/animals" %>
-       <%= render "_navbar_item.html", conn: @conn, text: "健康", url: "/health" %>
-       <%= render "_navbar_item.html", conn: @conn, text: "環保和公義", url: "/environment-and-justice" %>
-       <%= render "_navbar_item.html", conn: @conn, text: "純素貼士", url: "/vegan-tips" %>
-       <%= render "_navbar_item.html", conn: @conn, text: "關於", url: "/about-us" %>
-       <%= render "_navbar_item.html", conn: @conn, text: "捐款", url: "/donation" %>
-      </ul>
-    </div>
-  </nav>
+  <div class="uk-navbar-left">
+    <ul class="uk-navbar-nav">
+      <li class="uk-parent logo">
+        <a href="/">
+          <img src="/images/brand-logo.png">
+        </a>
+      </li>
+      <%= render "_navbar_item.html", conn: @conn, text: "為什麼純素 ？", url: "/why-vegan" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "動物", url: "/animals" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "健康", url: "/health" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "環保和公義", url: "/environment-and-justice" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "純素貼士", url: "/vegan-tips" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "關於", url: "/about-us" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "捐款", url: "/donation" %>
+    </ul>
+  </div>
+</nav>
 

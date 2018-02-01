@@ -1,0 +1,18 @@
+<%= render_shared "main-navbar.html", conn: @conn %>
+<div class="tag-container">
+  <div class="title-container">
+    <div class="logo">
+      <a href="/">
+        <img src="/images/brand-logo-wide.png">
+      </a>
+    </div>
+    <div class="subtitle"><%= @tag.name %></div>
+  </div>
+  <div class="main-section">
+    <div class="uk-grid-divider post-item-list" uk-grid>
+      <%= for article <- @articles do %>
+        <%= render VegsochkWeb.ArticleView, "_tag_article_item.html", article: article, full_width: false, conn: @conn %>
+      <% end %>
+    </div>
+  </div>
+</div>

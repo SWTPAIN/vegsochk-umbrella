@@ -22,7 +22,7 @@
               <%= if current_user(@conn) do %>
                 <li><a href="<%= admin_author_path(@conn, :index) %>">Author</a></li>
                 <li><a href="<%= admin_restaurant_path(@conn, :index) %>">Restaurant</a></li>
-                <li><a href="<%= admin_category_path(@conn, :index) %>">Category</a></li>
+                <li><a href="<%= admin_tag_path(@conn, :index) %>">Tag</a></li>
                 <li><a href="<%= admin_news_item_path(@conn, :index) %>">News Item</a></li>
               <% end %>
             </ul>

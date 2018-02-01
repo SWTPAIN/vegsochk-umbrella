@@ -10,26 +10,30 @@ class App extends Component {
     super(props)
     this.state = {
       title: '',
+      tldr: '',
+      coverImage: '',
       bodyState: EditorState.createEmpty(),
-      categories: [],
-      selectedCategoryIds: []
+      tags: [],
+      selectedTagIds: []
     }
   }
 
   componentDidMount () {
-    agent.Category.getAll()
-      .then(categories => {
-        this.setState({categories})
+    agent.Tag.getAll()
+      .then(tags => {
+        this.setState({tags})
       })
   }
 
-  handleFormSubmit (title, bodyState, categoryIds) {
+  handleFormSubmit ({title, tldr, coverImage, bodyState, tagIds}) {
     const body = draftToHtml(convertToRaw(bodyState.getCurrentContent()))
 
     agent.Article.create({
       title,
+      tldr,
+      coverImage,
       body,
-      categoryIds
+      tagIds
     })
     .then(function (response) {
       window.location.href = '/author/articles'
@@ -39,26 +43,24 @@ class App extends Component {
     })
   }
 
-  handleTitleChange (title) {
-    this.setState({title: title})
-  }
-
-  handleBodyStateChange (bodyState) {
-    this.setState({bodyState})
-  }
-
   render () {
-    const {title, bodyState, categories, selectedCategoryIds} = this.state
+    const {title, tldr, bodyState,
+      tags, selectedTagIds, coverImage
+    } = this.state
     return (
       <ArticleForm
-        categories={categories}
-        selectedCategoryIds={selectedCategoryIds}
+        tags={tags}
+        selectedTagIds={selectedTagIds}
         submitButtonText='Create'
         title={title}
+        tldr={tldr}
+        coverImage={coverImage}
         bodyState={bodyState}
-        handleCategoriesChange={selectedCategoryIds => this.setState({selectedCategoryIds})}
-        handleTitleChange={this.handleTitleChange.bind(this)}
-        handleBodyStateChange={this.handleBodyStateChange.bind(this)}
+        handleTagsChange={selectedTagIds => this.setState({selectedTagIds})}
+        handleTitleChange={title => this.setState({title})}
+        handleTldrChange={tldr => this.setState({tldr})}
+        handleCoverImageChange={coverImage => this.setState({coverImage})}
+        handleBodyStateChange={bodyState => this.setState({bodyState})}
         handleSubmit={this.handleFormSubmit.bind(this)} />)
   }
 }

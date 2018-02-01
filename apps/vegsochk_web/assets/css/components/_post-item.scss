@@ -10,6 +10,7 @@ $title-font-size: 24px;
 }
 
 .post-item {
+
   &.full-row {
     border-bottom: 1px solid $green;
   }
@@ -55,6 +56,22 @@ $title-font-size: 24px;
     p {
       color: $orange;
       text-align: center;
+    }
+  }
+  .tag-list {
+    display: flex;
+    flex-direction: row;
+
+    .tag {
+      margin-left: 10px;
+      padding: 2px 5px;
+      a {
+        color: $grey;
+        &:hover {
+          color: $white;
+          background: $green;
+        }
+      }
     }
   }
 }

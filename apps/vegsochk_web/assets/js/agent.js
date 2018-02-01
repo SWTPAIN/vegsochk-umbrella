@@ -53,14 +53,14 @@ const Restaurant = {
       .then(r => r.data.restaurants)
 }
 
-const Category = {
+const Tag = {
   getAll: () =>
-    requests.get('/api/v1/categories')
-      .then(r => r.data.categories)
+    requests.get('/api/v1/tags')
+      .then(r => r.data.tags)
 }
 
 export default {
   Article,
   Restaurant,
-  Category
+  Tag
 }

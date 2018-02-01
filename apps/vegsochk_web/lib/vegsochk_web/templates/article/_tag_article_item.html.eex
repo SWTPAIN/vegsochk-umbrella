@@ -1,6 +1,6 @@
-<div class="post-item uk-width-1-2@m">
+<div class="post-item <%= if @full_width do "full-row" else "uk-width-1-2@m" end %>">
   <div class="post-main-image">
-    <img src="<%= @article.cover_image %>">
+    <img src="/images/francesco-gallarotti-72602.jpg">
   </div>
   <div class="post-main-brief-container">
     <div uk-grid>
@@ -14,15 +14,6 @@
         <p><%= @article.author.user.name %></p>
       </div>
     </div>
-  </div>
-  <div class="uk-flex tag-list">
-    <%= for tag <- @article.tags do %>
-      <div class="tag">
-        <a href="<%= tag_path(@conn, :show, tag) %>">
-          # <%= tag.name %>
-        </a>
-      </div>
-    <% end %>
   </div>
 </div>
 
