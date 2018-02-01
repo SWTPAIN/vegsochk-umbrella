@@ -1,9 +1,7 @@
 defmodule Vegsochk.CMS.Author do
-  use Ecto.Schema
-  import Ecto.{Query, Changeset}
+  use Vegsochk.Data
   alias Vegsochk.CMS.Author
   alias Vegsochk.Account.User
-  alias Vegsochk.Repo
 
 
   schema "authors" do
@@ -12,6 +10,16 @@ defmodule Vegsochk.CMS.Author do
 
     belongs_to :user, User
     timestamps()
+  end
+
+  def with_name(query \\ __MODULE__, name) do
+    from q in query,
+      join: u in assoc(q, :user),
+      where: u.name == ^name
+  end
+
+  def preload_user(author) do
+    author |> Repo.preload(:user)
   end
 
   def find_one_by(%{user_id: user_id}) do

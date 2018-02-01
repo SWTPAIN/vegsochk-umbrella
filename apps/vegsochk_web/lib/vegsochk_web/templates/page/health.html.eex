@@ -8,11 +8,11 @@
   </div>
   <div class="main-section">
     <%= if @first_article != nil do %>
-      <%= render VegsochkWeb.ArticleView, "_tag_article_item.html", article: @first_article, full_width: true, conn: @conn %>
+      <%= render VegsochkWeb.ArticleView, "_article_item.html", article: @first_article, full_width: true, conn: @conn %>
     <% end %>
     <div class="uk-grid-divider post-item-list" uk-grid>
       <%= for article <- @rest_articles do %>
-        <%= render VegsochkWeb.ArticleView, "_tag_article_item.html", article: article, full_width: false, conn: @conn %>
+        <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, full_width: false, conn: @conn %>
       <% end %>
     </div>
 

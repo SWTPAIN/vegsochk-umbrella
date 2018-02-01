@@ -86,6 +86,7 @@ defmodule VegsochkWeb.Router do
     get "/logout_success", PageController, :logout_success
     resources "articles", ArticleController, only: [:show]
     resources "tags", TagController, only: [:show]
+    resources "authors", AuthorController, only: [:show]
     get "/:page_name", PageController, :show
   end
 
@@ -105,6 +106,12 @@ end
 
 defimpl Phoenix.Param, for: Vegsochk.CMS.Tag do
   def to_param(%{name: name}) do
+    name
+  end
+end
+
+defimpl Phoenix.Param, for: Vegsochk.CMS.Author do
+  def to_param(%{user: %{name: name}}) do
     name
   end
 end

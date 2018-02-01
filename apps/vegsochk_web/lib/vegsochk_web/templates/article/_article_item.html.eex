@@ -11,18 +11,24 @@
       </div>
       <div class="post-main-author-avatar">
         <img src="<%= @article.author.user.avatar %>">
-        <p><%= @article.author.user.name %></p>
+        <p>
+          <a href="<%= author_path(@conn, :show, @article.author) %>">
+            <%= @article.author.user.name %></p>
+          </a>
+        </p>
       </div>
     </div>
   </div>
-  <div class="uk-flex tag-list">
-    <%= for tag <- @article.tags do %>
-      <div class="tag">
-        <a href="<%= tag_path(@conn, :show, tag) %>">
-          # <%= tag.name %>
-        </a>
-      </div>
-    <% end %>
-  </div>
+  <%= if @show_tags? do %>
+    <div class="uk-flex tag-list">
+      <%= for tag <- @article.tags do %>
+        <div class="tag">
+          <a href="<%= tag_path(@conn, :show, tag) %>">
+            # <%= tag.name %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 

@@ -22,6 +22,12 @@ defmodule Vegsochk.CMS.Article do
       where: c.id == ^tag.id
   end
 
+  def with_author(query \\ __MODULE__, author) do
+    from q in query,
+      join: t in assoc(q, :tags),
+      where: t.id == ^author.id
+  end
+
   def preload_author(article) do
     article |> Repo.preload(author: :user)
   end

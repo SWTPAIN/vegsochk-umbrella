@@ -25,6 +25,16 @@ defmodule Vegsochk.CMS do
     |> Article.preload_author
   end
 
+  def list_latest_articles(%{author: %Author{} = author}, limit_num) do
+    Article
+    |> Article.newest_first
+    |> Article.with_author(author)
+    |> limit(^limit_num)
+    |> Repo.all()
+    |> Article.preload_author
+    |> Article.preload_tags
+  end
+
   def list_articles(%Author{} = author) do
     Article
     |> where([a], a.author_id == ^author.id)
@@ -136,9 +146,15 @@ defmodule Vegsochk.CMS do
     |> Repo.insert()
   end
 
+  def get_author!(%{name: name}) do
+    Author.with_name(name)
+    |> Repo.one!
+    |> Author.preload_user
+  end
+
   def get_author!(id) do
     Repo.get!(Author, id)
-    |> Repo.preload([:user])
+    |> Author.preload_user
   end
 
   def get_author(%User{} = user) do
