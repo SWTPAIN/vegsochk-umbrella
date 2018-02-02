@@ -66,7 +66,7 @@
       </h3>
       <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
         <%= for article <- @articles do %>
-          <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, conn: @conn, show_tags?: true %>
+          <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, full_width?: false, conn: @conn, show_tags?: true %>
         <% end %> 
       </div>
     </div>

@@ -3,11 +3,9 @@ defmodule VegsochkWeb.TagController do
   
   alias Vegsochk.{CMS, Repo}
 
-  #plug :put_layout, "article.html"
-
-  def show(conn, %{"id" => id}) do
+  def show(conn, %{"id" => id} = params) do
     tag = CMS.get_tag!(%{name: id})
-    articles = CMS.list_latest_articles(%{tag: tag}, 10)
+    articles = CMS.list_latest_articles(%{tag: tag}, params)
 
     render conn, "show.html", tag: tag, articles: articles
   end

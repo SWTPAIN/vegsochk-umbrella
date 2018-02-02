@@ -1,0 +1,22 @@
+.author-container {
+  .title-container {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+		border-bottom: 1px solid $grey;
+    .subtitle {
+			display: flex;
+			align-items: center;
+			color: #aaa;
+			font-size: $h1-size;
+			text-transform: uppercase;
+			white-space: nowrap;
+    }
+  }
+  .main-section {
+    max-width: $main-area-max-width;
+    margin: 0 auto;
+  }
+}

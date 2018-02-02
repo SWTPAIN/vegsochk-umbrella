@@ -1,0 +1,18 @@
+<div class="page-navigator-container">
+	<ul class="uk-pagination">
+    <%= unless is_first_page_active?(@page) do %>
+      <li>
+        <a href="<%= previous_page_url(@page) %>">
+          <span uk-pagination-previous></span>前一頁
+        </a>
+      </li>
+    <% end %>
+    <%= unless is_last_page_active?(@page) do %>
+      <li class="uk-margin-auto-left">
+        <a href="<%= next_page_url(@page) %>">
+          後一頁<span class="uk-margin-small-right" uk-pagination-next></span>
+        </a>
+      </li>	
+    <% end %>
+	</ul>
+</div>

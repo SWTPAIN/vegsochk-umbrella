@@ -1,4 +1,4 @@
-<div class="post-item uk-width-1-2@m">
+<div class="post-item <%= unless @full_width? do "uk-width-1-2@m" end %>" >
   <div class="post-main-image">
     <img src="<%= @article.cover_image %>">
   </div>

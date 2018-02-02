@@ -1,17 +1,12 @@
 <%= render_shared "main-navbar.html", conn: @conn %>
-<div class="tag-container">
+<div class="author-container">
   <div class="title-container">
-    <div class="logo">
-      <a href="/">
-        <img src="/images/brand-logo-wide.png">
-      </a>
-    </div>
-    <div class="subtitle"><%= @tag.name %></div>
+    <div class="subtitle"><%= @author.user.name %>的文章</div>
   </div>
   <div class="main-section">
     <div class="uk-grid-divider post-item-list" uk-grid>
       <%= for article <- @articles do %>
-        <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, full_width?: false, show_tags?: false, conn: @conn %>
+        <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, full_width?: false, show_tags?: true, conn: @conn %>
       <% end %>
     </div>
     <%= render_shared "page-navigator.html", conn: @conn, page: @articles%>

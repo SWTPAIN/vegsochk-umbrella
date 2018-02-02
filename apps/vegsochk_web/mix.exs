@@ -49,7 +49,8 @@ defmodule VegsochkWeb.Mixfile do
       {:ex_aws_s3, "~> 2.0"},
       {:uuid, "~> 1.1"},
       {:hackney, "~>1.10"},
-      {:sweet_xml,  "~> 0.6"}
+      {:sweet_xml,  "~> 0.6"},
+      {:scrivener_ecto, "~> 1.0"}
     ]
   end
 

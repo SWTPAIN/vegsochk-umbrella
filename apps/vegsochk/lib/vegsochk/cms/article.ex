@@ -28,12 +28,12 @@ defmodule Vegsochk.CMS.Article do
       where: t.id == ^author.id
   end
 
-  def preload_author(article) do
-    article |> Repo.preload(author: :user)
+  def preload_author(query) do
+    query |> Ecto.Query.preload(author: :user)
   end
 
-  def preload_tags(article) do
-    article |> Repo.preload([:tags])
+  def preload_tags(query) do
+    query |> Ecto.Query.preload(:tags)
   end
 
   @doc false

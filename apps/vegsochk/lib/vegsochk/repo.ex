@@ -1,6 +1,6 @@
 defmodule Vegsochk.Repo do
   use Ecto.Repo, otp_app: :vegsochk
-
+  use Scrivener, page_size: 2
   @doc """
   Dynamically loads the repository url from the
   DATABASE_URL environment variable.

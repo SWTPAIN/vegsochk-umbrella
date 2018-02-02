@@ -7,32 +7,29 @@ defmodule Vegsochk.CMS do
   alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Tag, NewsItem}
   alias Vegsochk.Account.User
 
-  def list_latest_articles(limit_num \\ 10) when is_integer(limit_num) do
+  def list_latest_articles(page_params) do
     Article
     |> Article.newest_first
-    |> limit(^limit_num)
-    |> Repo.all()
     |> Article.preload_tags
     |> Article.preload_author
+    |> Repo.paginate(page_params)
   end
 
-  def list_latest_articles(%{tag: %Tag{} = tag}, limit_num) do
+  def list_latest_articles(%{tag: %Tag{} = tag}, page_params) do
     Article
     |> Article.newest_first
     |> Article.with_tag(tag)
-    |> limit(^limit_num)
-    |> Repo.all()
     |> Article.preload_author
+    |> Repo.paginate(page_params)
   end
 
-  def list_latest_articles(%{author: %Author{} = author}, limit_num) do
+  def list_latest_articles(%{author: %Author{} = author}, page_params) do
     Article
     |> Article.newest_first
     |> Article.with_author(author)
-    |> limit(^limit_num)
-    |> Repo.all()
     |> Article.preload_author
     |> Article.preload_tags
+    |> Repo.paginate(page_params)
   end
 
   def list_articles(%Author{} = author) do
