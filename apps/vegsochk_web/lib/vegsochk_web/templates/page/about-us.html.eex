@@ -1,8 +1,10 @@
-<%= render_shared "main-navbar.html", conn: @conn %>
 <div class="uk-section">
   <div class="about-us-container">
     <div class="main-banner">
       <div class="main-message">
+        <img class="brand-logo" src="/images/white-brand-logo.svg">
+        <h1 class="brand-name-zh">香港素食會</h1>
+        <h2 class="brand-name-en">HONG KONG VEGETARIAN SOCIETY</h2>
         <h3>我們希望透過推廣純素飲食對動物、環境與人類健康的好處，鼓勵大眾選擇富同理心的生活方式<h3>
       </div>
     </div>
@@ -26,7 +28,7 @@
         </li>
       </ul>
       <div class="uk-container">
-        <div class="uk-child-width-1-2 uk-text-center" uk-grid>
+        <div class="uk-child-width-1-2@s uk-text-center" uk-grid>
           <div class="contact-methods-container">
             <p>地址:香港九龍旺角亞皆老街80 - 86號昌明大廈7字樓G室</p>
             <p>電話:+852 2619-0000</p>

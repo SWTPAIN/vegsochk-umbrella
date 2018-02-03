@@ -29,8 +29,12 @@
               <span uk-icon="icon: facebook"></span>VEGSOCHK
             </a>
           </li>
+          <li>
+            <a>
+            本網站及其內容的版權均屬或相關權利方單獨或共同所有或被授權使用
+            </a>
+          </li>
         </ul>
-        <p>本網站及其內容的版權均屬或相關權利方單獨或共同所有或被授權使用</p>
       </div>
     </div>
   </div>

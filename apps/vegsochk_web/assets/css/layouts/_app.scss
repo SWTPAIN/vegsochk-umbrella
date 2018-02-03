@@ -39,7 +39,7 @@ body {
     text-align: right;
     @media screen and (max-width: $breakpoint-medium) {
 			text-align: left;
-			flex: none;
+			flex: auto;
     }
 
   }

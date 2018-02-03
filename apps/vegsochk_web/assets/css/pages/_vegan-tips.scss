@@ -49,6 +49,9 @@
 			position: absolute;
       top: 35%;
       left: 38%;
+      @media screen and (max-width: $breakpoint-medium) {
+        top: 40%;
+      }
       h1 {
         font-size: 0.8em;
         font-weight: 300;

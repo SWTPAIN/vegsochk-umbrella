@@ -2,12 +2,29 @@
   .main-banner {
     background-color: $brand-color;
     height: 480px;
+    text-align: center;
+    .brand-logo {
+      margin-top: 40px;
+      height: 180px;
+    }
+    .brand-name-zh {
+      font-size: 64px;
+      letter-spacing: 20px;
+      color: $white;
+      margin: 0;
+    }
+    .brand-name-en {
+      margin: 0;
+      font-size: 26px;
+      color: $white;
+    }
     .main-message {
       margin: 0 auto;
       max-width: 600px;
       h3 {
         color: $white;
         text-align: center;
+        font-weight: 100;
       }
     }
   }
@@ -21,7 +38,9 @@
     }
 
     .contact-methods-container {
-      padding: 0 10px;
+      @media screen and (min-width: $breakpoint-medium) {
+        padding: 0 10px;
+      }
       text-align: left;
     }
   }

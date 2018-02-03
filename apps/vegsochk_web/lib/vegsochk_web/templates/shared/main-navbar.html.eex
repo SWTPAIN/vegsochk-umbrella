@@ -9,7 +9,7 @@
     </ul>
   </div>
   <div class="uk-navbar-right">
-		<span uk-toggle="target: #offcanvas-usage" uk-icon="menu"></span>
+		<span class="nav-toggle-button" uk-toggle="target: #offcanvas-usage" uk-icon="menu"></span>
     <ul class="uk-navbar-nav nav-right-items">
       <%= render "_navbar_item.html", conn: @conn, text: "為什麼純素 ？", url: "/why-vegan" %>
       <%= render "_navbar_item.html", conn: @conn, text: "動物", url: "/animals" %>
@@ -22,7 +22,7 @@
   </div>
 </nav>
 <div id="offcanvas-usage" uk-offcanvas="overlay: true">
-	<div class="uk-offcanvas-bar left-navigation-push-over">
+	<div class="uk-offcanvas-bar left-nav-push-over">
 		<button class="uk-offcanvas-close" type="button" uk-close></button>
 		<div class="uk-panel">
 			<ul class="uk-nav uk-nav-default tm-nav">

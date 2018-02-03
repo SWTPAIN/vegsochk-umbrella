@@ -20,33 +20,45 @@
 		background: url("/images/roya-ann-miller-171297.jpg") no-repeat center center;
 		background-size: cover;
     margin-bottom: 330px;
-
+    @media screen and (max-width: $breakpoint-medium) {
+      padding-top: 140px;
+      height: auto;
+      margin-bottom: 0;
+    }
 		.artwork-1, .artwork-2 {
       h1 {
-        font-size: 30px;
+        font-size: 20px;
         color: rgb(134, 114, 98);
       }
       p {
         color: rgb(134, 114, 98);
+        font-size: 16px;
+      }
+      @media screen and (min-width: $breakpoint-medium) {
+        position: absolute;
+        font-size: 30px;
       }
       padding: 20px 30px;
-			position: absolute;
       opacity: 0.9;
 		}
 
     .artwork-1 {
-			height:280px;
-      width: 500px;
-			top: 400px;
-      right: 200px;
+      @media screen and (min-width: $breakpoint-medium) {
+        height:280px;
+        width: 500px;
+        top: 400px;
+        right: 200px;
+      }
       background-color: $orange;
     }
 
     .artwork-2 {
-			height:140px;
-      width: 500px;
-			top: 600px;
-      right: 400px;
+      @media screen and (min-width: $breakpoint-medium) {
+        height:140px;
+        width: 500px;
+        top: 600px;
+        right: 400px;
+      }
       background-color: $green;
     }
 	}
@@ -54,6 +66,9 @@
   .main-section {
     max-width: $main-area-max-width;
     margin: 60px auto;
+    @media screen and (max-width: $breakpoint-medium) {
+      padding: 0 20px;
+    }
   }
 
   .grey-text {

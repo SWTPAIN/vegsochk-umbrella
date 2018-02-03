@@ -3,42 +3,42 @@ import React, { Component } from 'react'
 const categories = [
   {
     id: 'mobile-apps',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/phone-icon.png',
     title: '手機程式'
   },
   {
     id: 'websites',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/web-icon.png',
     title: '網站'
   },
   {
     id: 'blogs',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/facebook-icon.png',
     title: '群組/專頁/BLOGGER'
   },
   {
     id: 'books',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/book-icon.png',
     title: '書籍推介'
   },
   {
     id: 'tutorials',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/kitchen-icon.png',
     title: '學素廚房'
   },
   {
     id: 'shops',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/desk-icon.png',
     title: '素食百貨'
   },
   {
     id: 'desserts',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/cake-icon.png',
     title: '自製純素甜品'
   },
   {
     id: 'travel',
-    icon: 'http://via.placeholder.com/150x150',
+    icon: '/images/suitcase-icon.png',
     title: '旅行貼士'
   }
 ]
@@ -313,7 +313,7 @@ export default class OutsideEatingTips extends Component {
             categories.map(({id, icon, title}) =>
               <div
                 key={id}
-                className='uk-width-1-5'>
+                className='uk-width-1-5@m uk-width-1-4'>
                 <div
                   onClick={() => this.setState(() => ({selectedCategoryId: id}))}
                   className={`tip-category ${id === selectedCategoryId && 'active'}`}>

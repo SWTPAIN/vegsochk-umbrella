@@ -8,6 +8,11 @@
       display: none;
     }    
   }
+	.nav-toggle-button {
+    @media screen and (min-width: $breakpoint-small) {
+      display: none;
+    }    
+	}
   li {
     &.logo {
       img {
@@ -32,7 +37,7 @@
     }
   }
 } 
-.left-navigation-push-over {
+.left-nav-push-over {
 	background: #fff !important;
 	a {
 		color: $grey !important;
