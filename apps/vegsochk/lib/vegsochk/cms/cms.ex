@@ -38,6 +38,21 @@ defmodule Vegsochk.CMS do
     |> Repo.all()
   end
 
+  def list_related_articles(article_id, limit_num) do
+    article = get_article!(article_id)
+    tag_ids = Enum.map(article.tags, &(&1.id))
+    query = from a in Article,
+      join: t in assoc(a, :tags),
+      join: au in assoc(a, :author),
+      join: u in assoc(au, :user),
+      where: u.id == ^article.author.id or t.id in ^tag_ids 
+
+    query
+    |> Article.preload_author
+    |> limit(^limit_num)
+    |> Repo.all()
+  end
+
   def create_article(%Author{} = author, %{"tag_ids" => tag_ids} = attrs) do
     %Article{author_id: author.id}
     |> Article.auto_slug_changeset(attrs)
@@ -61,9 +76,19 @@ defmodule Vegsochk.CMS do
     Repo.delete(article)
   end
 
-  def get_article!(id) do
-    Repo.get_by!(Article, %{slug: id})
-    |> Repo.preload([:tags])
+  def get_article!(id) when is_integer(id) do
+    Article
+    |> Article.preload_author
+    |> Article.preload_tags
+    |> Repo.get!(id) 
+  end
+
+  def get_article!(slug) when is_bitstring(slug) do
+    Article
+    |> Article.preload_author
+    |> Article.with_slug(slug)
+    |> Article.preload_tags
+    |> Repo.one!
   end
 
   def list_restaurants() do

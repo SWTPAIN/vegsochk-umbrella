@@ -1,0 +1,26 @@
+.related-articles-list-container {
+  .related-article-list {
+    list-style-position: initial;
+    list-style-type: none;
+    margin: 0;
+  }
+  .related-article-item {
+    border-top: 1px solid #ccc;
+    padding: 16px 0;
+    a {
+     text-decoration: none;
+    }
+    .related-article-item-link {
+      
+      .related-article-title-container {
+      }
+
+      .related-article-image-container {
+        text-align: center;
+        .related-article-image {
+          max-height: 75px;
+        }
+      }
+    }
+  }
+}

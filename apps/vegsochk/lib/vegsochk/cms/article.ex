@@ -22,6 +22,11 @@ defmodule Vegsochk.CMS.Article do
       where: c.id == ^tag.id
   end
 
+  def with_slug(query \\ __MODULE__, slug) do
+    from q in query,
+      where: q.slug == ^slug
+  end
+
   def with_author(query \\ __MODULE__, author) do
     from q in query,
       join: t in assoc(q, :tags),
