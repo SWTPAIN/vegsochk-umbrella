@@ -1,6 +1,8 @@
 <div class="post-item <%= unless @full_width? do "uk-width-1-2@m" end %>" >
   <div class="post-main-image">
-    <img src="<%= @article.cover_image %>">
+    <a href="<%= article_path(@conn, :show, @article) %>">
+      <img src="<%= @article.cover_image %>">
+    </a>
   </div>
   <div class="post-main-brief-container">
     <div uk-grid>

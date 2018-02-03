@@ -17,6 +17,10 @@ defmodule Vegsochk.CMS.NewsItem do
     timestamps()
   end
 
+  def published(query \\ __MODULE__) do
+    from(q in query, where: q.status == ^:published)
+  end
+
   @doc false
   def changeset(%NewsItem{} = news_item, attrs) do
     news_item 

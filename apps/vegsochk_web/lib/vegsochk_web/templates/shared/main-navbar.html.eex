@@ -6,6 +6,11 @@
           <img src="/images/brand-logo.png">
         </a>
       </li>
+    </ul>
+  </div>
+  <div class="uk-navbar-right">
+		<span uk-toggle="target: #offcanvas-usage" uk-icon="menu"></span>
+    <ul class="uk-navbar-nav nav-right-items">
       <%= render "_navbar_item.html", conn: @conn, text: "為什麼純素 ？", url: "/why-vegan" %>
       <%= render "_navbar_item.html", conn: @conn, text: "動物", url: "/animals" %>
       <%= render "_navbar_item.html", conn: @conn, text: "健康", url: "/health" %>
@@ -16,4 +21,20 @@
     </ul>
   </div>
 </nav>
+<div id="offcanvas-usage" uk-offcanvas="overlay: true">
+	<div class="uk-offcanvas-bar left-navigation-push-over">
+		<button class="uk-offcanvas-close" type="button" uk-close></button>
+		<div class="uk-panel">
+			<ul class="uk-nav uk-nav-default tm-nav">
+				<li><a href="/why-vegan">為什麼純素 ？</a></li>
+				<li><a href="/animals">動物</a></li>
+				<li><a href="/health">健康</a></li>
+				<li><a href="/environment-and-justice">環保和公義</a></li>
+				<li><a href="/vegan-tips">純素貼士</a></li>
+				<li><a href="/about-us">關於</a></li>
+				<li><a href="/donation">捐款</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 

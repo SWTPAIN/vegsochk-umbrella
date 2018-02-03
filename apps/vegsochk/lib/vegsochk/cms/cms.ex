@@ -245,7 +245,8 @@ defmodule Vegsochk.CMS do
 
   def list_latest_news_items(limit_num \\ 10) do
     NewsItem
-    |> order_by([n], [desc: n.inserted_at])
+    |> NewsItem.published
+    |> NewsItem.newest_first
     |> limit(^limit_num)
     |> Repo.all()
   end

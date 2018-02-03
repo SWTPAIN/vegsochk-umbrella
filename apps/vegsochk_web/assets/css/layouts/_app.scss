@@ -6,9 +6,22 @@ body {
 .footer-section {
   background-color: $grey;
   color: $white;
-  
+  font-weight: 100;
+  font-size: $remark-font-size;
+
   .footer-section-main {
     max-width: $main-area-max-width;
+    margin: 0 auto;
+		@media screen and (max-width: $breakpoint-medium) {
+			padding: 0 20px;
+    }
+
+		a {
+			color: $white;
+			&:hover {
+				color: $brand-color;
+			}
+		}
   }
 
   .brand-logo {
@@ -22,7 +35,13 @@ body {
   }
 
   .footer-info-right {
+		flex: 1;
     text-align: right;
+    @media screen and (max-width: $breakpoint-medium) {
+			text-align: left;
+			flex: none;
+    }
+
   }
 }
 

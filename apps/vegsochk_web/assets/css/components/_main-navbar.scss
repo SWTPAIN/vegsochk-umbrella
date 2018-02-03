@@ -2,6 +2,12 @@
 	max-width: $main-area-max-width;
   margin: 0 auto;
   padding-bottom: 0;
+
+  .nav-right-items {
+    @media screen and (max-width: $breakpoint-small) {
+      display: none;
+    }    
+  }
   li {
     &.logo {
       img {
@@ -26,3 +32,10 @@
     }
   }
 } 
+.left-navigation-push-over {
+	background: #fff !important;
+	a {
+		color: $grey !important;
+	}
+}
+

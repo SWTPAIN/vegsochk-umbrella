@@ -1,6 +1,6 @@
 <div class="uk-section footer-section">
-  <div class="uk-container footer-section-main">
-    <div class="uk-grid">
+  <div class="footer-section-main">
+    <div class="uk-flex uk-flex-wrap uk-flex-wrap-stretch">
       <div class="footer-info-left">
         <div class="brand-logo">
           <a href="/">
@@ -15,11 +15,20 @@
       </div>
       <div class="footer-info-right">
         <ul class="uk-list">
-          <li>行動</li>
-          <li>資源</li>
-          <li>關於<li>
-          <li>捐款<li>
-          <li><span uk-icon="icon: facebook"></span>VEGSOCHK<li>
+          <li>
+            <a href="/">文章</a>
+          </li>
+          <li>
+            <a href="/abous-us">關於</a>
+          <li>
+          <li>
+            <a href="/donation">捐款</a>
+          <li>
+          <li>
+            <a href="https://www.facebook.com/vegsochk">
+              <span uk-icon="icon: facebook"></span>VEGSOCHK
+            </a>
+          </li>
         </ul>
         <p>本網站及其內容的版權均屬或相關權利方單獨或共同所有或被授權使用</p>
       </div>

@@ -1,4 +1,9 @@
 .home {
+  .brand-logo-section {
+    @media screen and (max-width: $breakpoint-small) {
+      display: none;
+    }
+  }
   .brand-logo {
     width: 200px;
   }

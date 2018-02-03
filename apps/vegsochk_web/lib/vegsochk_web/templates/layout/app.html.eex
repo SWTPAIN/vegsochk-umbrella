@@ -12,8 +12,10 @@
   </head>
 
   <body>
-    <%= render @view_module, @view_template, assigns %>
-    <%= render_shared "footer.html" %>
+    <div class="uk-offcanvas-content">
+      <%= render @view_module, @view_template, assigns %>
+      <%= render_shared "footer.html" %>
+    </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
