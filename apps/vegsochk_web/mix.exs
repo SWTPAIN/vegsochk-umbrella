@@ -4,7 +4,7 @@ defmodule VegsochkWeb.Mixfile do
   def project do
     [
       app: :vegsochk_web,
-      version: "0.0.1",
+      version: append_revision("0.0.1"),
       build_path: "../../_build",
       config_path: "../../config/config.exs",
       deps_path: "../../deps",
@@ -24,7 +24,7 @@ defmodule VegsochkWeb.Mixfile do
   def application do
     [
       mod: {VegsochkWeb.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :edeliver]
     ]
   end
 
@@ -41,7 +41,7 @@ defmodule VegsochkWeb.Mixfile do
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
       {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:phoenix_live_reload, "~> 1.0"},
       {:gettext, "~> 0.11"},
       {:vegsochk, in_umbrella: true},
       {:cowboy, "~> 1.0"},
@@ -54,6 +54,15 @@ defmodule VegsochkWeb.Mixfile do
     ]
   end
 
+  def append_revision(version) do
+     "#{version}+#{revision()}"
+  end
+
+  defp revision() do
+    System.cmd("git", ["rev-parse", "--short", "HEAD"])
+    |> elem(0)
+    |> String.trim_trailing
+  end
   # Aliases are shortcuts or tasks specific to the current project.
   # For example, we extend the test task to create and migrate the database.
   #

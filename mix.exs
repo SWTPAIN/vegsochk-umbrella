@@ -24,6 +24,8 @@ defmodule Vegsochk.Umbrella.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [
+      {:edeliver, "~> 1.4.5"},
+      {:distillery, ">= 0.8.0", warn_missing: false}
     ]
   end
 end
