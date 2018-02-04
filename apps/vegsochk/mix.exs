@@ -23,7 +23,7 @@ defmodule Vegsochk.Mixfile do
   def application do
     [
       mod: {Vegsochk.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :timex_ecto]
     ]
   end
 
@@ -41,7 +41,9 @@ defmodule Vegsochk.Mixfile do
       {:ecto_enum, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:secure_random, "~> 0.5"}
+      {:secure_random, "~> 0.5"},
+      {:timex, "~> 3.0"},
+      {:timex_ecto, "~> 3.0"}
     ]
   end
 

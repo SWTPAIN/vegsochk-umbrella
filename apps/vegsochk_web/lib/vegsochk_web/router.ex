@@ -48,6 +48,7 @@ defmodule VegsochkWeb.Router do
     resources "/restaurants", RestaurantController
     resources "/tags", TagController
     resources "/authors", AuthorController
+    post "/authors/:id/suspend", AuthorController, :suspend
     resources "/news_items", NewsItemController
 	end
 

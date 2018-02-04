@@ -3,12 +3,14 @@ defmodule VegsochkWeb.Admin.AuthorController do
 
   alias Vegsochk.CMS
   alias Vegsochk.CMS.Author
+  alias Vegsochk.Account
   alias VegsochkWeb.Uploader
 
   plug :assign_author when action in [:edit, :delete, :update]
 
   def new(conn, _params) do
     changeset = Author.changeset(%Author{}, %{})
+    IO.inspect changeset
     render conn, "new.html", changeset: changeset
   end
 
@@ -17,29 +19,23 @@ defmodule VegsochkWeb.Admin.AuthorController do
     render conn, "index.html", authors: authors
   end
 
-  def create(conn, %{"author" => %{
-    "image" => image_param, 
-    "name" => name,
-    "description" => description,
-    "address" => address,
-    "territory" => territory,
-    "telephone_number" => telephone_number 
-  }}) do
-    image_url = Uploader.upload_image!(image_param)
-    case CMS.create_author(%{
-      image: image_url,
-      name: name,
-      description: description,
-      address: address,
-      territory: territory,
-      telephone_number: telephone_number
-    }) do
-      {:ok, author} ->
-        conn
-        |> put_flash(:success, "Author created successfully")
-        |> redirect(to: admin_author_path(conn, :index))
+  def create(conn, %{"author" => author_params}) do
+    %{"user" => user_params, "bio" => bio} = author_params
+    image_params = user_params["avatar"]
+    image_url = Uploader.upload_image!(image_params)
+    user_params = Map.put(user_params, "avatar", image_url)
+    with {:ok, user}    <- Account.register_user(user_params),
+         {:ok, _}  <- CMS.add_author(user, %{bio: bio, role: "writer"})
+    do
+      conn
+      |> put_flash(:success, "Author created successfully")
+      |> redirect(to: admin_author_path(conn, :index))
+    else
       {:error, changeset} ->
-        render conn, "new.html", changeset: changeset
+        IO.inspect changeset
+        conn
+        |> put_flash(:alert, "Author created fail")
+        |> redirect(to: admin_author_path(conn, :new))
     end
   end
 
@@ -56,15 +52,15 @@ defmodule VegsochkWeb.Admin.AuthorController do
   end 
 
   def update(conn, %{"author" => author_params}) do
-    image_params = author_params["image"]
+    image_params = author_params["avatar"]
     author_params = if image_params do
       image_url = Uploader.upload_image!(image_params)
-      Map.put author_params, "image", image_url
+      Map.put author_params, "avatar", image_url
     else
       author_params
     end
 
-    case CMS.update_author(conn.assigns.author, author_params) do
+    case CMS.update_author_profile(conn.assigns.author, author_params) do
       {:ok, author} ->
         conn
         |> put_flash(:success, "Author update successfully")
@@ -75,9 +71,7 @@ defmodule VegsochkWeb.Admin.AuthorController do
   end
 
   def assign_author(conn, _) do
-    author = conn.params["id"]
-      |> String.to_integer
-      |> CMS.get_author!
+    author = CMS.get_author!(%{name: conn.params["id"]})
     conn
     |> assign(:author, author)
   end

@@ -168,15 +168,22 @@ defmodule Vegsochk.CMS do
     |> Repo.insert()
   end
 
+  def list_authors() do
+    Author
+    |> Author.preload_user
+    |> Repo.all
+  end
+
   def get_author!(%{name: name}) do
     Author.with_name(name)
-    |> Repo.one!
     |> Author.preload_user
+    |> Repo.one!
   end
 
   def get_author!(id) do
-    Repo.get!(Author, id)
+    Author
     |> Author.preload_user
+    |> Repo.get!(id)
   end
 
   def get_author(%User{} = user) do
@@ -192,6 +199,17 @@ defmodule Vegsochk.CMS do
   def change_author(author) do
     author
     |> Author.changeset(%{})
+  end
+
+  def update_author_profile(%Author{} = author, %{"user" => user_attrs} = attrs) do
+    result = Multi.new
+    |> Multi.update(:author, Author.changeset(author, attrs))
+    |> Multi.update(:user, User.registration_changeset(author.user, user_attrs))
+    |> Repo.transaction
+    case result do
+      {:ok, %{author: author}} -> {:ok, author}
+      {:error, _, failed_changeset, _} -> {:error, failed_changeset}
+    end
   end
 
   def update_author_profile(%Author{} = author, %{bio: bio, avatar: avatar}) do

@@ -1,0 +1,42 @@
+<%= form_for @changeset, @action, [multipart: true, method: @method, as: :author, class: "uk-form-horizontal uk-margin-large"], fn f -> %>
+  <div class="uk-margin">
+    <label class="uk-form-label" for="form-horizontal-text">Bio</label>
+    <div class="uk-form-controls">
+      <%= textarea f, :bio, placeholder: "Bio", class: "uk-textarea",
+            required: true%>
+    </div>
+  </div>
+  <%= inputs_for f, :user, fn u -> %>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Name</label>
+      <div class="uk-form-controls">
+        <%= text_input u, :name, placeholder: "Name", class: "uk-input", required: true %>
+        <%= error_tag u, :name %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Email</label>
+      <div class="uk-form-controls">
+        <%= text_input u, :email, placeholder: "Email", class: "uk-input", required: true %>
+        <%= error_tag u, :email %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Password</label>
+      <div class="uk-form-controls">
+        <%= text_input u, :password, placeholder: "Default Password", class: "uk-input" %>
+        <%= error_tag u, :password %>
+      </div>
+    </div>
+    <div class="uk-margin">
+      <label class="uk-form-label" for="form-horizontal-text">Avatar</label>
+      <div class="uk-form-controls">
+        <img src="<%= u.data.avatar%>">
+        <%= file_input u, :avatar%>
+        <%= error_tag u, :avatar%>
+      </div>
+    </div>
+  <% end %>
+  <%= submit @submit_text, class: "uk-button uk-button-default" %>
+<% end %>
+

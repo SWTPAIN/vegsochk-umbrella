@@ -6,6 +6,7 @@ defmodule Vegsochk.Account do
   import Ecto.Query, warn: false
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
   alias Vegsochk.Repo
+  alias Vegsochk.CMS
 
   alias Vegsochk.Account.{User, Admin, Session}
 
@@ -28,6 +29,27 @@ defmodule Vegsochk.Account do
           true ->
             {:ok, session} = create_session(user.id)
             {:ok, {user, session}}
+          _ ->
+            dummy_checkpw()
+            {:error, :unauthorized}
+        end
+    end
+  end
+
+  def login_author(%{email: email, password: password} = login_info) do
+    case get_user_by_email(email) do
+      nil ->
+        {:error, :unauthorized}
+      user ->
+        case checkpw(password, user.password_digest) do
+          true ->
+            case CMS.get_author(user) do
+              nil ->
+                {:error, :unauthorized}
+              admin ->
+                {:ok, session} = create_session(admin.id)
+                {:ok, {admin, session}}
+            end
           _ ->
             dummy_checkpw()
             {:error, :unauthorized}

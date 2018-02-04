@@ -11,8 +11,11 @@ defmodule Vegsochk.Account.User do
     field :email, :string
     field :name, :string
     field :password_digest, :string
+    field :suspended_at, Timex.Ecto.DateTime
 
     field :password, :string, virtual: true
+
+    has_one :author, Vegsochk.CMS.Author
     timestamps()
   end
 

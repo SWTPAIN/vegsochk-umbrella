@@ -18,8 +18,8 @@ defmodule Vegsochk.CMS.Author do
       where: u.name == ^name
   end
 
-  def preload_user(author) do
-    author |> Repo.preload(:user)
+  def preload_user(query) do
+    query |> Ecto.Query.preload(:user)
   end
 
   def find_one_by(%{user_id: user_id}) do

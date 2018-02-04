@@ -12,6 +12,8 @@ defmodule VegsochkWeb.Plugs.CurrentAuthor do
 
   def call(conn, _opts) do
     user = conn.assigns[:current_user]
+    IO.puts "a"
+    IO.inspect user
     if user do
       conn
       |> assign(:current_author, CMS.get_author(user))

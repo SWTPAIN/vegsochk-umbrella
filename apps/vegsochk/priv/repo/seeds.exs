@@ -22,7 +22,7 @@ IO.puts "---- Author ----"
     name: "admin",
     password: "password"
   })
-{:ok, _} = CMS.add_author(admin, %{bio: "Vegsochk Admin", role: "writer"})
+  #{:ok, _} = CMS.add_author(admin, %{bio: "Vegsochk Admin", role: "writer"})
 
 IO.puts "---- Admin ----"
 {:ok, _} = Account.add_admin(admin)
@@ -37,3 +37,5 @@ IO.puts "---- Restaurant ----"
   telephone_number: "2858 3898"
 })
 
+IO.puts "---- Tags ----"
+{:ok, _} = CMS.create_tag(%{name: "健康"})
