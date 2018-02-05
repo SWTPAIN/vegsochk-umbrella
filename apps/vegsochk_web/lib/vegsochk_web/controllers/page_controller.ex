@@ -10,7 +10,7 @@ defmodule VegsochkWeb.PageController do
     render conn, "index.html", articles: articles, news_items: news_items
   end
 
-  def show(conn, %{"page_name" => "health"}) do
+  def health(conn, _) do
     # TODO avoid hard card health category as id 1
     health = CMS.get_tag!(1)
     {first_article, rest_articles} = case CMS.list_latest_articles(
@@ -23,15 +23,19 @@ defmodule VegsochkWeb.PageController do
     |> render("health.html", first_article: first_article, rest_articles: rest_articles)
   end
 
-  def show(conn, %{"page_name" => page_name}) when page_name in ["about_us"] do
-    conn
-    |> render("#{page_name}.html")
-  end
-
-  def show(conn, %{"page_name" => page_name}) do
-    conn
-    |> Phoenix.Controller.put_layout("article.html")
-    |> render("#{page_name}.html")
+  # pages that need special treatment get their own matched function
+  #   # all others simply render the template of the same name
+  def action(conn, params) do
+    case action_name(conn) do
+      :index ->
+        index(conn, params)
+      :health ->
+        health(conn, params)
+      name ->
+        conn
+        |> Phoenix.Controller.put_layout("article.html")
+        |> render(name)
+    end
   end
 
   def logout_success(conn, _params) do

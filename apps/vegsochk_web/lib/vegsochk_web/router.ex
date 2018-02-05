@@ -88,7 +88,14 @@ defmodule VegsochkWeb.Router do
     resources "articles", ArticleController, only: [:show]
     resources "tags", TagController, only: [:show]
     resources "authors", AuthorController, only: [:show]
-    get "/:page_name", PageController, :show
+     # static pages
+    get "/animals", PageController, :animals
+    get "/health", PageController, :health
+    get "/about-us", PageController, :about_us
+    get "/donation", PageController, :donation
+    get "/environment-and-justice", PageController, :environment_and_justice
+    get "/vegan-tips", PageController, :vegan_tips
+    get "/why-vegan", PageController, :why_vegan
   end
 
 end
