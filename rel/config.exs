@@ -30,13 +30,13 @@ environment :dev do
   # dev mode.
   set dev_mode: true
   set include_erts: false
-  set cookie: :"?;Eo6/3c(YqOfs4tJSzp&sR]Vwk*^%L,~*bH&I4NGni*&Pe[q^K0{Zi9bTgno113"
+  set cookie: :"ZcSu*:m7s{)GX)Z:jjW`k2a/CewK`P}Td]|51!Rh}>p,Q2x}Hc8j.c*e/PpZVn@0"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"rcMhIkb,PJx~_,B<hk!k]Ug$3j}$v%[SA;dVg<<zQV*]6DVT.x}PgUcxOM0yH9NC"
+  set cookie: :",a0t7z^QcTG70cunJEt3W0~yR_zYyNGtg:uU)<^w%8b^gB1GMBo<a072:rvT9?%:"
 end
 
 # You may define one or more releases in this file.
@@ -48,7 +48,6 @@ release :vegsochk_umbrella do
   set version: "0.1.0"
   set applications: [
     :runtime_tools,
-    :edeliver,
     vegsochk: :permanent,
     vegsochk_web: :permanent
   ]
