@@ -8,5 +8,4 @@ erl_crash.dump
 
 .env
 .deliver/releases/
-.deliver/releases/
 /rel/*/**

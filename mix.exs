@@ -25,7 +25,7 @@ defmodule Vegsochk.Umbrella.Mixfile do
   defp deps do
     [
       {:edeliver, "~> 1.4.5"},
-      {:distillery, ">= 0.8.0", warn_missing: false}
+      {:distillery, ">= 0.8.0", warn_missing: false, runtime: false}
     ]
   end
 end
