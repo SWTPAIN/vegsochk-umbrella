@@ -28,6 +28,7 @@ const bootstrap = () => {
   const overlayContainer = document.getElementById('overlay-container')
   const overlayContentContainer = document.getElementById('overlay-content-container')
   const closeOverlayButton = document.getElementById('overlay-close')
+  hideAllChildren(overlayContentContainer)
   closeOverlayButton.onclick = () => {
     overlayContainer.style.transform = 'translateX(-100%)'
     setTimeout(() => {
