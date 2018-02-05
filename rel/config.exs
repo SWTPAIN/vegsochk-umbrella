@@ -45,7 +45,7 @@ end
 # will be used by default
 
 release :vegsochk_umbrella do
-  set version: "0.1.0"
+  set version: current_version(:vegsochk_umbrella)
   set applications: [
     :runtime_tools,
     vegsochk: :permanent,
