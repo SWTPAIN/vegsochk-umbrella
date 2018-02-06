@@ -20,7 +20,10 @@ defmodule VegsochkWeb.Admin.SessionController do
   end
 
   def delete(conn, _params) do
-    Account.delete_session(conn.assigns.current_session_token)
+    token = conn.assigns.current_session_token
+    if token do
+      Account.delete_session(token)
+    end
     conn
     |> configure_session(drop: true)
     |> redirect(to: page_path(conn, :logout_success))
@@ -30,6 +33,7 @@ defmodule VegsochkWeb.Admin.SessionController do
     conn
     |> put_flash(:success, "Successfully authenticated.")
     |> put_session(:current_user, admin.user)
+    |> put_session(:current_session_token, session.token)
     |> assign(:current_admin, admin.user)
     |> assign(:current_session_token, session.token)
     |> assign(:token, session.token)
