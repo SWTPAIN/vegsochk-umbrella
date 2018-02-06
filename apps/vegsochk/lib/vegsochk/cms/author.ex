@@ -3,6 +3,7 @@ defmodule Vegsochk.CMS.Author do
   alias Vegsochk.CMS.Author
   alias Vegsochk.Account.User
 
+  @required_fields ~w(bio role user_id)a
 
   schema "authors" do
     field :bio, :string
@@ -34,8 +35,8 @@ defmodule Vegsochk.CMS.Author do
   @doc false
   def changeset(%Author{} = author, attrs) do
     author
-    |> cast(attrs, [:bio, :role, :user_id])
-    |> validate_required([:bio, :role, :user_id])
+    |> cast(attrs, @required_fields)
+    |> validate_required(@required_fields)
     |> unique_constraint(:user_id)
   end
 

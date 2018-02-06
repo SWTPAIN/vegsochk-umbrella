@@ -7,7 +7,7 @@ defmodule VegsochkWeb.PageView do
     |> raw
   end
 
-  def render("scripts.vegan-tips.html", assigns) do
+  def render("scripts.vegan_tips.html", assigns) do
     entry_path = static_path(assigns.conn, "/js/vegan-tips.js")
     ~s{<script src=#{entry_path}></script>}
     |> raw

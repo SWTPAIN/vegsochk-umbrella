@@ -12,9 +12,10 @@ defmodule VegsochkWeb.Plugs.CurrentAdmin do
 
   def call(conn, _opts) do
     user = conn.assigns[:current_user]
-    if user do
+    admin = user && Account.get_admin(user)
+    if admin do
       conn
-      |> assign(:current_admin, Account.get_admin(user))
+      |> assign(:current_admin, admin)
     else
       conn
       |> Phoenix.Controller.redirect(to: Routes.admin_session_path(conn, :new))

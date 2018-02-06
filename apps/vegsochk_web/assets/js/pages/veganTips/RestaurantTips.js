@@ -62,7 +62,7 @@ export default class RestaurantTips extends Component {
                     <div className='restaurant-info-container uk-width-2-3'>
                       <p className='restaurant-name'>{r.name}</p>
                       <p className='restaurant-address'>{r.address}</p>
-                      <p className='restaurant-telephone-number'>T:{r.telephone_number}</p>
+                      <p className='restaurant-telephone-number'>T:{r.telephoneNumber}</p>
                       <p>-</p>
                       <p className='restaurant-description'>{r.description}</p>
                     </div>

@@ -5,8 +5,8 @@ defmodule VegsochkWeb.ErrorView do
     render("404_page.html", conn: assigns.conn)
   end
 
-  def render("500.html", _assigns) do
-    render("500_page.html")
+  def render("500.html", assigns) do
+    render("500_page.html", conn: assigns.conn)
   end
 
   # In case no render clause matches or no

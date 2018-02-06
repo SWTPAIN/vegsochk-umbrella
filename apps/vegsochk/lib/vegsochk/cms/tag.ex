@@ -1,6 +1,6 @@
 defmodule Vegsochk.CMS.Tag do
-  use Ecto.Schema
-  import Ecto.{Query, Changeset}
+  use Vegsochk.Data
+
   alias Vegsochk.CMS.{Tag, Article}
   alias Vegsochk.Repo
 

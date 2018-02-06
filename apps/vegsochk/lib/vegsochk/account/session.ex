@@ -1,8 +1,7 @@
 defmodule Vegsochk.Account.Session do
-  use Ecto.Schema
-  import Ecto.{Query, Changeset}
+  use Vegsochk.Data
+
   alias Vegsochk.Account.{Session, User}
-  alias Vegsochk.Repo
   alias SecureRandom
 
   schema "sessions" do

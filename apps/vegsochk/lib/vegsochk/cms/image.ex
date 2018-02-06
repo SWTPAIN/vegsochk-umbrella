@@ -1,8 +1,6 @@
 defmodule Vegsochk.CMS.Image do
-  use Ecto.Schema
-  import Ecto.{Query, Changeset}
+  use Vegsochk.Data
   alias Vegsochk.CMS.{Image, Author}
-  alias Vegsochk.Repo
 
   schema "images" do
     field :url, :string

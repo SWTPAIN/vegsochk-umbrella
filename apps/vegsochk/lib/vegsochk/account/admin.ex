@@ -1,9 +1,8 @@
 defmodule Vegsochk.Account.Admin do
-  use Ecto.Schema
-  import Ecto.{Query, Changeset}
+  use Vegsochk.Data
+
   alias Vegsochk.Account.{Admin, User}
   alias Vegsochk.Repo
-
 
   schema "admins" do
     timestamps()
