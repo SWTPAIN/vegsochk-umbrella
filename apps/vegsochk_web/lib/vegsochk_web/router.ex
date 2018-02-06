@@ -44,7 +44,7 @@ defmodule VegsochkWeb.Router do
     pipe_through :admin
 
     get "/", PageController, :index
-    get "/logout", SessionController, :delete
+    get "/logout", SessionController, :delete, as: :logout
     resources "/restaurants", RestaurantController
     resources "/tags", TagController
     resources "/authors", AuthorController
@@ -61,7 +61,7 @@ defmodule VegsochkWeb.Router do
     pipe_through :author
 
     get "/", PageController, :index
-    get "/logout", SessionController, :delete
+    get "/logout", SessionController, :delete, as: :logout
 
     resources "/profile", ProfileController, singleton: true, only: [:edit, :update]
     resources "/password", PasswordController, singleton: true, only: [:edit, :update]

@@ -47,7 +47,7 @@ defmodule Vegsochk.Account do
               nil ->
                 {:error, :unauthorized}
               admin ->
-                {:ok, session} = create_session(admin.id)
+                {:ok, session} = create_session(user.id)
                 {:ok, {admin, session}}
             end
           _ ->
@@ -76,6 +76,11 @@ defmodule Vegsochk.Account do
             {:error, :unauthorized}
         end
     end
+  end
+
+  def delete_session(token) do
+    Repo.get_by!(Session, %{token: token}) 
+    |> Repo.delete
   end
 
   defp create_session(user_id) do

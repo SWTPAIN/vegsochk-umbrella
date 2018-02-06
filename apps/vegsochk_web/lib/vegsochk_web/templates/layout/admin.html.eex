@@ -36,7 +36,7 @@
                     <ul class="uk-nav uk-navbar-dropdown-nav">
                       <li class="uk-active"><a><%= current_user(@conn).email %></a></li>
                       <li class="uk-nav-divider"></li>
-                      <li><a href="<%= admin_session_path(@conn, :delete) %>">Logout</a></li>
+                      <li><%= link "Logout", to: admin_logout_path(@conn, :delete)%></li>
                     </ul>
                   </div>
                 </li>

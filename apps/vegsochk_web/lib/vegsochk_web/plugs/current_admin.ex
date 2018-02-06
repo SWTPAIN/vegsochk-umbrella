@@ -11,7 +11,7 @@ defmodule VegsochkWeb.Plugs.CurrentAdmin do
   def init(options), do: options
 
   def call(conn, _opts) do
-    user = conn.assigns[:current_user]
+    user = conn.assigns.current_user
     admin = user && Account.get_admin(user)
     if admin do
       conn

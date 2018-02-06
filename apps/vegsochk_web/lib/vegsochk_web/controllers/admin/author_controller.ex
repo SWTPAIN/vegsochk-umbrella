@@ -10,7 +10,6 @@ defmodule VegsochkWeb.Admin.AuthorController do
 
   def new(conn, _params) do
     changeset = Author.changeset(%Author{}, %{})
-    IO.inspect changeset
     render conn, "new.html", changeset: changeset
   end
 
@@ -32,7 +31,6 @@ defmodule VegsochkWeb.Admin.AuthorController do
       |> redirect(to: admin_author_path(conn, :index))
     else
       {:error, changeset} ->
-        IO.inspect changeset
         conn
         |> put_flash(:alert, "Author created fail")
         |> redirect(to: admin_author_path(conn, :new))

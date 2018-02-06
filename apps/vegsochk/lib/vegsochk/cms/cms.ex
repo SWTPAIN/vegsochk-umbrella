@@ -174,6 +174,10 @@ defmodule Vegsochk.CMS do
     |> Repo.all
   end
 
+  def get_author(%User{} = user) do
+    Author.find_one_by(%{user_id: user.id})
+  end
+
   def get_author!(%{name: name}) do
     Author.with_name(name)
     |> Author.preload_user
@@ -184,10 +188,6 @@ defmodule Vegsochk.CMS do
     Author
     |> Author.preload_user
     |> Repo.get!(id)
-  end
-
-  def get_author(%User{} = user) do
-    Author.find_one_by(%{user_id: user.id})
   end
 
   def add_author(%User{} = user, attrs) do

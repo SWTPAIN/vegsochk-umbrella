@@ -23,7 +23,6 @@ defmodule VegsochkWeb.Author.ProfileController do
         |> put_flash(:success, "Update profile successfully")
         |> redirect(to:  author_page_path(conn, :index))
       {:error, changeset} ->
-        IO.inspect changeset
         render conn, "edit.html", changeset: changeset
     end
   end

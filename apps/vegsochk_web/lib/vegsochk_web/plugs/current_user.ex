@@ -10,11 +10,12 @@ defmodule VegsochkWeb.Plugs.CurrentUser do
   def init(options), do: options
 
   def call(conn, _opts) do
-    if conn.assigns[:user] do
+    if conn.assigns[:current_user] && conn.assigns[:current_session_token] do
       conn
     else
-      user = get_session(conn, :current_user)
-      assign(conn, :current_user, get_session(conn, :current_user))
+      conn
+      |> assign(:current_user, get_session(conn, :current_user))
+      |> assign(:current_session_token, get_session(conn, :current_session_token))
     end
   end
 

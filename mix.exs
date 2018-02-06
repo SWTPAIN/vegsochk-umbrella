@@ -6,7 +6,8 @@ defmodule Vegsochk.Umbrella.Mixfile do
     [
       apps_path: "apps",
       start_permanent: Mix.env == :prod,
-      deps: deps()
+      deps: deps(),
+      dialyzer: [plt_add_deps: true]
     ]
   end
 
@@ -25,7 +26,8 @@ defmodule Vegsochk.Umbrella.Mixfile do
   defp deps do
     [
       {:edeliver, "~> 1.4.5"},
-      {:distillery, ">= 1.5.2", warn_missing: false, runtime: false}
+      {:distillery, ">= 1.5.2", warn_missing: false, runtime: false},
+      {:dialyxir, "~> 0.5", only: [:dev], runtime: false}
     ]
   end
 end
