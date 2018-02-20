@@ -46,24 +46,26 @@ defmodule VegsochkWeb.Admin.AuthorController do
 
   def edit(conn, _params) do
     author = conn.assigns.author
-    render conn, "edit.html", author: author, changeset: CMS.change_author(author)
+    render conn, "edit.html", changeset: CMS.change_author(author)
   end 
 
   def update(conn, %{"author" => author_params}) do
-    image_params = author_params["avatar"]
-    author_params = if image_params do
-      image_url = Uploader.upload_image!(image_params)
-      Map.put author_params, "avatar", image_url
+    %{"user" => user_params, "bio" => bio} = author_params
+    avatar_params = user_params["avatar"]
+    author_profile_params = if avatar_params do
+      avatar_url = Uploader.upload_image!(avatar_params)
+      put_in(author_params, ["user", "avatar"], avatar_url)
     else
       author_params
     end
 
-    case CMS.update_author_profile(conn.assigns.author, author_params) do
+    case CMS.update_author_profile(conn.assigns.author, author_profile_params) do
       {:ok, author} ->
         conn
         |> put_flash(:success, "Author update successfully")
         |> redirect(to: admin_author_path(conn, :index))
       {:error, changeset} ->
+        IO.inspect changeset
         render conn, "edit.html", author: conn.assigns.author, changeset: changeset
     end
   end
