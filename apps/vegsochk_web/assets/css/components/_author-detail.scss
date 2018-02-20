@@ -1,0 +1,27 @@
+.author-detail-container {
+  text-align: center;
+  margin-bottom: 40px;
+  .author-avatar {
+    width: 140px; 
+    margin: 0 auto;
+    img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  .author-name {
+    margin-top: 20px;
+  }
+
+  .author-bio {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}

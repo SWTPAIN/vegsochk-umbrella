@@ -1,4 +1,18 @@
 .article-container {
-  max-width: $main-area-max-width;
-  margin: 0 auto;
+  .article-title {
+    max-width: $main-area-max-width;
+    margin: 0 auto;
+    font-size: $h2-size;
+  }
+  .article-cover-image {
+    height: 400px;
+    width: 100%;
+    background-size:cover;
+    margin-bottom: 40px;
+  }
+
+  .article-main-content {
+    max-width: $main-area-max-width;
+    margin: 0 auto;
+  }
 }
