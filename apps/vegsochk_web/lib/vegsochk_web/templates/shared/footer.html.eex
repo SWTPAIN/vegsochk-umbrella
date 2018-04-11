@@ -8,27 +8,30 @@
           </a>
         </div>
         <ul class="uk-list">
-          <li>CLUB O,旺角亞皆老街80-86號昌明大廈7字樓G、H室</li>
-          <li>T: 2619 0000</li>
-          <li>E: INFO@VEGSOCHK.ORG</li>
+          <li>香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室</li>
+          <li>電話：(+852) 2619 0000</li>
+          <li>電郵: <a href="mailto:info@vegsochk.org">info@vegsochk.org</a></li>
+          <li>
+            <a target="_blank" href="https://www.facebook.com/vegsochk">
+              <span uk-icon="icon: facebook"></span>
+            </a>
+            <a target="_blank" href="https://www.instagram.com/vegsochk/">
+              <span uk-icon="icon: instagram"></span>
+            </a>
+          </li>
         </ul>
       </div>
       <div class="footer-info-right">
         <ul class="uk-list">
-          <li>
-            <a href="/">文章</a>
-          </li>
-          <li>
-            <a href="/abous-us">關於</a>
-          <li>
-          <li>
-            <a href="/donation">捐款</a>
-          <li>
-          <li>
-            <a href="https://www.facebook.com/vegsochk">
-              <span uk-icon="icon: facebook"></span>VEGSOCHK
-            </a>
-          </li>
+          <li><a href="/why-vegan">純素主義</a></li>
+          <li><a href="/health">健康</a></li>
+          <li><a href="/animals">動物</a></li>
+          <li><a href="/environment-and-justice">環境</a></li>
+          <li><a href="/articles">專欄文章</a></li>
+          <li><a href="/vegan-tips">素食貼士</a></li>
+          <li><a href="/about-us">關於我們</a></li>
+          <li><a href="/donation">支持我們</a></li>
+          <li><a href="/become-volunteer">成為義工</a></li>
           <li>
             <a>
             本網站及其內容的版權均屬或相關權利方單獨或共同所有或被授權使用

@@ -12,6 +12,8 @@
   color: $orange !important;
   font-weight: 700;
   border-width: 2px;
+  letter-spacing: 0.6em;
+  text-indent: 0.6em;
   &:hover {
     border-color: $orange;
     background-color: $orange;

@@ -25,8 +25,8 @@ body {
   }
 
   .brand-logo {
-    height: 140px;
     img {
+      width: 200px;
       height: 100%;
     }
   }
@@ -37,11 +37,10 @@ body {
   .footer-info-right {
 		flex: 1;
     text-align: right;
-    @media screen and (max-width: $breakpoint-medium) {
+    @media screen and (max-width: $breakpoint-small) {
 			text-align: left;
 			flex: auto;
     }
-
   }
 }
 

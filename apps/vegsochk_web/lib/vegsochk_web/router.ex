@@ -85,7 +85,7 @@ defmodule VegsochkWeb.Router do
 
     get "/", PageController, :index
     get "/logout_success", PageController, :logout_success
-    resources "articles", ArticleController, only: [:show]
+    resources "articles", ArticleController, only: [:index, :show]
     resources "tags", TagController, only: [:show]
     resources "authors", AuthorController, only: [:show]
      # static pages

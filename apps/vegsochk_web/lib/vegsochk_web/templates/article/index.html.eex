@@ -1,0 +1,13 @@
+<div class="author-container">
+  <div class="title-container">
+    <div class="subtitle">專欄文章</div>
+  </div>
+  <div class="main-section">
+    <div class="uk-grid-divider post-item-list" uk-grid>
+      <%= for article <- @articles do %>
+        <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, full_width?: false, show_tags?: true, conn: @conn %>
+      <% end %>
+    </div>
+    <%= render_shared "page-navigator.html", conn: @conn, page: @articles%>
+  </div>
+</div>

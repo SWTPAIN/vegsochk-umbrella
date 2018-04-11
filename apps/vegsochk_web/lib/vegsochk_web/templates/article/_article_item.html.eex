@@ -9,7 +9,7 @@
       <div class="post-main-brief uk-width-expand">
         <p class="post-title"><%= @article.title %></p>
         <p class="post-short-description"><%= @article.tldr %></p>
-        <a class="uk-button uk-button-default detail-button" href="<%= article_path(@conn, :show, @article) %>">了解更多</a>
+        <a class="uk-button uk-button-default detail-button" href="<%= article_path(@conn, :show, @article) %>">全文</a>
       </div>
       <div class="post-main-author-avatar">
         <img src="<%= @article.author.user.avatar %>">

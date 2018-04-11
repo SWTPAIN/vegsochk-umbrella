@@ -11,13 +11,15 @@
   <div class="uk-navbar-right">
 		<span class="nav-toggle-button" uk-toggle="target: #offcanvas-usage" uk-icon="menu"></span>
     <ul class="uk-navbar-nav nav-right-items">
-      <%= render "_navbar_item.html", conn: @conn, text: "為什麼純素 ？", url: "/why-vegan" %>
-      <%= render "_navbar_item.html", conn: @conn, text: "動物", url: "/animals" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "純素主義", url: "/why-vegan" %>
       <%= render "_navbar_item.html", conn: @conn, text: "健康", url: "/health" %>
-      <%= render "_navbar_item.html", conn: @conn, text: "環保和公義", url: "/environment-and-justice" %>
-      <%= render "_navbar_item.html", conn: @conn, text: "純素貼士", url: "/vegan-tips" %>
-      <%= render "_navbar_item.html", conn: @conn, text: "關於", url: "/about-us" %>
-      <%= render "_navbar_item.html", conn: @conn, text: "捐款", url: "/donation" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "動物", url: "/animals" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "環境", url: "/environment-and-justice" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "專欄文章", url: "/articles" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "素食貼士", url: "/vegan-tips" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "關於我們", url: "/about-us" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "支持我們", url: "/donation" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "成為義工", url: "/become-volunteer" %>
     </ul>
   </div>
 </nav>
@@ -26,13 +28,15 @@
 		<button class="uk-offcanvas-close" type="button" uk-close></button>
 		<div class="uk-panel">
 			<ul class="uk-nav uk-nav-default tm-nav">
-				<li><a href="/why-vegan">為什麼純素 ？</a></li>
-				<li><a href="/animals">動物</a></li>
+				<li><a href="/why-vegan">純素主義</a></li>
 				<li><a href="/health">健康</a></li>
-				<li><a href="/environment-and-justice">環保和公義</a></li>
-				<li><a href="/vegan-tips">純素貼士</a></li>
-				<li><a href="/about-us">關於</a></li>
-				<li><a href="/donation">捐款</a></li>
+				<li><a href="/animals">動物</a></li>
+				<li><a href="/environment-and-justice">環境</a></li>
+				<li><a href="/articles">專欄文章</a></li>
+				<li><a href="/vegan-tips">素食貼士</a></li>
+				<li><a href="/about-us">關於我們</a></li>
+				<li><a href="/donation">支持我們</a></li>
+				<li><a href="/become-volunteer">成為義工</a></li>
 			</ul>
 		</div>
 	</div>

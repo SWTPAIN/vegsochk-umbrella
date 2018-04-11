@@ -23,11 +23,6 @@ $max-text-width: 800px;
     }
   }
 
-	.animal-categories-container {
-	  max-width: 680px;
-    margin: 0 auto;  
-	}
-
 	.overlay {
 			/* Height & width depends on how you want to reveal the overlay (see JS below) */    
 			height: 100%;
@@ -72,15 +67,15 @@ $max-text-width: 800px;
 
 	/* Position the close button (top right corner) */
 	.overlay .closebtn {
-			position: absolute;
-			top: 20px;
-			left: 100px;
-			font-size: 18px;
-      z-index: 100;
-      color: $white;
-      span {
-        margin-right: 20px;
-      }
+    position: absolute;
+    top: 20px;
+    left: 2em;
+    font-size: 18px;
+    z-index: 100;
+    color: $white;
+    span {
+      margin-right: 20px;
+    }
 	}
   
   .subtitle {
@@ -164,7 +159,11 @@ $max-text-width: 800px;
   }
 
   .animal-categories-container {
+	  max-width: 680px;
+    margin: 0 auto;  
     padding-top: 200px;
+    padding-left: 10px;
+    padding-right: 10px;
     #pig {
       background: url('/images/pig-thumbnail.jpg') no-repeat center center;
     }
@@ -185,7 +184,7 @@ $max-text-width: 800px;
     }
     .animal-thumbnail {
       height: 140px;
-      max-width: 200px;
+      max-width: 300px;
       margin: 10px auto;
       background-size: cover !important;
       &:hover {

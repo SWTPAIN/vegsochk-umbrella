@@ -5,7 +5,7 @@
         <img class="brand-logo" src="/images/white-brand-logo.svg">
         <h1 class="brand-name-zh">香港素食會</h1>
         <h2 class="brand-name-en">HONG KONG VEGETARIAN SOCIETY</h2>
-        <h3>我們希望透過推廣純素飲食對動物、環境與人類健康的好處，鼓勵大眾選擇富同理心的生活方式<h3>
+        <h3>透過推廣精彩的純素生活方式，重建我們和自己健康、動物以及環境的關係<h3>
       </div>
     </div>
     <div class="main-area-container">
@@ -15,12 +15,11 @@
         </li>
       </ul>
       <div class="about-us-description-container">
-        <p>香港素食會(hong kong vegetarian society)為「綠色生活教育基金」屬下項目，自1995年成立以來致力推動香港
-        素食文化。</p>
+        <p>香港素食會（Hong Kong Vegetarian Society）於1995年成立，為「綠色生活教育基金」屬下項目，是一個全義工慈善組織，20多年來一直在香港致力推廣素食文化。</p>
         <p>歷史</p>
-        <p>1995年成立時名為「香港素食學會」，2005年易名為「香港素食會」，保留原有宗旨、繼續推廣純素生活，並加入於 2004年12月在香港創立的註冊慈善團體「綠色生活教育基金」，與club o及club o店聯合運作。</p>
+        <p>前身為「香港素食學會」，2004年加入在香港創立的註冊慈善團體「綠色生活教育基金」，與「Club O」及「Club O店」聯合運作。2005年易名「香港素食會」。</p>
         <p>架構</p>
-        <p>香港素食會現屆執委會共31名成員，全為義務工作。其中各組的組長及副組長為核心成員，負責本會主要決策。</p>
+        <p>主席為李宇銘博士，副主席為黃佩詩女士。本屆共有12名常務委員及若干執行委員負責日常決策及執行工作。主席、副主席及所有常委皆是純素者（vegan），並且全是義工。</p>
       </div>
       <ul class='tabs' uk-tab>
         <li class="tab-item active">
@@ -30,10 +29,22 @@
       <div class="uk-container">
         <div class="uk-child-width-1-2@s uk-text-center" uk-grid>
           <div class="contact-methods-container">
-            <p>地址:香港九龍旺角亞皆老街80 - 86號昌明大廈7字樓G室</p>
-            <p>電話:+852 2619-0000</p>
-            <p>電郵:info@vegsochk.org</p>
-            <p>Facebook:https://www.facebook.com/vegsochk</p>
+            <p>綠色生活教育基金（逢星期一休息）</p>
+            <p>地址: 香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室</p>
+            <p>電話: (+852) 2619 0000</p>
+            <p>電郵: <a href="mailto:info@vegsochk.org">info@vegsochk.org</a></p>
+            <p>
+              <span uk-icon="icon: facebook"></span>
+              <a target="_blank" href="https://www.facebook.com/vegsochk">
+                VEGSOCHK
+              </a>
+            </p>
+            <p>
+              <span uk-icon="icon: instagram"></span>
+              <a target="_blank" href="https://www.instagram.com/vegsochk/">
+                VEGSOCHK
+              </a>
+            </p>
           </div>
           <div class="location-map-container">
             <div id="location-map"></div>

@@ -34,7 +34,7 @@
               <li class="uk-parent">
                 <a
                   class="uk-button uk-button-default donate-button"
-                  href="/donation">SUPPORT OUR WORK DONATE HERE</a>
+                  href="/donation">支持我們</a>
               </li>
             </ul>
           </div>
@@ -48,21 +48,16 @@
     </div>
     <div class="uk-container">
       <div class="about">
-        <h3>
-          &mdash; 關於 &mdash;
-        </h3>
         <p>
-          「香港素食會」前身為「香港素食學會」，於1995年成立， 當時於尖沙咀加拿分道功德林舉行活動。 其後為配合會務發展，於2004-2005年期間結束會務並成立了 慈善團體「綠色生活教育基金」， 改將「香港素食會」為「綠色生活教育基金」下設項目之一， 保持原有的宗旨，繼續推廣素食文化。
-          香港素食會為全義工運作的團體。
+        香港素食會（Hong Kong Vegetarian Society）於1995年成立，為「綠色生活教育基金」屬下項目，是一個全義工慈善組織，20多年來一直在香港致力推廣素食文化。
         </p>
-        <a class="uk-button uk-button-small white-button" href="">觀看更多</a>
       </div>
     </div>
   </div>
   <div class="uk-section articles-section">
     <div class="uk-container">
       <h3>
-        &mdash; 文章 &mdash;
+        &mdash; 專欄文章 &mdash;
       </h3>
       <div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
         <%= for article <- @articles do %>

@@ -2,8 +2,9 @@ const hideElement = element => {
   element.style.display = 'none'
 }
 
-const showElement = element => {
+const showElement = (element, container) => {
   element.style.display = 'block'
+  container.style.transform = 'none'
 }
 
 const hideAllChildren = element => {
@@ -19,8 +20,9 @@ const setOverlayContentHandler = (overlayContainer, overlayContentContainer, id)
   const overlayElement = document.getElementById(id + '-overlay')
 
   element.onclick = () => {
-    showElement(overlayElement)
-    overlayContainer.style.transform = 'none'
+    showElement(overlayElement, overlayContainer)
+    window.location.hash = id
+    window.scrollTo(0, 0)
   }
 }
 
@@ -28,15 +30,30 @@ const bootstrap = () => {
   const overlayContainer = document.getElementById('overlay-container')
   const overlayContentContainer = document.getElementById('overlay-content-container')
   const closeOverlayButton = document.getElementById('overlay-close')
-  hideAllChildren(overlayContentContainer)
-  closeOverlayButton.onclick = () => {
+  const handleCloseOverlay = () => {
+    location.hash = ''
     overlayContainer.style.transform = 'translateX(-100%)'
     setTimeout(() => {
       hideAllChildren(overlayContentContainer)
     }, 600)
   }
-  const ids = ['pig', 'cow', 'chicken', 'chick', 'fish']
+
+  hideAllChildren(overlayContentContainer)
+  closeOverlayButton.onclick = handleCloseOverlay
+  const ids = ['pig', 'cow', 'chick', 'fish']
   ids.forEach(setOverlayContentHandler.bind(null, overlayContainer, overlayContentContainer))
+
+  window.onhashchange = function () {
+    if (!location.hash) {
+      handleCloseOverlay()
+    }
+  }
+  const hash = location.hash
+  console.log('hash: ', hash)
+  if (hash) {
+    const overlayElement = document.getElementById(hash.substr(1) + '-overlay')
+    overlayElement && showElement(overlayElement, overlayContainer)
+  }
 }
 
 bootstrap()
