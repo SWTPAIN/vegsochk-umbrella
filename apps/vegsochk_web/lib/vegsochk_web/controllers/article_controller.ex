@@ -13,6 +13,17 @@ defmodule VegsochkWeb.ArticleController do
   def show(conn, %{"id" => id}) do
     article = CMS.get_article!(id)
     related_articles = CMS.list_related_articles(article.id, 3)
-    render conn, "show.html", article: article, related_articles: related_articles
+    og_tags = %{
+      "og:type": "article",
+      "og:site_name": "Hong Kong Vegeterian Society",
+      "og:image": article.cover_image,
+      "og:title": article.title,
+      "og:description": article.tldr,
+    }
+    render(conn, "show.html",
+      article: article,
+      related_articles: related_articles,
+      og_tags: og_tags
+    )
   end
 end

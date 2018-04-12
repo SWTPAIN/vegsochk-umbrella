@@ -7,16 +7,32 @@
   }
 }
 
-.donate-button {
-  border-color: $orange;
-  color: $orange !important;
+%button {
   font-weight: 700;
   border-width: 2px;
   letter-spacing: 0.6em;
   text-indent: 0.6em;
+}
+
+.donate-button {
+	@extend %button;
+  border-color: $orange;
+  color: $orange !important;
   &:hover {
     border-color: $orange;
     background-color: $orange;
     color: $white !important;
   }
+}
+
+.subscribe-button {
+	@extend %button;
+  border-color: $brand-color;
+  color: $brand-color !important;
+  &:hover {
+		border-color: $brand-color;
+    background-color: $brand-color;
+    color: $white !important;
+  }
+	margin-right: 20px;
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <%= ogtags(assigns) %>
     <title>Hello Vegsochk!</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
@@ -21,5 +21,6 @@
     <%= render_shared "footer.html" %>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render_existing @view_module, "scripts." <> @view_template, assigns %>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ace6387ecadda21"></script>
   </body>
 </html>

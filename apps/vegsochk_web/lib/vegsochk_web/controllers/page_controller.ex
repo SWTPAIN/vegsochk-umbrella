@@ -10,17 +10,22 @@ defmodule VegsochkWeb.PageController do
     render conn, "index.html", articles: articles, news_items: news_items
   end
 
-  def health(conn, _) do
+  def health(conn, params) do
     # TODO avoid hard card health category as id 1
     health = CMS.get_tag!(1)
-    {first_article, rest_articles} = case CMS.list_latest_articles(
-      %{tag: health}
-    ) do
+    IO.puts "ok"
+    IO.inspect params
+    articles = CMS.list_latest_articles(%{tag: health}, Map.put(params, :page_size, 9))
+    {first_article, rest_articles} = case articles do
       %{total_entries: 0} -> {nil, []}
       %{entries: [first | rest]} -> {first, rest}
     end
     conn
-    |> render("health.html", first_article: first_article, rest_articles: rest_articles)
+    |> render(
+      "health.html",
+      first_article: first_article,
+      rest_articles: rest_articles,
+      articles: articles)
   end
 
   # pages that need special treatment get their own matched function
@@ -28,9 +33,9 @@ defmodule VegsochkWeb.PageController do
   def action(conn, params) do
     case action_name(conn) do
       :index ->
-        index(conn, params)
+        index(conn, conn.params)
       :health ->
-        health(conn, params)
+        health(conn, conn.params)
       name ->
         conn
         |> Phoenix.Controller.put_layout("article.html")

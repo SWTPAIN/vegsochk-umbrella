@@ -15,7 +15,7 @@
         <%= render VegsochkWeb.ArticleView, "_article_item.html", article: article, full_width?: false, conn: @conn , show_tags?: false %>
       <% end %>
     </div>
-
+    <%= render_shared "page-navigator.html", conn: @conn, page: @articles%>
   </div>
 </div>
 
