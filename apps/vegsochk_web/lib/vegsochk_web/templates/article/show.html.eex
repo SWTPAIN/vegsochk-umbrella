@@ -1,17 +1,17 @@
-<div class="article-title">
-  <%= @article.title %>
-</div>
-<div
-  style="background-image: url(<%= @article.cover_image %>);"
-  class="article-cover-image">
-</div>
 <div class="article-main-content">
+  <div
+    style="background-image: url(<%= @article.cover_image %>);"
+    class="article-cover-image">
+  </div>
+  <div class="article-title">
+    <%= @article.title %>
+  </div>
   <div class="author-detail-container uk-grid-divider" uk-grid >
     <div class="uk-width-1-4@s uk-width-1-3">
       <div class="author-avatar">
         <img src="<%= @article.author.user.avatar %>" >
       </div>
-    <div class="author-name"><%= @article.author.user.name %></div>
+      <div class="author-name"><%= @article.author.user.name %></div>
     </div>
     <div class="uk-width-expand">
       <div class="author-bio">
@@ -21,6 +21,9 @@
   </div>
   <%= raw @article.body %>
   <div class="related-articles-list-container">
+    <h2 class="related-articles-title">
+      更多文章
+    </h2>
     <ul class="related-article-list">
       <%= for related_article <- @related_articles do %>
         <li class="related-article-item">

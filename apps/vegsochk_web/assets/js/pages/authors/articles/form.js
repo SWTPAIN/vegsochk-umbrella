@@ -58,7 +58,7 @@ export default class ArticleForm extends Component {
                 multiple
                 optionLabelProp='children'
                 onChange={this.props.handleTagsChange}
-               >
+              >
                 {
                   tags.map(({id, color, name}) =>
                     <Option
@@ -84,6 +84,11 @@ export default class ArticleForm extends Component {
             </div>
             <div className='uk-margin'>
               <Editor
+                toolbar={{
+                  colorPicker: {
+                    colors: ['#addbcb', '#b3ddce', '#00becd', '#aeb0a9', '#ffc6a2', '#535354']
+                  }
+                }}
                 editorState={bodyState}
                 wrapperClassName='demo-wrapper'
                 editorClassName='demo-editor'

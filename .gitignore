@@ -5,6 +5,7 @@ erl_crash.dump
 *.ez
 
 *.swp
+*.DS_Store
 
 .env
 .deliver/releases/

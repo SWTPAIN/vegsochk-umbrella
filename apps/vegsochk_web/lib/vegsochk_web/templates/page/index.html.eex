@@ -44,7 +44,7 @@
 	</div>
   <div class="uk-section about-section">
 		<div uk-sticky class="main-navbar-container">
-      <%= render_shared "main-navbar.html", conn: @conn%>\
+      <%= render_shared "main-navbar.html", conn: @conn%>
     </div>
     <div class="uk-container">
       <div class="about">

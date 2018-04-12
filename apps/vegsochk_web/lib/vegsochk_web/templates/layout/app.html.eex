@@ -17,5 +17,6 @@
       <%= render_shared "footer.html" %>
     </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5ace6387ecadda21"></script>
   </body>
 </html>
