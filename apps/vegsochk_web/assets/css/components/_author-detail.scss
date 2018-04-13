@@ -1,16 +1,22 @@
+$avatar-image-size: 100px;
+
 .author-detail-container {
   text-align: center;
   margin-bottom: 40px;
   .author-avatar {
-    width: 140px; 
     margin: 0 auto;
     img {
-      width: 100px;
-      height: 100px;
+      width: $avatar-image-size;
+      height: $avatar-image-size;
+      border-radius: $avatar-image-size / 2;
       object-fit: cover;
-      border-radius: 50px;
       margin: 0 auto;
       display: block;
+			@media screen and (max-width: $breakpoint-small) {
+				width: $avatar-image-size * 0.6;
+				height: $avatar-image-size * 0.6;
+				border-radius: $avatar-image-size * 0.6 / 2;
+			}
     }
   }
 
