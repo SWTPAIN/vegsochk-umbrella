@@ -17,27 +17,21 @@
         <img src="./images/paypal.png" border="0" alt="PayPal Logo">
       </div>
       <div class="paypal-button-container">
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-
-          <!-- Identify your business so that you can collect the payments. -->
-          <input type="hidden" name="business"
-              value="virginiachan@club-o.org">
-
-          <!-- Specify a Donate button. -->
-          <input type="hidden" name="cmd" value="_donations">
-
-          <!-- Specify details about the contribution -->
-          <input type="hidden" name="item_name" value="Donation to Hong Kong Vegetarian Society">
-          <input type="hidden" name="currency_code" value="HKD">
-
-          <!-- Display the payment button. -->
-          <input type="image" name="submit"
-          src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-          alt="Donate">
-          <img alt="" width="1" height="1"
-          src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-        </form>
-
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="8M2B72B7FXPZC">
+				<table>
+				<tr><td><input type="hidden" name="on0" value="捐款額">捐款額</td></tr><tr><td><select name="os0">
+					<option value="100">100 $100.00 HKD</option>
+					<option value="200">200 $200.00 HKD</option>
+					<option value="400">400 $400.00 HKD</option>
+					<option value="800">800 $800.00 HKD</option>
+				</select> </td></tr>
+				</table>
+				<input type="hidden" name="currency_code" value="HKD">
+				<input type="image" src="https://www.paypalobjects.com/zh_HK/HK/i/btn/btn_buynowCC_LG_wCUP.gif" border="0" name="submit" alt="PayPal － 更安全、更簡單的網上付款方式！">
+				<img alt="" border="0" src="https://www.paypalobjects.com/zh_HK/i/scr/pixel.gif" width="1" height="1">
+				</form>
       </div>
     </div>
     <p class=>支票郵寄地址：</p>
