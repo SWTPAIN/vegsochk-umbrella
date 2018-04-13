@@ -76,6 +76,7 @@
       .tip-category-icon-container {
         img {
           object-fit: cover;
+					width: 5em;
         }
       }
       p {
@@ -121,6 +122,21 @@
   }
   .item-list {
     border-top: 1px solid $green;
+		.title {
+			color: $green;
+			text-align: left;
+			padding-top: 20px;
+			padding-left: 20px;
+			font-size: $h2-size;
+			line-height: $h2-size * 1.4;
+		}
+		.subtitle {
+			color: $green;
+			text-align: left;
+			padding-top: 10px;
+			padding-left: 20px;
+			font-size: $h4-size;
+		}
     .item {
       border-bottom: 1px solid $green;
       .restaurant-image-container {

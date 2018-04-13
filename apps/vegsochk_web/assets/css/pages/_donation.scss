@@ -2,4 +2,15 @@
   max-width: $main-area-max-width;
   margin: 0 auto;
   padding-top: 0;
+
+	.banner {
+		height: 400px;
+		background: url("/images/happy-pig.png");
+	}
+	.paypal-container {
+		display: flex;
+		.paypal-logo-container, .paypal-button-container {
+			align-self: center;
+		}
+	}
 }

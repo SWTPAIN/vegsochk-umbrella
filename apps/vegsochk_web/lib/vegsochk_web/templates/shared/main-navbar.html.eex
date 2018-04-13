@@ -19,7 +19,7 @@
       <%= render "_navbar_item.html", conn: @conn, text: "素食貼士", url: "/vegan-tips" %>
       <%= render "_navbar_item.html", conn: @conn, text: "關於我們", url: "/about-us" %>
       <%= render "_navbar_item.html", conn: @conn, text: "支持我們", url: "/donation" %>
-      <%= render "_navbar_item.html", conn: @conn, text: "成為義工", url: "/become-volunteer" %>
+      <%= render "_navbar_item.html", conn: @conn, text: "成為義工", url: "https://vegsochk.typeform.com/to/hvrlyk" %>
     </ul>
   </div>
 </nav>
@@ -36,7 +36,7 @@
 				<li><a href="/vegan-tips">素食貼士</a></li>
 				<li><a href="/about-us">關於我們</a></li>
 				<li><a href="/donation">支持我們</a></li>
-				<li><a href="/become-volunteer">成為義工</a></li>
+				<li><a target="_blank" href="https://vegsochk.typeform.com/to/hvrlyk">成為義工</a></li>
 			</ul>
 		</div>
 	</div>

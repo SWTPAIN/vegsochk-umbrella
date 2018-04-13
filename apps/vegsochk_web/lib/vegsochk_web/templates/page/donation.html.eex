@@ -1,26 +1,49 @@
 <div class="uk-section donation-container">
-  <h1 class="uk-heading-primary">
-    請支持我們可持續發展
-  </h1>
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+  <div class="banner">
+  </div>
+  <article class="uk-article">
+    <h1 class="uk-article-title">
+      支持我們
+    </h1>
+    <p>香港素食會現時的運作全靠一班滿腔熱誠的義工。</p>
+    <p>請捐款支持我們，讓更多人能夠和當初的你一樣，體會素食可以怎樣改善我們的健康、保護無辜的動物以及珍貴的地球。</p>
+    <p class="uk-text-lead">捐款滿港幣100元，更可憑捐款收據申請免稅。如欲索取捐款收據，請將「自動櫃員機／銀行／網上入數單」（如適用）、「捐款人全名」及「郵寄地址」電郵至<a>info@vegsochk.org</a>。</p>
+    <p>歡迎透過自動櫃員機、網上或支票捐款：</p>
+    <p class="uk-text-lead">滙豐銀行</p>
+    <p>戶口號碼：804-8-004280</p>
+    <p>戶口名稱：「綠色生活教育基金有限公司」或「Green Living Education Foundation Ltd」</p>
+    <div class="paypal-container">
+      <div class="paypal-logo-container">
+        <img src="./images/paypal.png" border="0" alt="PayPal Logo">
+      </div>
+      <div class="paypal-button-container">
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
-    <!-- Identify your business so that you can collect the payments. -->
-    <input type="hidden" name="business"
-        value="virginiachan@club-o.org">
+          <!-- Identify your business so that you can collect the payments. -->
+          <input type="hidden" name="business"
+              value="virginiachan@club-o.org">
 
-    <!-- Specify a Donate button. -->
-    <input type="hidden" name="cmd" value="_donations">
+          <!-- Specify a Donate button. -->
+          <input type="hidden" name="cmd" value="_donations">
 
-    <!-- Specify details about the contribution -->
-    <input type="hidden" name="item_name" value="Donation to Hong Kong Vegetarian Society">
-    <input type="hidden" name="currency_code" value="HKD">
+          <!-- Specify details about the contribution -->
+          <input type="hidden" name="item_name" value="Donation to Hong Kong Vegetarian Society">
+          <input type="hidden" name="currency_code" value="HKD">
 
-    <!-- Display the payment button. -->
-    <input type="image" name="submit"
-    src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-    alt="Donate">
-    <img alt="" width="1" height="1"
-    src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
-	</form>
+          <!-- Display the payment button. -->
+          <input type="image" name="submit"
+          src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+          alt="Donate">
+          <img alt="" width="1" height="1"
+          src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+        </form>
+
+      </div>
+    </div>
+    <p class=>支票郵寄地址：</p>
+    <p>香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室綠色生活教育基金
+    （信封面請註明「捐款予香港素食會」）</p>
+
+  </article>
 </div>
 

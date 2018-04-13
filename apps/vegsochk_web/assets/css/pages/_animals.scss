@@ -150,6 +150,7 @@ $max-text-width: 800px;
         height: 180px;
         width: 100%;
         object-fit: cover;
+				margin-bottom: 10px;
       }
 			p {
 				font-size: $remark-font-size;
@@ -209,6 +210,10 @@ $max-text-width: 800px;
 	.remark-text, .remark-list {
 		font-size: 10px;
     font-weight: $remark-font-weight;
+		a {
+			display: inline-block;
+			font-size: 10px;
+		}
     li {
       margin-top: 4px;
     }
