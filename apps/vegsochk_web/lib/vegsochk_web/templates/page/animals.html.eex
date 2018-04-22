@@ -2,8 +2,8 @@
   <div class="animal-banner">
     <div class="artwork">
       <h4 class="title">動物</h4>
-      <p>「所有動物都是平等的，但一些動物比其他動物更加平等。」——佐治・奧威爾
-      為甚麼我們寵愛貓狗，卻吞吃豬牛？</p>
+      <p>「所有動物都是平等的，但一些動物比其他動物更加平等。」——佐治・奧威爾</p>
+      <p>為甚麼我們寵愛貓狗，卻吞吃豬牛？</p>
     </div>
   </div>
   <div class="animal-categories-container">
@@ -35,7 +35,7 @@
             <h2 class="overlay-main-content-title">豬</h2>
             <div class="main-img-container pig"></div>
             <div class="main-content-block">
-              <p class="subtitle">我們不吃狗，卻吃豬？</p>
+              <p class="title">我們不吃狗，卻吃豬？</p>
               <div uk-grid>
                 <div class="uk-width-3-4">
                   <p class="subtitle">比三歲小孩聰明的豬</p>
@@ -118,13 +118,6 @@
                 <li>註一：蘋果日報：港豬飼港 <a href="https://goo.gl/NWQsi2">https://goo.gl/NWQsi2</a></li>
                 <li>註二：HK01：上水屠房淒厲慘嚎  工人認打豬電豬 <a href="http://goo.gl/d6YkbF">http://goo.gl/d6YkbF</a></li>
                 <li>註三：香港大學及愛護動物協會：《香港動物權益法例檢討》</li>
-                <li>-母豬的妊娠定位欄</li>
-                <li>英國已經完全禁止。瑞典和新西蘭從2015年將也是<li>
-                <li>荷蘭和芬蘭已經實施逐步禁止<li>
-                <li>-小豬出生七天內會被閹割<li>
-                <li>瑞士在2012已經禁止<li>
-                <li>而從2012年起，比利時、德國、意大利等國家己簽署需要麻醉劑和持續的止痛緩解。<li>
-                <li>http://www.ciwf.org.uk/farm-animals/pigs/welfare-issues/castration/<li>
               </ul>
             </div>
           </div>
@@ -140,7 +133,7 @@
             </h3>
             <div class="main-img-container cow"></div>
             <div class="main-content-block">
-              <p class="subtitle">人奶給人喝，豬奶給豬喝——牛奶給誰喝？</p>
+              <p class="title">人奶給人喝，豬奶給豬喝——牛奶給誰喝？</p>
               <p class="subtitle">牛是誰？</p>
               <p class="no-margin-top">牛與貓狗一樣，都是聰明、有個性、有感情的可愛動物。</p>
               <p class="no-margin-top">牛喜歡群居，當中有領袖，有社交秩序。牛腦部發達，記憶力強，富好奇心，會互相學習，部分更會成為終生好友——好友去世，甚至會哀悼牠們。母牛更是充滿愛的媽媽，互相照顧大家的孩子是尋常事。牛一般可活到18-25歲。</p>
@@ -238,55 +231,51 @@
             </h3>
             <div class="main-img-container chick1"></div>
             <div class="main-content-block">
-              <p class="subtitle">雞蛋裏面裝著的，是母雞和小雞可憐的一生</p>
+              <p class="title">雞蛋裏面裝著的，是母雞和小雞可憐的一生</p>
             </div>
             <div class="main-content-block">
-              <div uk-grid>
-                <div class="uk-width-2-3">
-                  <p>雞蛋工廠的小公雞在孵化不久後，因為不能下蛋，又不是「肉雞」 品種(肉質不佳、長肉沒效率等理由)，所以出生不久，在辨別性 別之後，就會被殺死，牠們可能是被活活碾碎成肉醬、也可能是用 塑膠袋焗死，又或者被燙死浸死等等。</p>
-                  <p>在香港也不例外，估計每年本地有120萬隻小公雞，被丟進垃圾袋 活生生地焗死。[1]不計本地生產，每年香港約進口21億隻新鮮雞 蛋(出口只佔約1%)，其中過半來自大陸，其次是美國和泰國; 而在美國，估計每年都有超過二億隻雄性小雞被撲殺!香港每年進 口約3億隻美國雞蛋，這當中多少小雞是因為我們埋單?據德國 University of Vechta大學家禽研究所估計[2]，估計全球每年約 有25億隻小公雞，因為生產雞蛋被殺死(包括所謂的「自由放養」 、「有機」和「動物褔利」雞蛋)</p>
-                </div>
-                <div class="uk-width-1-3">
-                  <div class="image-with-caption">
-                    <img src="/images/egg-stat.png" style="height: 100%;">
-                    <p>(圖:Jan van Ijken)</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="main-content-block">
-              <p class="no-margin">小雞不笨</p>
+              <p class="subtitle">小雞不笨</p>
               <p class="no-margin-top">科學研究指出，初出生的小雞經已有數字的概念，最高可以由一數至十。小雞也有時間的概念，牠們會為了未來更大的好處，而放棄眼前的小利。</p>
               <p class="no-margin-top">可是，這些聰明可愛的小雞，在一些唯利是圖的商人手中，一文不值，只是一堆嘈吵的垃圾。</p>
-              <p class="no-margin">小公雞，大屠殺</p>
+              <p class="subtitle">小公雞，大屠殺</p>
               <p class="no-margin-top">小公雞最大的罪名，是不會下蛋。</p>
               <p>生在雞蛋工廠，卻不會下蛋，又不是「食用雞」品種，便只有死路一條。殊途同歸，正好形容小公雞剎那的一生：活生生碾成肉碎、在垃圾袋焗死、被滾水燙死浸死⋯⋯</p>
               <p class="no-margin-top">單單在香港這片彈丸之地，估計每年便有120萬隻小公雞被丟進垃圾袋活生生焗死〔註一〕；在美國，估計每年超過2億隻；而根據德國University of Vechta家禽研究所估計，全球每年約有25億隻小公雞，因為以上罪名而被屠殺〔註二〕。
               </p>
               <p class="no-margin-top">這些天文數字，可會喚起我們一點點的同情心？
               </p>
-              <p class="no-margin">A4紙上的母雞</p>
+              <p class="subtitle">A4紙上的母雞</p>
               <p class="no-margin-top">可是，長痛不如短痛。也許小雞比牠們的媽媽幸福得多。</p>
               <p class="no-margin-top">小雞的媽媽，通常就住在密集的鐵籠裏。這些鐵籠高三至九層不等，堆堆疊疊，密不透風，呼吸亦是奢侈。A4紙的大小，便是小雞媽媽的「活動空間」——如果還有空間可言的話。轉身、展翅等日常活動，統統無法做到。長期立足鐵絲，令腳爪嚴重畸形；新鮮空氣欠奉，取而代之的是排泄物的臭氣，當中的阿摩尼亞更會損害肺部，刺激眼睛，嚴重的甚至會導致失明。</p>
               <p class="no-margin-top">在這些囚牢之中，母雞絕對不可能築巢、砂浴、覓食、走動⋯⋯然而，這些都是作為雞隻與生俱來最基本的日常活動和需要。</p>
-              <p class="no-margin">瘋狂下蛋機器</p>
+              <p class="subtitle">瘋狂下蛋機器</p>
               <p class="no-margin-top">母雞在工業農場之中，也只不過是瘋狂下蛋機器。</p>
               <p class="no-margin-top">透過基因篩選，現時雞蛋的產量正處於歷史高峰，比50年前多出超過一倍——現時每隻母雞一年可以下蛋高達300隻，某些品種甚至可達500隻，即是平均每天生下超過一隻蛋。<p>
               <p class="no-margin-top">機器負荷過重，也會失靈，何況有血有肉毫無運動的母雞？母雞罹患生殖器官疾病，例如子宮垂脫，以及其他疾病如骨質疏鬆等等，比我們傷風感冒更加常見。蛋殻需要大量鈣質，瘋狂下蛋，便需要瘋狂多的鈣質。長期營養不良的母雞又如何應付得了？母雞虛弱便是常識。而蛋殻不夠鈣質，便容易碎裂。碎裂了的蛋會在生殖器官之中腐爛，引致嚴重腫痛及細菌感染。</p>
-              <p class="no-margin">強迫換羽</p>
+              <p class="subtitle">強迫換羽</p>
               <p class="no-margin-top">只要能夠增加產蛋量，何樂而不為？</p>
               <p class="no-margin-top">斷水、斷光、斷糧，歷時數天至數週，令母雞飽受壓力與驚嚇，從而使捱過一劫苟延殘喘的母雞羽毛脫落。羽毛脫落，便會引發新的下蛋週期。新的下蛋週期，便是新的商機。</p>
               <p class="no-margin-top">這種手法在美國、台灣和中國大陸都十分常見。</p>
-              <p class="no-margin">切喙</p>
-              <p class="no-margin-top">長期活在擠迫的惡劣環境下，會使雞隻產生巨大的心理壓力，繼而互相攻擊，甚至自相殘殺。要避免這種情況發生，當然不是從改善牠們的生活環境著手。奪去牠們的武器——喙——便可。</p>
-              <p class="no-margin-top">雞的喙部滿佈敏感的神經線，好比我們的嘴唇。可是，小雞出生約一星期後，便會遭到高溫刀片或燒烙機器在没有任何麻醉之下，切斷喙尖。極度敏感的神經線就此一刀兩斷，不過痛楚卻持續不斷。最可怕的是，牠們一生一般需要切喙兩次。</p>
-              <p class="no-margin-top">想像一下，如果那是我們。
-              </p>
-              <p class="no-margin">自己身體的囚犯</p>
+              <p class="subtitle">切喙</p>
+              <div uk-grid>
+                <div class="uk-width-2-3">
+                  <p class="no-margin-top">長期活在擠迫的惡劣環境下，會使雞隻產生巨大的心理壓力，繼而互相攻擊，甚至自相殘殺。要避免這種情況發生，當然不是從改善牠們的生活環境著手。奪去牠們的武器——喙——便可。</p>
+                  <p class="no-margin-top">雞的喙部滿佈敏感的神經線，好比我們的嘴唇。可是，小雞出生約一星期後，便會遭到高溫刀片或燒烙機器在没有任何麻醉之下，切斷喙尖。極度敏感的神經線就此一刀兩斷，不過痛楚卻持續不斷。最可怕的是，牠們一生一般需要切喙兩次。</p>
+                  <p class="no-margin-top">想像一下，如果那是我們。
+                  </p>
+                </div>
+                <div class="uk-width-1-3">
+                  <div class="image-with-caption">
+                    <img src="/images/debeaking.jpg" style="height: 100%;">
+                    <p>小雞被切喙</p>
+                  </div>
+                </div>
+              </div>
+              <p class="subtitle">自己身體的囚犯</p>
               <p class="no-margin-top">除了終生被鐵籠囚禁，母雞更被自己的身體囚禁。</p>
               <p class="no-margin-top">日以繼夜夜以繼日的瘋狂下蛋，使母雞從來不知道休息是甚麼一回事，直至死神來臨的一刻。<p>
               <p class="no-margin-top">母雞的壽命一般可達8-15年。可是，能夠在雞蛋工廠活到1-2歲的話，已經十分難得。剝皮脫骨，包裝妥當，又是另一份價廉味美的雞肉產品。</p>
-              <p class="no-margin">雞蛋以外，無限選擇</p>
+              <p class="subtitle">雞蛋以外，無限選擇</p>
               <p class="no-margin-top">知道雞蛋裏面裝著甚麼的人，大多會漸漸不吃雞蛋，以自己的鈔票，杯葛殘酷的雞蛋工業。他們以甚麼取替雞蛋？</p>
               <p class="no-margin-top">現時網上已有多不勝數的純素食譜和純素烘焙貼士等等，只怕我們時間有限，目不暇給。以芙蓉蛋為例，腐竹便可替代蛋漿；而喜馬拉雅山的黑鹽則具有蛋黃的味道；最近風行全球的「植物蛋」更是不在話下。營養方面，很多植物，例如蔬果、豆類、五榖類、種子類、果仁類等等，都富含人體所需的各種營養及植物蛋白質。<p>
               <p class="no-margin-top">斬開一條魚，流出的是鮮紅的血；敲碎一隻雞蛋，流出的卻是透明的淚。雞蛋以外，我們有無限選擇。</p>
@@ -295,10 +284,6 @@
               <ul class="uk-list remark-list">
                 <li>註一：太陽日報：每月濫殺10萬雞仔  漁署塞責 www.the-sun.on.cc/cnt/news/20151119/00410_004.html</li>
                 <li>註二：www.wing-vechta.de</li>
-								<li>[1] 太陽日報:每月濫殺10萬雞仔 漁署塞責 http://www.the-sun.on.cc/cnt/news/20151119/00410_004.html</li>
-								<li>[2] http://www.wing-vechta.de/en/themen/sexing/schnabelbehandlung_vor_dem_aus_1_1_1.html</li>
-								<li>[3] http://www.livescience.com/49633-chicks-count-like-humans.html</li>
-								<li>[4] European Food Safety Authority Journal (2005) 197, 1-23</li>
               </ul>
             </div>
           </div>
@@ -315,17 +300,17 @@
             </h3>
             <div class="main-img-container fish1"></div>
             <div class="main-content-block">
-              <p class="subtitle">魚兒，和其他動物一樣，能感受痛楚，卻最常被忽略</p>
-              <p class="no-margin">一樣會痛、一樣會驚慌的沉默魚兒</p>
+              <p class="title">魚兒，和其他動物一樣，能感受痛楚，卻最常被忽略</p>
+              <p class="subtitle">一樣會痛、一樣會驚慌的沉默魚兒</p>
               <p class="no-margin-top">愈來愈多科學研究證實，魚兒的感知能力其實和哺乳類動物十分相似。魚兒一樣會痛，一樣會驚慌，一樣有心理壓力。牠們有記憶，甚至有社交能力，例如會互相合作，共同尋找食物或對抗外敵。
               </p>
               <p class="no-margin-top">
               不過，和很多動物不同的是，魚兒沉默，不會叫喊。面對殘酷血腥的捕漁網，活在環境惡劣的養殖場，魚兒正是沉默的大多數。牠們每天只能以自己的鮮血，默默地代替叫不出的呼救聲。
               </p>
-              <p class="no-margin">過度捕魚</p>
+              <p class="subtitle">過度捕魚</p>
               <p class="no-margin-top">隨著人均收入上升，各種肉類的需求有增無減，魚肉當然並不例外。以香港為例，每年的人均海鮮消耗量已達70公斤，是全球人均消耗量的三倍有多。</p>
               <p>魚肉需求增加，漁獲自然也要增加。2014年，全球漁獲共約8,000萬噸，內陸水域則約1,000萬噸，規模前所未有，令人咋舌〔註一〕。不少慣於被人類食用的魚類因而漸漸面臨絕種危機，包括阿拉斯加鱈魚、大西洋鱈魚及鯡魚、秘魯鯷魚、鯖魚及吞拿魚等等。</p>
-              <p class="no-margin">殘酷的捕魚手法</p>
+              <p class="subtitle">殘酷的捕魚手法</p>
               <p class="no-margin">瘋狂的漁獲，來自瘋狂的捕魚手法。這些業界常用的手法殘酷不仁，而且往往嚴重破壞海洋生態：</p>
               <div class="fishing-methods">
                 <p class="no-margin">拖網：</p>
@@ -337,14 +322,14 @@
               </div>
               <p>以上捕魚手法一般歷時數小時至數天不等，而且天天上演，對海洋生物及生態環境的傷害，可想而知。</p>
               <p>這些手法更會造成「混獲（bycatch）」的問題，當中以拖網尤其嚴重。混獲禍及無辜，令很多本來不打算捕撈的海洋生物——例如海龜和海豚等等——死傷無數。無論是魚兒還是其他海洋生物，當牠們被漁網纏繞時，便會漸漸窒息淹死。而從海中被暴力撈上漁船期間，水壓急速的巨大變化，其他生物的撞擊擠壓，突如其來的心理恐懼⋯⋯令牠們死的死，未死的生不如死。即使被擲回海洋，亦是傷痕纍纍，命不久矣。</p>
-              <p class="no-margin">魚類養殖場︰海上的工業農場</p>
+              <p class="subtitle">魚類養殖場︰海上的工業農場</p>
               <p>魚類養殖場亦不見得比野生捕撈好。</p>
               <p class="no-margin-top">截至2014年，全球養殖魚獲已高達7,500萬噸，約佔人類食用量的一半。</p>
               <p class="no-margin">亞洲的養殖場以內陸為主，歐洲的則以海上為主。但不論是內陸還是海上，養殖場都需要捕捉其他魚兒，製成魚粉，以當作飼料餵養養殖魚。以三文魚為例，每公噸三文魚便需要至少3-5公噸的小魚作為飼料。</p>
               <p class="no-margin-top">捕捉野生小魚製作魚粉，不但會破壞海洋食物鏈，令許多中型及大型魚類失去食物來源；魚粉廠更會將油脂廢棄物直接排放到海洋，造成嚴重污染。而污染物則會積聚在以魚粉為糧食的養殖魚身上，無聲無息地進入人類的食物鏈。</p>
               <p class="no-margin">另外，魚類養殖場和陸上的工業農場如出一轍。密不透氣的養殖方式容易滋生寄生蟲和傳染病，而養殖場的解決辦法卻是使用大量抗生素、殺蟲劑及各種化學藥物，令人一時分不清到底那是魚類養殖場，還是抗藥細菌養殖場。進食養殖魚，與進食抗生素和抗藥細菌，其實没有甚麼分別。</p>
               <p class="no-margin-top">當然，海上養殖場的生化廢料及藥物同樣會直接排放到海洋，造成嚴重污染。</p>
-              <p class="no-margin">魚兒不是海鮮</p>
+              <p class="subtitle">魚兒不是海鮮</p>
               <p class="no-margin-top">殘酷的過度捕魚和魚類養殖場，使海洋生物的數量在極短時間之內暴跌。許多物種因而面臨絕種危機，嚴重威脅海洋生態系統。與此同時，亦為人類帶來可怕的海洋污染和食物安全等問題。
               </p>
               <p class="no-margin">因此，無論對健康還是環境而言，素食也許是最佳選擇。</p>
@@ -358,17 +343,6 @@
             <div class="main-content-block ">
               <ul class="uk-list remark-list">
                 <li>註一：“The State of World Fisheries and Aquaculture 2016”, FAO, 2016</li>
-                <li>[1] “Supporting sustainable seafood”, WWF Hong Kong, 2016</li>
-                <li>[2] “The State of World Fisheries and Aquaculture, 2016”, FAO, 2016</li>
-                <li>[3] "Overfishing of Inalnd Waters”, J.David Allan, Robin Abell, Zeb Hogan, Carmen Ravenga, B.W. Taylor, Robin L. Welcomme, Kirk O Winemiller, BioScience 55(12)</li>
-                <li>[4] “Worse things happen at sea: the welfare of wild caught fish, 2010” fishcount.org.uk</li>
-                <li>[5] 《動物的內心生活》, Peter Wohlleben, 商周出版, 2017年2月</li>
-                <li>[6] “Worse things happen at sea: the welfare of wild caught fish, 2010” fishcount.org.uk</li>
-                <li>[7] “The State of World Fisheries and Aquaculture, 2016”, FAO, 2016</li>
-                <li>[8]《壞農業..廉價肉品背後的恐怖真相》第五章..水產養殖業，Philip Lymbery & Isabel Oakeshott著，鄭襄憶、游卉庭，如果出版</li>
-                <li>[9] "How sea lice from salmon farms may cause wild salmonid declines in Europe and North America and be a threat to fishes elsewhere", Mark J. Costello, The Royal Society, July 2009</li>
-                <li>[10] “Sea Trout Loss Linked to Salmon Farm Parasite”, James Owens, National Geographic News, Oct 2002</li>
-                <li>[11] “Farmed Salmon Industry Causing Global Sea Lice Crisis”. Lorraine Chow, April 2017</li>
               </ul>
             </div>
           </div>

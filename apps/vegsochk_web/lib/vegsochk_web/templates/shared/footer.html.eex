@@ -21,13 +21,17 @@
           </li>
         </ul>
       </div>
-      <div class="footer-info-right">
+      <div class="footer-info-middle">
         <ul class="uk-list">
           <li><a href="/why-vegan">純素主義</a></li>
           <li><a href="/health">健康</a></li>
           <li><a href="/animals">動物</a></li>
           <li><a href="/environment-and-justice">環境</a></li>
           <li><a href="/articles">專欄文章</a></li>
+        </ul>
+      </div>
+      <div class="footer-info-right">
+        <ul class="uk-list">
           <li><a href="/vegan-tips">素食貼士</a></li>
           <li><a href="/about-us">關於我們</a></li>
           <li><a href="/donation">支持我們</a></li>

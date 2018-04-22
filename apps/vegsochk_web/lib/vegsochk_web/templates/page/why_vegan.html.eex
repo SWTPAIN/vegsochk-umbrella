@@ -15,7 +15,7 @@
 		<ul uk-accordion>
 			<li>
 				<h3 class="uk-accordion-title accordion-title">
-					甚麼是純素
+				純素主義（Veganism）	
 				</h3>
 				<div class="uk-accordion-content">
           <p>純素主義（Veganism）是一種盡量避免傷害動物的生活態度，涵蓋日常生活的方方面面：</p>
@@ -31,13 +31,22 @@
 			</li>
 			<li>
 				<h3 class="uk-accordion-title accordion-title">
-          為甚麼吃純素
+          為甚麼純素？
 				</h3>
 				<div class="uk-accordion-content">
           <p>有研究指出，2014年有160萬香港人每週最少一天吃素。為甚麼素食漸漸在香港以至世界各地蔚然成風？</p>
-          <h2 class="title">
-            四個純素的好理由
-          </h2>
+					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
+						<div class="uk-width-auto@m">
+              <img class="reason-image" src="./images/heart.png">
+							<p class="label-title">健康</p>
+						</div>
+						<div class="uk-width-expand@m">
+              <p>吃純素最直接的得益者，是我們自己的身體。</p>
+              <p>大量科學研究經已證實，進食過多肉類、蛋製品或奶製品容易導致多種常見疾病，例如癡肥、糖尿病、心血管病、高膽固醇，甚至癌症等等。</p>
+              <p>正確的純素飲食不單能夠提供人體所需的一切營養，更可預防疾病，改善病情，是對我們身體最好的投資。</p>
+						</div>
+					</div>
+
 					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
 						<div class="uk-width-auto@m">
               <img class="reason-image" src="./images/pig.png">
@@ -48,17 +57,6 @@
               <p>在現代的工業農場之中，豬牛羊不像我們家中的貓狗，被視為有血有肉有靈魂的生命，而只被當作一堆堆無情感但會叫喊的死物，一件件不會痛但會流血的商品。</p> 
               <p>雞蛋及牛奶工業則像是隱形殺手。我們看著碟上的雞蛋或杯中的牛奶，很難會聯想到雞蛋及牛奶工業如何殘害雞牛。我們怎會想到，全球每天有近700萬隻小公雞，竟然單純因為不能生蛋，出生後便隨即被活生生殘殺？我們怎會想到，母牛一生不停被人工授孕，猶如強姦，為的只是要牠們不斷產奶？小牛出生後，不是繼承媽媽當產奶機器，就是變身小牛柳？</p>
               <p>很多人說吃狗肉殘忍，是的，但其實吃豬肉，食雞蛋，飲牛奶，只有過之而無不及。</p>
-						</div>
-					</div>
-					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
-						<div class="uk-width-auto@m">
-              <img class="reason-image" src="./images/heart.png">
-							<p class="label-title">健康</p>
-						</div>
-						<div class="uk-width-expand@m">
-              <p>吃純素最直接的得益者，是我們自己的身體。</p>
-              <p>大量科學研究經已證實，進食過多肉類、蛋製品或奶製品容易導致多種常見疾病，例如癡肥、糖尿病、心血管病、高膽固醇，甚至癌症等等。</p>
-              <p>正確的純素飲食不單能夠提供人體所需的一切營養，更可預防疾病，改善病情，是對我們身體最好的投資。</p>
 						</div>
 					</div>
 					<div class="uk-grid-divider uk-child-width-expand@s" uk-grid>
@@ -96,13 +94,15 @@
 			<li> 
 				<h3 class="uk-accordion-title accordion-title">素食主義（Vegetarianism）</h3>
 				<div class="uk-accordion-content">
-          <p>除了純素主義，其他同樣不吃肉類的素食主義（Vegetarianism）主要有：</p>
-          <br/>
-          <p>蛋奶素食（Lacto-ovo-vegetarianism）：不吃肉類，但會食用蛋製品和奶製品（例如芝士、乳酪）</p>
-          <p>蛋素食（Ovo-vegetarianism）：不吃肉類和奶製品，但會食用蛋製品</p>
-          <p>奶素食（Lacto-vegetarianism）：不吃肉類和蛋製品，但會食用奶製品</p>
-          <br/>
-          <p>各種素食主義的共通點都是不吃肉類，分別只在於肉類之外會吃甚麼。「蛋奶素」吃蛋奶，「蛋素」吃蛋，「奶素」吃奶，如此類推。坊間另有「海鮮素食／魚素食（Pescatarianism）」一說，但是基於海洋動物的肉也是肉類，所以一般不算是素食的一種。</p>
+          <article class="vegetarianism-article">
+            <p>除了純素主義，其他同樣不吃肉類的素食主義（Vegetarianism）主要有：</p>
+            <br/>
+            <p>蛋奶素食（Lacto-ovo-vegetarianism）：不吃肉類，但會食用蛋製品和奶製品（例如芝士、乳酪）</p>
+            <p>蛋素食（Ovo-vegetarianism）：不吃肉類和奶製品，但會食用蛋製品</p>
+            <p>奶素食（Lacto-vegetarianism）：不吃肉類和蛋製品，但會食用奶製品</p>
+            <br/>
+            <p>各種素食主義的共通點都是不吃肉類，分別只在於肉類之外會吃甚麼。「蛋奶素」吃蛋奶，「蛋素」吃蛋，「奶素」吃奶，如此類推。坊間另有「海鮮素食／魚素食（Pescatarianism）」一說，但是基於海洋動物的肉也是肉類，所以一般不算是素食的一種。</p>
+          </article>
 				</div>
 			</li>
 			<li> 

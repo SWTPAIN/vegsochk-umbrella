@@ -87,7 +87,8 @@ export default class ArticleForm extends Component {
                 toolbar={{
                   colorPicker: {
                     colors: ['#addbcb', '#b3ddce', '#00becd', '#aeb0a9', '#ffc6a2', '#535354']
-                  }
+									},
+									history: { inDropdown: false }
                 }}
                 editorState={bodyState}
                 wrapperClassName='demo-wrapper'

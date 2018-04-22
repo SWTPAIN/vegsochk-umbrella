@@ -8,10 +8,12 @@
 }
 
 %button {
-  font-weight: 700;
+  font-weight: 400;
   border-width: 2px;
   letter-spacing: 0.6em;
   text-indent: 0.6em;
+	font-size: 1rem !important;
+	height: 3rem !important;
 }
 
 .donate-button {

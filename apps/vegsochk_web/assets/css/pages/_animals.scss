@@ -78,8 +78,16 @@ $max-text-width: 800px;
     }
 	}
   
+	.title {
+		font-size: 24px;
+		font-weight: 600;
+		padding-bottom: 10px;
+	}
+
   .subtitle {
-    color: $white;
+		font-size: 21px;	
+		border-bottom: 2px solid #ccc;
+		display: inline-block;
   }
 
   .pig-video {
@@ -202,10 +210,6 @@ $max-text-width: 800px;
     border-top: 1px solid $white;
     padding-top:20px;
   } 
-
-	.subtitle {
-		font-size: 22px;	
-	}
 
 	.remark-text, .remark-list {
 		font-size: 10px;

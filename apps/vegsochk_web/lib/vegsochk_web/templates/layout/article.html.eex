@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <%= ogtags(assigns) %>
-    <title>Hello Vegsochk!</title>
+    <title>香港素食會 Hong Kong Veg Society</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 

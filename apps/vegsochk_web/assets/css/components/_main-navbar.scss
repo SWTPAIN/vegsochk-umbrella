@@ -8,6 +8,9 @@
     @media screen and (max-width: $breakpoint-small) {
       display: none;
     }    
+		a {
+			font-size: 0.85rem;
+		}
   }
 	.nav-toggle-button {
     @media screen and (min-width: $breakpoint-small) {
@@ -16,7 +19,7 @@
 	}
   li {
     &.logo {
-      width: 200px;
+      width: 160px;
     }
     padding: 0 10px;
     a {

@@ -19,36 +19,39 @@
         <p>歷史</p>
         <p>前身為「香港素食學會」，2004年加入在香港創立的註冊慈善團體「綠色生活教育基金」，與「Club O」及「Club O店」聯合運作。2005年易名「香港素食會」。</p>
         <p>架構</p>
-        <p>主席為李宇銘博士，副主席為黃佩詩女士。本屆共有12名常務委員及若干執行委員負責日常決策及執行工作。主席、副主席及所有常委皆是純素者（vegan），並且全是義工。</p>
+        <p>本屆共有12名常務委員及若干執行委員負責日常決策及執行工作。主席、副主席及所有常委皆是純素者（vegan），並且全是義工。</p>
+        <p class="no-margin">榮譽會長：周兆祥博士、孔慶玲女士</p>
+        <p class="no-margin">主席：李宇銘博士</p>
+        <p class="no-margin">副主席：黃佩詩女士</p>
+        <p class="no-margin">顧問：胡錦文先生、葉偉健先生</p>
+        <p class="no-margin">醫學顧問：梁淑芳醫生、盧麗愛醫生</p>
       </div>
       <ul class='tabs' uk-tab>
         <li class="tab-item active">
           <span class='tab-text'>聯絡我們</span>
         </li>
       </ul>
-      <div class="uk-container">
-        <div class="uk-child-width-1-2@s uk-text-center" uk-grid>
-          <div class="contact-methods-container">
-            <p>綠色生活教育基金（逢星期一休息）</p>
-            <p>地址: 香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室</p>
-            <p>電話: (+852) 2619 0000</p>
-            <p>電郵: <a href="mailto:info@vegsochk.org">info@vegsochk.org</a></p>
-            <p>
-              <span uk-icon="icon: facebook"></span>
-              <a target="_blank" href="https://www.facebook.com/vegsochk">
-                VEGSOCHK
-              </a>
-            </p>
-            <p>
-              <span uk-icon="icon: instagram"></span>
-              <a target="_blank" href="https://www.instagram.com/vegsochk/">
-                VEGSOCHK
-              </a>
-            </p>
-          </div>
-          <div class="location-map-container">
-            <div id="location-map"></div>
-          </div>
+      <div class="contact-us-container">
+        <div class="contact-methods-container">
+          <p>綠色生活教育基金（逢星期一休息）</p>
+          <p>地址: 香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室</p>
+          <p>電話: (+852) 2619 0000</p>
+          <p>電郵: <a href="mailto:info@vegsochk.org">info@vegsochk.org</a></p>
+          <p>
+            <span uk-icon="icon: facebook"></span>
+            <a target="_blank" href="https://www.facebook.com/vegsochk">
+              VEGSOCHK
+            </a>
+          </p>
+          <p>
+            <span uk-icon="icon: instagram"></span>
+            <a target="_blank" href="https://www.instagram.com/vegsochk/">
+              VEGSOCHK
+            </a>
+          </p>
+        </div>
+        <div class="location-map-container">
+          <div id="location-map"></div>
         </div>
       </div>
     </div>
