@@ -9,6 +9,7 @@
     <%= ogtags(assigns) %>
     <title>香港素食會 Hong Kong Veg Society</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <%= ga_tag %>
   </head>
 
   <body>
