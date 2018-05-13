@@ -12,7 +12,7 @@ defmodule Vegsochk.CMS.Article do
     field :slug, :string
 
     belongs_to :author, Author
-    many_to_many :tags, Tag, join_through: "articles_tags",  on_replace: :delete
+    many_to_many :tags, Tag, join_through: "articles_tags", on_delete: :delete_all
     timestamps()
   end
 
