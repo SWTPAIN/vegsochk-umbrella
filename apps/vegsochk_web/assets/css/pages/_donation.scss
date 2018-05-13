@@ -3,9 +3,17 @@
   margin: 0 auto;
   padding-top: 0;
 
+	p {
+		&.bold {
+			font-weight: 700;
+		}
+	}
 	.banner {
 		height: 400px;
-		background: url("/images/happy-pig.png");
+		background: url("/images/happy-pig.png") no-repeat center center;
+		@media (max-width: $breakpoint-small) {
+			height: 380px;
+		}
 	}
 	.paypal-container {
 		display: flex;

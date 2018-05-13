@@ -35,11 +35,6 @@ const categories = [
     id: 'fitness',
     icon: '/images/fitness-icon.png',
     title: '純素健體'
-  },
-  {
-    id: 'desserts',
-    icon: '/images/cake-icon.png',
-    title: '純素甜品'
   }
 ]
 
@@ -202,7 +197,7 @@ export default class OutsideEatingTips extends Component {
               description='以英語為主的香港純素者群組，定期舉辦講座活動'
             />
             <WebsiteItem
-              link='https://www.facebook.com/groups/hongkongpigsave/'
+							link='https://www.facebook.com/hongkongpigsave/'
               name='救救港豬（Hong Kong Pig Save）'
               description='為農場動物發聲的組織。透過在屠房外目送被送往屠宰的豬隻和教育大眾的工作，從而提高大眾對畜牧業的關注和反思。'
             />
@@ -212,7 +207,7 @@ export default class OutsideEatingTips extends Component {
               description='藉著不定期舉辦的大小活動，如醫生講座，bb派對，bb food工作坊，增強家長對素食信心，並互相分享育兒經驗，以及寶寶素食所面對的困難。'
             />
             <WebsiteItem
-              link='https://www.facebook.com/groups/earthlingsexperiencehk/'
+							link='https://www.facebook.com/EarthlingsExperienceHK/'
               name='The Earthlings Experience Hong Kong'
               description='定期在街頭以手提電腦放映紀錄片Earthlings（地球公民）的片段，喚醒途人對食用動物的關注。'
             />
@@ -221,7 +216,7 @@ export default class OutsideEatingTips extends Component {
             </h2>
             <WebsiteItem
               link='http://www.asia.mercyforanimals.org'
-              name='憫惜動物（Mercy For Animals'
+              name='憫惜動物（Mercy For Animals)'
               description='專注於農場動物的國際愛護動物組織。亞洲分部。'
             />
             <WebsiteItem
@@ -241,7 +236,7 @@ export default class OutsideEatingTips extends Component {
             />
             <WebsiteItem
               link='https://www.hkcva.org'
-              name='香港天主教素食會 （網站/facebook）'
+              name='香港天主教素食會 （網站/Facebook）'
               description='https://www.facebook.com/HKCVA'
             />
             <WebsiteItem
@@ -254,7 +249,11 @@ export default class OutsideEatingTips extends Component {
               name='The Pure Panda'
               description='由香港人參與研發的純素化妝品及日用品搜尋平台。暫時全港有逾百處售賣點，全球則多達40,000處。'
             />
-
+            <WebsiteItem
+              link='https://www.thepurepanda.com'
+              name='香港蔬食協會(Hong Kong Vegan Association)'
+              description=''
+            />
           </div>
         )
       case 'books':
@@ -277,7 +276,7 @@ export default class OutsideEatingTips extends Component {
             <h2 className='subtitle'>
 							心理
             </h2>
-            <BookItem name='《盲目的肉食主義：我們愛狗卻吃豬、穿牛皮？》——梅樂妮・喬伊（Melanie Joy）' />
+            <BookItem name='《盲目的肉食主義：我們愛狗卻吃豬、穿牛皮？》——梅樂妮・喬伊（Dr. Melanie Joy）' />
             <h2 className='subtitle'>
 							其他
             </h2>
@@ -586,21 +585,6 @@ export default class OutsideEatingTips extends Component {
                 <a href='https://www.hktvmall.com/hktv/zh/search?q=::category:BB01000021541:categoryHotPickOrder:BB01000021541' target='_blank'>
 									https://www.hktvmall.com/hktv/zh/search?q=::category:BB01000021541:categoryHotPickOrder:BB01000021541
                 </a>
-              </div>
-            </div>
-          </div>
-        )
-      case 'desserts':
-        return (
-          <div className='item-list uk-container'>
-            <div className='item uk-container'>
-              <div className='website-info-container'>
-                <p className='website-name'>花花純素甜品屋</p>
-                <p className='website-name'>PLANT CAKEHTTPS</p>
-                <p className='website-name'>PLANTY - RAW VEGAN PATISSERIE</p>
-                <p className='website-name'>MERCY CAKEHTTPS</p>
-                <p className='website-name'>T.U.P (THE UNIQUE PEACE)</p>
-                <p className='website-name'>REBEL GIRL</p>
               </div>
             </div>
           </div>
