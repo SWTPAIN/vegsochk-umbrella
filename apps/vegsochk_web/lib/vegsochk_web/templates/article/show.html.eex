@@ -1,8 +1,10 @@
 <div class="article-main-content">
-  <div
-    style="background-image: url(<%= @article.cover_image %>);"
-    class="article-cover-image">
+  <div class="article-cover-image">
+    <a href="<%= article_path(@conn, :show, @article) %>">
+      <img src="<%= @article.cover_image %>">
+    </a>
   </div>
+ 
   <div class="article-title">
     <%= @article.title %>
   </div>
