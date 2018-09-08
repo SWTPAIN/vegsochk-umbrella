@@ -25,6 +25,17 @@
         <p class="no-margin">副主席：黃佩詩女士</p>
         <p class="no-margin">顧問：胡錦文先生、葉偉健先生</p>
         <p class="no-margin">醫學顧問：梁淑芳醫生、盧麗愛醫生</p>
+        <p>常務委員：</p>
+        <p class="no-margin">陳穎欣 Joan Chan（召集人)</p>
+        <p class="no-margin">蔡琪 Dora Choi</p>
+        <p class="no-margin">陳詩韻 Wendy Chan</p>
+        <p class="no-margin">楊兆權 Sky Yeung</p>
+        <p class="no-margin">謝業輝 Fai Tse</p>
+        <p class="no-margin">蔡嘉輝 KaFai Choi</p>
+        <p class="no-margin">張文敏 Mandy Cheung</p>
+        <p class="no-margin">陳頌雅 Diana Chan</p>
+        <p class="no-margin">吳嘉善 karsin Claire Ng</p>
+        <p class="no-margin">梁嘉儀 Leung Ka Yee Koey</p>
       </div>
       <ul class='tabs' uk-tab>
         <li class="tab-item active">
@@ -34,9 +45,9 @@
       <div class="contact-us-container">
         <div class="contact-methods-container">
           <p>綠色生活教育基金（逢星期一休息）</p>
-          <p>地址: 香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室</p>
-          <p>電話: (+852) 2619 0000</p>
-          <p>電郵: <a href="mailto:info@vegsochk.org">info@vegsochk.org</a></p>
+          <p>地址：香港九龍旺角亞皆老街80-86號昌明大廈7字樓F, G, H室</p>
+          <p>電話：(+852) 2619 0000</p>
+          <p>電郵：<a href="mailto:info@vegsochk.org">info@vegsochk.org</a></p>
           <p>
             <span uk-icon="icon: facebook"></span>
             <a target="_blank" href="https://www.facebook.com/vegsochk">
