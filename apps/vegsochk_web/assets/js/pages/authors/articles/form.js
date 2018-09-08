@@ -91,8 +91,8 @@ export default class ArticleForm extends Component {
 									history: { inDropdown: false }
                 }}
                 editorState={bodyState}
-                wrapperClassName='demo-wrapper'
-                editorClassName='demo-editor'
+                wrapperClassName='article-wrapper'
+                editorClassName='article-form-container'
                 onEditorStateChange={this.onEditorStateChange.bind(this)}
               />
             </div>

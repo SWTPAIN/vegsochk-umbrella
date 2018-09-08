@@ -17,6 +17,9 @@ $title-font-size: 24px;
   .post-main-image {
     height: 280px;
     width: 100%;
+    @media screen and (max-width: $breakpoint-medium) {
+      height: auto;
+    }
     img {
       height: 100%;
       width: 100%;

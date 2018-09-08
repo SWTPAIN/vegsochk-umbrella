@@ -644,14 +644,14 @@ export default class OutsideEatingTips extends Component {
           <div className='item-list uk-container'>
             <FitnessItem
               name='Revol Yoga & Functional'
-              description='秉持「素食健身」理念的瑜伽及體適能訓練中心，希望大眾能夠體驗「素食x運動」對健康的莫大益處。所有導師都是純素者。'
+              description='秉持「素食健身」理念的瑜伽及體適能訓練中心，希望大眾能夠體驗「素食x運動」對健康的莫大益處。推廣純素理念'
               link='https://www.facebook.com/Revolfitness'
-              address='長沙灣青山道454號3樓'
-              phone='(+852) 9854 0365'
+              address='荔枝角青山道489-491號香港工業中心B座3樓2B室'
+              phone='(+852) 5533 7150'
             />
             <FitnessItem
               name='Revol Vegan fitness'
-              description='香港首間提倡純素主義的健身中心，幫助大眾透過環保健康的飲食態度改善體型。所有導師都是純素者。'
+              description='香港首間提倡純素主義的健身中心，幫助大眾透過環保健康的飲食態度改善體型。推廣純素理念'
               link='https://www.facebook.com/Revolfitness'
               address='長沙灣青山道454號3樓'
               phone='(+852) 9854 0365'
