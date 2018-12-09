@@ -1,10 +1,53 @@
 import React, { Component } from "react";
 //import { Editor } from 'react-draft-wysiwyg'
 import { Editor } from "slate-react";
+import { isKeyHotkey } from 'is-hotkey'
 import { Value } from "slate";
 import Select, { Option } from "rc-select";
 import styles from "./form.css";
 import Html from "slate-html-serializer";
+import styled from "@emotion/styled";
+
+const isBoldHotkey = isKeyHotkey('mod+b')
+const isItalicHotkey = isKeyHotkey('mod+i')
+const isUnderlinedHotkey = isKeyHotkey('mod+u')
+const isCodeHotkey = isKeyHotkey('mod+`')
+
+export const Button = styled("span")`
+  cursor: pointer;
+  color: ${props =>
+    props.reversed
+      ? props.active
+        ? "white"
+        : "#aaa"
+      : props.active
+      ? "black"
+      : "#ccc"};
+`;
+
+export const Icon = styled(({ className, ...rest }) => {
+  return <span className={`material-icons ${className}`} {...rest} />;
+})`
+  font-size: 18px;
+  vertical-align: text-bottom;
+`;
+
+export const Menu = styled("div")`
+  & > * {
+    display: inline-block;
+  }
+  & > * + * {
+    margin-left: 15px;
+  }
+`;
+
+export const Toolbar = styled(Menu)`
+  position: relative;
+  padding: 1px 18px 17px;
+  margin: 0 -20px;
+  border-bottom: 2px solid #eee;
+  margin-bottom: 20px;
+`;
 
 const htmlSerializer = new Html();
 
@@ -19,9 +62,16 @@ const BULLETED_LIST = "BULLETED_LIST";
 const LIST_ITEM = "LIST_ITEM";
 
 export default class ArticleForm extends Component {
-  onEditorStateChange(editorState) {
-    this.props.handleBodyStateChange(editorState);
+  constructor(props) {
+    super(props);
+    this.state = {
+      editorValue: htmlSerializer.deserialize(props.bodyHtml)
+    };
   }
+
+  handleEditorValueChange = ({ value: editorValue }) => {
+    this.setState({ editorValue });
+  };
 
   handleTitleInputChange(e) {
     this.props.handleTitleChange(e.target.value);
@@ -33,6 +83,14 @@ export default class ArticleForm extends Component {
 
   handleCoverImageInputChange(e) {
     this.props.handleCoverImageChange(e.target.value);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    // You don't have to do this check first, but it can help prevent an unneeded render
+    const editorValue = htmlSerializer.deserialize(nextProps.bodyHtml);
+    if (nextProps.bodyHtml !== this.props.bodyHtml) {
+      this.setState({ editorValue });
+    }
   }
 
   handleCreateButtonClick(e) {
@@ -47,6 +105,10 @@ export default class ArticleForm extends Component {
     });
   }
 
+  ref = editor => {
+    this.editor = editor;
+  };
+
   render() {
     const {
       bodyHtml,
@@ -57,7 +119,6 @@ export default class ArticleForm extends Component {
       selectedTagIds,
       coverImage
     } = this.props;
-    const value = htmlSerializer.deserialize(bodyHtml);
     return (
       <div>
         <form>
@@ -117,24 +178,15 @@ export default class ArticleForm extends Component {
             <div className="uk-margin">
               {this.renderToolbar()}
               <Editor
-                value={value}
-                toolbar={{
-                  colorPicker: {
-                    colors: [
-                      "#addbcb",
-                      "#b3ddce",
-                      "#00becd",
-                      "#aeb0a9",
-                      "#ffc6a2",
-                      "#535354"
-                    ]
-                  },
-                  history: { inDropdown: false }
-                }}
-                // editorState={bodyState}
-                wrapperClassName="article-wrapper"
-                editorClassName="article-form-container"
-                onEditorStateChange={this.onEditorStateChange.bind(this)}
+                spellCheck
+                autoFocus
+                placeholder="Enter some rich text..."
+                ref={this.ref}
+                value={this.state.editorValue}
+                onChange={this.handleEditorValueChange}
+                onKeyDown={this.onKeyDown}
+                renderNode={this.renderNode}
+                renderMark={this.renderMark}
               />
             </div>
           </fieldset>
@@ -151,12 +203,30 @@ export default class ArticleForm extends Component {
     );
   }
 
+  onKeyDown = (event, editor, next) => {
+    let mark;
+
+    if (isBoldHotkey(event)) {
+      mark = "bold";
+    } else if (isItalicHotkey(event)) {
+      mark = "italic";
+    } else if (isUnderlinedHotkey(event)) {
+      mark = "underlined";
+    } else if (isCodeHotkey(event)) {
+      mark = "code";
+    } else {
+      return next();
+    }
+
+    event.preventDefault();
+    editor.toggleMark(mark);
+  };
   renderBlockButton = (type, icon) => {
     let isActive = this.hasBlock(type);
 
     if ([NUMBERED_LIST, BULLETED_LIST].includes(type)) {
       // const { value } = this.state;
-      const value = this.bodyValue
+      const value = this.state.editorValue;
       const parent = value.document.getParent(value.blocks.first().key);
       isActive = this.hasBlock(LIST_ITEM) && parent && parent.type === type;
     }
@@ -176,7 +246,28 @@ export default class ArticleForm extends Component {
   };
 
   renderToolbar = () => {
-    return <div>{this.renderMarkButtons()}</div>;
+    return <Toolbar>{this.renderMarkButtons()}</Toolbar>;
+  };
+
+  renderNode = (props, editor, next) => {
+    const { attributes, children, node } = props;
+
+    switch (node.type) {
+      case "block-quote":
+        return <blockquote {...attributes}>{children}</blockquote>;
+      case "bulleted-list":
+        return <ul {...attributes}>{children}</ul>;
+      case "heading-one":
+        return <h1 {...attributes}>{children}</h1>;
+      case "heading-two":
+        return <h2 {...attributes}>{children}</h2>;
+      case "list-item":
+        return <li {...attributes}>{children}</li>;
+      case "numbered-list":
+        return <ol {...attributes}>{children}</ol>;
+      default:
+        return next();
+    }
   };
 
   renderMarkButtons = () => (
@@ -185,28 +276,21 @@ export default class ArticleForm extends Component {
       {this.renderMarkButton("italic", "format_italic")}
       {this.renderMarkButton("underlined", "format_underlined")}
       {this.renderMarkButton("code", "code")}
-      <span
-        className={styles.button}
-        onMouseDown={this.onClickLink}
-        data-active={this.hasLinks()}
-      >
-        <span className={`${styles.materialIcons} material-icons`}>link</span>
-      </span>
-      {this.renderBlockButton(HEADING_1, "looks_one")}
-      {this.renderBlockButton(HEADING_2, "looks_two")}
-      {this.renderBlockButton(BLOCK_QUOTE, "format_quote")}
-      {this.renderBlockButton(NUMBERED_LIST, "format_list_numbered")}
-      {this.renderBlockButton(BULLETED_LIST, "format_list_bulleted")}
+      {this.renderBlockButton("heading-one", "looks_one")}
+      {this.renderBlockButton("heading-two", "looks_two")}
+      {this.renderBlockButton("block-quote", "format_quote")}
+      {this.renderBlockButton("numbered-list", "format_list_numbered")}
+      {this.renderBlockButton("bulleted-list", "format_list_bulleted")}
     </div>
   );
 
-  hasBlock = (type) => {
-    return this.bodyValue.blocks.some(node => node.type === type)
-}
+  hasBlock = type => {
+    return this.state.editorValue.blocks.some(node => node.type === type);
+  };
 
   hasMark = type => {
-    const value = htmlSerializer.deserialize(this.props.bodyHtml);
-    return value.activeMarks.some(mark => mark.type === type);
+    console.log("this.state.editorValue", this.state.editorValue);
+    return this.state.editorValue.activeMarks.some(mark => mark.type === type);
   };
 
   get bodyValue() {
@@ -214,24 +298,86 @@ export default class ArticleForm extends Component {
   }
 
   hasLinks = () => {
-    // const { value } = this.state
-    const value = htmlSerializer.deserialize(this.props.bodyHtml);
-    return value.inlines.some(inline => inline.type === "link");
+    return this.state.editorValue.inlines.some(
+      inline => inline.type === "link"
+    );
+  };
+
+  onClickBlock = (event, type) => {
+    event.preventDefault();
+
+    const { editor } = this;
+    const { value } = editor;
+    const { document } = value;
+
+    // Handle everything but list buttons.
+    if (type != "bulleted-list" && type != "numbered-list") {
+      const isActive = this.hasBlock(type);
+      const isList = this.hasBlock("list-item");
+
+      if (isList) {
+        editor
+          .setBlocks(isActive ? DEFAULT_NODE : type)
+          .unwrapBlock("bulleted-list")
+          .unwrapBlock("numbered-list");
+      } else {
+        editor.setBlocks(isActive ? DEFAULT_NODE : type);
+      }
+    } else {
+      // Handle the extra wrapping required for list buttons.
+      const isList = this.hasBlock("list-item");
+      const isType = value.blocks.some(block => {
+        return !!document.getClosest(block.key, parent => parent.type == type);
+      });
+
+      if (isList && isType) {
+        editor
+          .setBlocks(DEFAULT_NODE)
+          .unwrapBlock("bulleted-list")
+          .unwrapBlock("numbered-list");
+      } else if (isList) {
+        editor
+          .unwrapBlock(
+            type == "bulleted-list" ? "numbered-list" : "bulleted-list"
+          )
+          .wrapBlock(type);
+      } else {
+        editor.setBlocks("list-item").wrapBlock(type);
+      }
+    }
+  };
+
+  onClickMark = (event, type) => {
+    event.preventDefault();
+    this.editor.toggleMark(type);
   };
 
   renderMarkButton = (type, icon) => {
     const isActive = this.hasMark(type);
-    const onMouseDown = event => this.onClickMark(event, type);
-
     return (
-      // eslint-disable-next-line react/jsx-no-bind
-      <span
-        className={styles.button}
-        onMouseDown={onMouseDown}
-        data-active={isActive}
+      <Button
+        active={isActive}
+        onMouseDown={event => this.onClickMark(event, type)}
       >
-        <span className={`${styles.materialIcons} material-icons`}>{icon}</span>
-      </span>
+        <Icon>{icon}</Icon>
+      </Button>
     );
+  };
+
+  renderMark = (props, editor, next) => {
+    const { children, mark, attributes } = props;
+
+    switch (mark.type) {
+      case "bold":
+        return <strong {...attributes}>{children}</strong>;
+      case "code":
+        return <code {...attributes}>{children}</code>;
+      case "italic":
+        return <em {...attributes}>{children}</em>;
+      case "underlined":
+        return <u {...attributes}>{children}</u>;
+      default:
+        return next();
+    }
   };
 }

@@ -69,7 +69,7 @@ class App extends Component {
         handleTitleChange={title => this.setState({title})}
         handleTldrChange={tldr => this.setState({tldr})}
         handleCoverImageChange={coverImage => this.setState({coverImage})}
-        handleBodyStateChange={bodyState => this.setState({bodyState})}
+        handleBodyHtmlChange={bodyHtml => this.setState({bodyHtml})}
         handleSubmit={this.handleFormSubmit.bind(this)} />)
   }
 }
