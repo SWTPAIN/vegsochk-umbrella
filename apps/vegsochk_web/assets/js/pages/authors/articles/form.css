@@ -1,0 +1,28 @@
+.articleFormContainer {
+  height: 800px;
+}
+
+.materialIcons {
+  font-size: 18px;
+  vertical-align: text-bottom;
+}
+
+.button {
+  color: #ccc;
+  cursor: pointer;
+}
+
+.button[data-active='true'] {
+  color: black;
+}
+
+/* Link's tooltip, it will hold */
+.linkTooltip {
+  cursor: default;
+  pointer-events: auto;
+}
+
+.linkTooltip:hover {
+  visibility: visible;
+  opacity: 1;
+}

@@ -5,6 +5,10 @@ var webpack = require("webpack");
 var env = process.env.MIX_ENV || "dev";
 var isProduction = env === "prod";
 
+// Create multiple instances
+const extractHTMLCSS = new ExtractTextPlugin('css/app.css');
+const extractComponentCss = new ExtractTextPlugin('css/app-component.css');
+
 module.exports = {
   entry: {
     app: ["./js/app.js", "./css/app.scss"],
@@ -26,10 +30,15 @@ module.exports = {
       {
         test: /\.(sass|scss)$/,
         include: /css/,
-        use: ExtractTextPlugin.extract({
+        use: extractHTMLCSS.extract({
           fallback: "style-loader",
           use: [
-            { loader: "css-loader" },
+            {
+              loader: "css-loader",
+              // options: {
+              //   modules: true
+              // }
+            },
             {
               loader: "sass-loader",
               options: {
@@ -41,13 +50,29 @@ module.exports = {
         })
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.css$/,
         include: /js/,
+        use: extractComponentCss.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "css-loader",
+              options: {
+                modules: true
+              }
+            }
+          ]
+        })
+      },      
+      {
+        test: /\.(js|jsx)$/,
+        include: /(js|jsx)/,
         use: [
           {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react"]
+              presets: ["@babel/preset-env", "@babel/preset-react"],
+              plugins: ["@babel/plugin-proposal-class-properties"]
             }
           }
         ]
@@ -56,7 +81,8 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([{ from: "./static" }]),
-    new ExtractTextPlugin("css/app.css"),
+    extractHTMLCSS,
+    extractComponentCss,
     new webpack.ProvidePlugin({
       $: "jquery",
       jQuery: "jquery",

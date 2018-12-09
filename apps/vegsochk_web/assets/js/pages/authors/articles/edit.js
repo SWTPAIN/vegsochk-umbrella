@@ -13,7 +13,8 @@ class App extends Component {
       title: '',
       tldr: '',
       coverImage: '',
-      bodyState: EditorState.createEmpty(),
+      // bodyState: EditorState.createEmpty(),
+      bodyHtml: '',
       tags: [],
       selectedTagIds: []
     }
@@ -30,11 +31,11 @@ class App extends Component {
       .then(response => {
         console.log('response', response)
 
-        const {title, tldr, coverImage, body, tagIds: selectedTagIds} = response.data
-        const contentBlock = htmlToDraft(body)
-        const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
-        const bodyState = EditorState.createWithContent(contentState)
-        this.setState({title, tldr, coverImage, bodyState, selectedTagIds})
+        const {title, tldr, coverImage, body: bodyHtml, tagIds: selectedTagIds} = response.data
+        // const contentBlock = htmlToDraft(body)
+        // const contentState = ContentState.createFromBlockArray(contentBlock.contentBlocks)
+        // const bodyState = EditorState.createWithContent(contentState)
+        this.setState({title, tldr, coverImage, bodyHtml, selectedTagIds})
       })
       .catch(error => {
         console.log(error)
@@ -54,7 +55,7 @@ class App extends Component {
   }
 
   render () {
-    const {title, tldr, coverImage, bodyState, tags, selectedTagIds} = this.state
+    const {title, tldr, coverImage, bodyHtml, tags, selectedTagIds} = this.state
     return (
       <ArticleForm
         tags={tags}
@@ -63,7 +64,7 @@ class App extends Component {
         title={title}
         tldr={tldr}
         coverImage={coverImage}
-        bodyState={bodyState}
+        bodyHtml={bodyHtml}
         handleTagsChange={selectedTagIds => this.setState({selectedTagIds})}
         handleTitleChange={title => this.setState({title})}
         handleTldrChange={tldr => this.setState({tldr})}

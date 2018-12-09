@@ -13,8 +13,6 @@ $global-border: $brand-color;
 @import "~uikit/src/scss/variables-theme.scss";
 @import "~uikit/src/scss/mixins-theme.scss";
 
-@import '~react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-
 // 3. Your custom mixin overwrites.
 @mixin hook-card() { color: #000; }
 
