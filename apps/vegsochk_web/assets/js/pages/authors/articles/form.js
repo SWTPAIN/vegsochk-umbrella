@@ -1,17 +1,27 @@
 import React, { Component } from "react";
-//import { Editor } from 'react-draft-wysiwyg'
 import { Editor } from "slate-react";
 import { isKeyHotkey } from 'is-hotkey'
-import { Value } from "slate";
+import { Value, Block } from "slate";
 import Select, { Option } from "rc-select";
 import styles from "./form.css";
-import Html from "slate-html-serializer";
+import htmlSerializer from './htmlSerializer'
 import styled from "@emotion/styled";
 
 const isBoldHotkey = isKeyHotkey('mod+b')
 const isItalicHotkey = isKeyHotkey('mod+i')
 const isUnderlinedHotkey = isKeyHotkey('mod+u')
 const isCodeHotkey = isKeyHotkey('mod+`')
+
+function insertImage(editor, src, target) {
+  if (target) {
+    editor.select(target)
+  }
+
+  editor.insertBlock({
+    type: 'image',
+    data: { src },
+  })
+}
 
 export const Button = styled("span")`
   cursor: pointer;
@@ -24,6 +34,13 @@ export const Button = styled("span")`
       ? "black"
       : "#ccc"};
 `;
+
+const Image = styled('img')`
+  display: block;
+  max-width: 100%;
+  max-height: 20em;
+  box-shadow: ${props => (props.selected ? '0 0 0 2px blue;' : 'none')};
+`
 
 export const Icon = styled(({ className, ...rest }) => {
   return <span className={`material-icons ${className}`} {...rest} />;
@@ -49,8 +66,6 @@ export const Toolbar = styled(Menu)`
   margin-bottom: 20px;
 `;
 
-const htmlSerializer = new Html();
-
 /**
  * Define Block Types
  */
@@ -60,6 +75,25 @@ const BLOCK_QUOTE = "BLOCK_QUOTE";
 const NUMBERED_LIST = "NUMBERED_LIST";
 const BULLETED_LIST = "BULLETED_LIST";
 const LIST_ITEM = "LIST_ITEM";
+
+const schema = {
+  document: {
+    last: { type: 'paragraph' },
+    normalize: (editor, { code, node, child }) => {
+      switch (code) {
+        case 'last_child_type_invalid': {
+          const paragraph = Block.create('paragraph')
+          return editor.insertNodeByKey(node.key, node.nodes.size, paragraph)
+        }
+      }
+    },
+  },
+  blocks: {
+    image: {
+      isVoid: true,
+    },
+  },
+}
 
 export default class ArticleForm extends Component {
   constructor(props) {
@@ -178,6 +212,7 @@ export default class ArticleForm extends Component {
             <div className="uk-margin">
               {this.renderToolbar()}
               <Editor
+                schema={schema}
                 spellCheck
                 autoFocus
                 placeholder="Enter some rich text..."
@@ -221,6 +256,22 @@ export default class ArticleForm extends Component {
     event.preventDefault();
     editor.toggleMark(mark);
   };
+
+  renderImageButton = () => {
+    return (
+      <Button onMouseDown={this.handleClickImage}>
+        <Icon>image</Icon>
+      </Button>      
+    )
+  }
+
+  handleClickImage = event => {
+    event.preventDefault()
+    const src = window.prompt('Enter the URL of the image:')
+    if (!src) return
+    this.editor.command(insertImage, src)
+  }  
+
   renderBlockButton = (type, icon) => {
     let isActive = this.hasBlock(type);
 
@@ -234,7 +285,6 @@ export default class ArticleForm extends Component {
     const onMouseDown = event => this.onClickBlock(event, type);
 
     return (
-      // eslint-disable-next-line react/jsx-no-bind
       <span
         className={styles.button}
         onMouseDown={onMouseDown}
@@ -246,11 +296,27 @@ export default class ArticleForm extends Component {
   };
 
   renderToolbar = () => {
-    return <Toolbar>{this.renderMarkButtons()}</Toolbar>;
+    return (
+      <Toolbar>
+        <div>
+          {this.renderMarkButton("bold", "format_bold")}
+          {this.renderMarkButton("italic", "format_italic")}
+          {this.renderMarkButton("underlined", "format_underlined")}
+          {this.renderMarkButton("code", "code")}
+          {this.renderImageButton()}
+          {this.renderBlockButton("heading-one", "looks_one")}
+          {this.renderBlockButton("heading-two", "looks_two")}
+          {this.renderBlockButton("block-quote", "format_quote")}
+          {this.renderBlockButton("numbered-list", "format_list_numbered")}
+          {this.renderBlockButton("bulleted-list", "format_list_bulleted")}
+          {this.renderBlockButton("bulleted-list", "format_list_bulleted")}
+        </div>    
+    </Toolbar>
+    );
   };
 
   renderNode = (props, editor, next) => {
-    const { attributes, children, node } = props;
+    const { attributes, children, node, isFocused } = props;
 
     switch (node.type) {
       case "block-quote":
@@ -265,24 +331,14 @@ export default class ArticleForm extends Component {
         return <li {...attributes}>{children}</li>;
       case "numbered-list":
         return <ol {...attributes}>{children}</ol>;
+      case 'image': {
+        const src = node.data.get('src')
+        return <Image src={src} selected={isFocused} {...attributes} />
+      }        
       default:
         return next();
     }
   };
-
-  renderMarkButtons = () => (
-    <div>
-      {this.renderMarkButton("bold", "format_bold")}
-      {this.renderMarkButton("italic", "format_italic")}
-      {this.renderMarkButton("underlined", "format_underlined")}
-      {this.renderMarkButton("code", "code")}
-      {this.renderBlockButton("heading-one", "looks_one")}
-      {this.renderBlockButton("heading-two", "looks_two")}
-      {this.renderBlockButton("block-quote", "format_quote")}
-      {this.renderBlockButton("numbered-list", "format_list_numbered")}
-      {this.renderBlockButton("bulleted-list", "format_list_bulleted")}
-    </div>
-  );
 
   hasBlock = type => {
     return this.state.editorValue.blocks.some(node => node.type === type);
