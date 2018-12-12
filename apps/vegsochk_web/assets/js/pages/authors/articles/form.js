@@ -6,6 +6,7 @@ import Select, { Option } from "rc-select";
 import styles from "./form.css";
 import htmlSerializer from "./htmlSerializer";
 import styled from "@emotion/styled";
+import { GithubPicker } from "react-color";
 
 const isBoldHotkey = isKeyHotkey("mod+b");
 const isItalicHotkey = isKeyHotkey("mod+i");
@@ -105,7 +106,7 @@ const schema = {
     image: {
       isVoid: true
     }
-  },
+  }
 };
 
 export default class ArticleForm extends Component {
@@ -342,7 +343,9 @@ export default class ArticleForm extends Component {
   };
 
   handleClickStyle = (event, style) => {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     // const firstBlockType = state.blocks.first().type;
     console.log("style", style);
     // this.editor.insertText("oooo!!")
@@ -395,6 +398,25 @@ export default class ArticleForm extends Component {
     );
   };
 
+  renderColorButton = () => {
+    return (
+      <span style={{ position: "relative" }}>
+        <span className={styles.button}>
+          <span className={`${styles.materialIcons} material-icons`}>
+            color_lens
+          </span>
+        </span>
+        <span style={{ position: "absolute", top: 30, left: -5 }}>
+          <GithubPicker
+            onChangeComplete={color =>
+              this.handleClickStyle(null, { color: color.hex })
+            }
+          />
+        </span>
+      </span>
+    );
+  };
+
   renderToolbar = () => {
     return (
       <Toolbar>
@@ -417,6 +439,7 @@ export default class ArticleForm extends Component {
             "format_align_center"
           )}
           {this.renderStyleButton({ textAlign: "right" }, "format_align_right")}
+          {this.renderColorButton()}
         </div>
       </Toolbar>
     );
@@ -427,8 +450,7 @@ export default class ArticleForm extends Component {
     console.log("props.data", props.data);
 
     // const style = props.node.data.get("style") || {}
-    const style = props.node.data.get("style") || {}
-    console.log('style', style)
+    const style = props.node.data.get("style") || {};
     switch (node.type) {
       case "quote":
         return <blockquote {...attributes}>{children}</blockquote>;
@@ -439,25 +461,61 @@ export default class ArticleForm extends Component {
           </pre>
         );
       case "bulleted-list":
-        return <ul style={style} {...attributes}>{children}</ul>;
+        return (
+          <ul style={style} {...attributes}>
+            {children}
+          </ul>
+        );
       case "paragraph":
-        return <p  style={style}>{children}</p>;
+        return <p style={style}>{children}</p>;
       case "heading-one":
-        return <h1 style={style} {...attributes}>{children}</h1>;
+        return (
+          <h1 style={style} {...attributes}>
+            {children}
+          </h1>
+        );
       case "heading-two":
-        return <h2 style={style} {...attributes}>{children}</h2>;
+        return (
+          <h2 style={style} {...attributes}>
+            {children}
+          </h2>
+        );
       case "heading-three":
-        return <h3 style={style} {...attributes}>{children}</h3>;
+        return (
+          <h3 style={style} {...attributes}>
+            {children}
+          </h3>
+        );
       case "heading-four":
-        return <h4 style={style} {...attributes}>{children}</h4>;
+        return (
+          <h4 style={style} {...attributes}>
+            {children}
+          </h4>
+        );
       case "heading-five":
-        return <h5 style={style} {...attributes}>{children}</h5>;
+        return (
+          <h5 style={style} {...attributes}>
+            {children}
+          </h5>
+        );
       case "heading-six":
-        return <h6 style={style} {...attributes}>{children}</h6>;
+        return (
+          <h6 style={style} {...attributes}>
+            {children}
+          </h6>
+        );
       case "list-item":
-        return <li style={style} {...attributes}>{children}</li>;
+        return (
+          <li style={style} {...attributes}>
+            {children}
+          </li>
+        );
       case "numbered-list":
-        return <ol style={style} {...attributes}>{children}</ol>;
+        return (
+          <ol style={style} {...attributes}>
+            {children}
+          </ol>
+        );
       case "image": {
         const src = node.data.get("src");
         return <Image src={src} selected={isFocused} {...attributes} />;

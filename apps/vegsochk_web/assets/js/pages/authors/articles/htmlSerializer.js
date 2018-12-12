@@ -26,11 +26,7 @@ const RULES = [
       const block = BLOCK_TAGS[el.tagName.toLowerCase()];
 
       if (block) {
-        console.log('el.getAttribute("style")', el.getAttribute("style"));
-        const a = typeof el.getAttribute("style");
-        console.log("a", a);
         const style = styleStringToObject(el.getAttribute("style") || "");
-        console.log("style", style);
         return {
           object: "block",
           type: block,
