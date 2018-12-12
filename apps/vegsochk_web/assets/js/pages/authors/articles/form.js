@@ -1,26 +1,39 @@
 import React, { Component } from "react";
-import { Editor } from "slate-react";
-import { isKeyHotkey } from 'is-hotkey'
+import { Editor, getEventTransfer } from "slate-react";
+import { isKeyHotkey } from "is-hotkey";
 import { Value, Block } from "slate";
 import Select, { Option } from "rc-select";
 import styles from "./form.css";
-import htmlSerializer from './htmlSerializer'
+import htmlSerializer from "./htmlSerializer";
 import styled from "@emotion/styled";
 
-const isBoldHotkey = isKeyHotkey('mod+b')
-const isItalicHotkey = isKeyHotkey('mod+i')
-const isUnderlinedHotkey = isKeyHotkey('mod+u')
-const isCodeHotkey = isKeyHotkey('mod+`')
+const isBoldHotkey = isKeyHotkey("mod+b");
+const isItalicHotkey = isKeyHotkey("mod+i");
+const isUnderlinedHotkey = isKeyHotkey("mod+u");
+const isCodeHotkey = isKeyHotkey("mod+`");
 
-function insertImage(editor, src, target) {
+function insertImage(editor, { src, href }, target) {
   if (target) {
-    editor.select(target)
+    editor.select(target);
   }
 
   editor.insertBlock({
-    type: 'image',
-    data: { src },
-  })
+    type: "image",
+    data: { src, href }
+  });
+}
+
+function wrapLink(editor, href) {
+  editor.wrapInline({
+    type: "link",
+    data: { href }
+  });
+
+  editor.moveToEnd();
+}
+
+function unwrapLink(editor) {
+  editor.unwrapInline("link");
 }
 
 export const Button = styled("span")`
@@ -35,12 +48,12 @@ export const Button = styled("span")`
       : "#ccc"};
 `;
 
-const Image = styled('img')`
+const Image = styled("img")`
   display: block;
   max-width: 100%;
   max-height: 20em;
-  box-shadow: ${props => (props.selected ? '0 0 0 2px blue;' : 'none')};
-`
+  box-shadow: ${props => (props.selected ? "0 0 0 2px blue;" : "none")};
+`;
 
 export const Icon = styled(({ className, ...rest }) => {
   return <span className={`material-icons ${className}`} {...rest} />;
@@ -78,22 +91,22 @@ const LIST_ITEM = "LIST_ITEM";
 
 const schema = {
   document: {
-    last: { type: 'paragraph' },
+    last: { type: "paragraph" },
     normalize: (editor, { code, node, child }) => {
       switch (code) {
-        case 'last_child_type_invalid': {
-          const paragraph = Block.create('paragraph')
-          return editor.insertNodeByKey(node.key, node.nodes.size, paragraph)
+        case "last_child_type_invalid": {
+          const paragraph = Block.create("paragraph");
+          return editor.insertNodeByKey(node.key, node.nodes.size, paragraph);
         }
       }
-    },
+    }
   },
   blocks: {
     image: {
-      isVoid: true,
-    },
-  },
-}
+      isVoid: true
+    }
+  }
+};
 
 export default class ArticleForm extends Component {
   constructor(props) {
@@ -219,6 +232,7 @@ export default class ArticleForm extends Component {
                 ref={this.ref}
                 value={this.state.editorValue}
                 onChange={this.handleEditorValueChange}
+                onPaste={this.handlePaste}
                 onKeyDown={this.onKeyDown}
                 renderNode={this.renderNode}
                 renderMark={this.renderMark}
@@ -261,16 +275,79 @@ export default class ArticleForm extends Component {
     return (
       <Button onMouseDown={this.handleClickImage}>
         <Icon>image</Icon>
-      </Button>      
-    )
-  }
+      </Button>
+    );
+  };
+
+  renderLinkButton = () => {
+    return (
+      <Button active={this.hasLinks()} onMouseDown={this.handleClickLink}>
+        <Icon>link</Icon>
+      </Button>
+    );
+  };
+
+  handlePaste = (event, editor, next) => {
+    const transfer = getEventTransfer(event);
+    if (transfer.type != "html") return next();
+    const { document } = htmlSerializer.deserialize(transfer.html);
+    editor.insertFragment(document);
+  };
+
+  handleClickLink = event => {
+    event.preventDefault();
+
+    const { editor } = this;
+    const { value } = editor;
+    const hasLinks = this.hasLinks();
+
+    if (hasLinks) {
+      editor.command(unwrapLink);
+    } else if (value.selection.isExpanded) {
+      const href = window.prompt("Enter the URL of the link:");
+
+      if (href === null) {
+        return;
+      }
+
+      editor.command(wrapLink, href);
+    } else {
+      const href = window.prompt("Enter the URL of the link:");
+
+      if (href === null) {
+        return;
+      }
+
+      const text = window.prompt("Enter the text for the link:");
+
+      if (text === null) {
+        return;
+      }
+
+      editor
+        .insertText(text)
+        .moveFocusBackward(text.length)
+        .command(wrapLink, href);
+    }
+  };
 
   handleClickImage = event => {
-    event.preventDefault()
-    const src = window.prompt('Enter the URL of the image:')
-    if (!src) return
-    this.editor.command(insertImage, src)
-  }  
+    event.preventDefault();
+    const src = window.prompt("Enter the URL of the image:");
+    if (!src) return;
+
+    const href = window.prompt("Enter the URL of the link if any:");
+    // const ahref = window.prompt('Enter the External Link when the image click if any')
+    this.editor.command(insertImage, { src, href });
+  };
+
+  handleClickStyle = (event, style) => {
+    event.preventDefault();
+    // const firstBlockType = state.blocks.first().type;
+    this.editor.setBlocks({
+      data: { style }
+    });
+  };
 
   renderBlockButton = (type, icon) => {
     let isActive = this.hasBlock(type);
@@ -295,6 +372,27 @@ export default class ArticleForm extends Component {
     );
   };
 
+  renderStyleButton = (style, icon) => {
+    let isActive = false;
+    const { blocks, document } = this.state.editorValue;
+    const isType = blocks.some(block => {
+      return !!document.getClosest(block.key, parent => parent.style === style);
+    });
+    if (isType) {
+      isActive = true;
+    }
+    const onMouseDown = e => this.handleClickStyle(e, style);
+    return (
+      <span
+        className={styles.button}
+        onMouseDown={onMouseDown}
+        data-active={isActive}
+      >
+        <span className={`${styles.materialIcons} material-icons`}>{icon}</span>
+      </span>
+    );
+  };
+
   renderToolbar = () => {
     return (
       <Toolbar>
@@ -304,37 +402,68 @@ export default class ArticleForm extends Component {
           {this.renderMarkButton("underlined", "format_underlined")}
           {this.renderMarkButton("code", "code")}
           {this.renderImageButton()}
+          {this.renderLinkButton()}
           {this.renderBlockButton("heading-one", "looks_one")}
           {this.renderBlockButton("heading-two", "looks_two")}
           {this.renderBlockButton("block-quote", "format_quote")}
           {this.renderBlockButton("numbered-list", "format_list_numbered")}
           {this.renderBlockButton("bulleted-list", "format_list_bulleted")}
           {this.renderBlockButton("bulleted-list", "format_list_bulleted")}
-        </div>    
-    </Toolbar>
+          {this.renderStyleButton({ textAlign: "left" }, "format_align_left")}
+          {this.renderStyleButton(
+            { textAlign: "center" },
+            "format_align_center"
+          )}
+          {this.renderStyleButton({ textAlign: "right" }, "format_align_right")}
+        </div>
+      </Toolbar>
     );
   };
 
   renderNode = (props, editor, next) => {
     const { attributes, children, node, isFocused } = props;
+    console.log('props.data', props.data)
 
     switch (node.type) {
-      case "block-quote":
+      case "quote":
         return <blockquote {...attributes}>{children}</blockquote>;
+      case "code":
+        return (
+          <pre>
+            <code {...attributes}>{children}</code>
+          </pre>
+        );
       case "bulleted-list":
         return <ul {...attributes}>{children}</ul>;
       case "heading-one":
         return <h1 {...attributes}>{children}</h1>;
       case "heading-two":
         return <h2 {...attributes}>{children}</h2>;
+      case "heading-three":
+        return <h3 {...attributes}>{children}</h3>;
+      case "heading-four":
+        return <h4 {...attributes}>{children}</h4>;
+      case "heading-five":
+        return <h5 {...attributes}>{children}</h5>;
+      case "heading-six":
+        return <h6 {...attributes}>{children}</h6>;
       case "list-item":
         return <li {...attributes}>{children}</li>;
       case "numbered-list":
         return <ol {...attributes}>{children}</ol>;
-      case 'image': {
-        const src = node.data.get('src')
-        return <Image src={src} selected={isFocused} {...attributes} />
-      }        
+      case "image": {
+        const src = node.data.get("src");
+        return <Image src={src} selected={isFocused} {...attributes} />;
+      }
+      case "link": {
+        const { data } = node;
+        const href = data.get("href");
+        return (
+          <a {...attributes} href={href}>
+            {children}
+          </a>
+        );
+      }
       default:
         return next();
     }
@@ -342,6 +471,11 @@ export default class ArticleForm extends Component {
 
   hasBlock = type => {
     return this.state.editorValue.blocks.some(node => node.type === type);
+  };
+
+  hasLinks = () => {
+    const { value } = this.state;
+    return value.inlines.some(inline => inline.type == "link");
   };
 
   hasMark = type => {

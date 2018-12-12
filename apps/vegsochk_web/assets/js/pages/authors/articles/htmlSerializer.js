@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import Html from "slate-html-serializer";
 
 const RULES = [
@@ -10,7 +10,10 @@ const RULES = [
         return {
           object: "block",
           type: block,
-          nodes: next(el.childNodes)
+          nodes: next(el.childNodes),
+          data: {
+            style: el.getAttribute("style")
+          }          
         };
       }
     },
@@ -18,7 +21,7 @@ const RULES = [
       if (object.object != "block") {
         return;
       }
-      console.log(object);
+      const style = object.data.get("style")
       switch (object.type) {
         case "numbered-list":
           return <ol>{children}</ol>;
@@ -27,9 +30,19 @@ const RULES = [
         case "list-item":
           return <li>{children}</li>;
         case "paragraph":
-          return <p>{children}</p>;
+          return <p  style={style}>{children}</p>;
+        case "heading-one":
+          return <h1  style={style}>{children}</h1>;          
+        case "heading-two":
+          return <h2  style={style}>{children}</h2>;
         case "heading-three":
-          return <h3>{children}</h3>;
+          return <h3  style={style}>{children}</h3>;
+        case "heading-four":
+          return <h4  style={style}>{children}</h4>;
+        case "heading-five":
+          return <h5  style={style}>{children}</h5>;
+        case "heading-six":
+          return <h6  style={style}>{children}</h6>;
         case "link":
           return <a>{children}</a>;
       }
@@ -96,9 +109,17 @@ const RULES = [
     serialize: function(object, children) {
       if (object.type != "image") {
         return;
-      }      
-      return <img src={object.data.get('src')}/>;
-    }    
+      }
+      const href = object.data.get("href");
+      if (href) {
+        return (
+          <a href={href}>
+            <img src={object.data.get("src")} />
+          </a>
+        );
+      }
+      return <img src={object.data.get("src")} />;
+    }
   },
   {
     // Special case for links, to grab their href.
@@ -113,6 +134,12 @@ const RULES = [
           }
         };
       }
+    },
+    serialize: function(object, children) {
+      if (object.type != "link") {
+        return;
+      }
+      return <a target="_blank" href={object.data.get("href")}>{children}</a>;
     }
   }
 ];
@@ -131,6 +158,7 @@ const BLOCK_TAGS = {
   h5: "heading-five",
   h6: "heading-six"
 };
+
 
 const MARK_TAGS = {
   strong: "bold",
