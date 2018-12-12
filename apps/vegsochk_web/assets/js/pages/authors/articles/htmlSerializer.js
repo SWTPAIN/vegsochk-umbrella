@@ -1,5 +1,24 @@
 import React from "react";
 import Html from "slate-html-serializer";
+import * as R from "ramda";
+
+const camelCased = str => str.replace(/-([a-z])/g, g => g[1].toUpperCase());
+
+const styleStringToObject = R.compose(
+  R.reduce(
+    (acc, [key, value]) => R.assoc(camelCased(R.trim(key)), R.trim(value), acc),
+    {}
+  ),
+  R.filter(
+    R.compose(
+      R.equals(2),
+      R.length
+    )
+  ),
+  R.map(R.split(":")),
+  R.filter(R.identity),
+  R.split(";")
+);
 
 const RULES = [
   {
@@ -7,13 +26,18 @@ const RULES = [
       const block = BLOCK_TAGS[el.tagName.toLowerCase()];
 
       if (block) {
+        console.log('el.getAttribute("style")', el.getAttribute("style"));
+        const a = typeof el.getAttribute("style");
+        console.log("a", a);
+        const style = styleStringToObject(el.getAttribute("style") || "");
+        console.log("style", style);
         return {
           object: "block",
           type: block,
           nodes: next(el.childNodes),
           data: {
-            style: el.getAttribute("style")
-          }          
+            style
+          }
         };
       }
     },
@@ -21,7 +45,7 @@ const RULES = [
       if (object.object != "block") {
         return;
       }
-      const style = object.data.get("style")
+      const style = object.data.get("style");
       switch (object.type) {
         case "numbered-list":
           return <ol>{children}</ol>;
@@ -30,19 +54,19 @@ const RULES = [
         case "list-item":
           return <li>{children}</li>;
         case "paragraph":
-          return <p  style={style}>{children}</p>;
+          return <p style={style}>{children}</p>;
         case "heading-one":
-          return <h1  style={style}>{children}</h1>;          
+          return <h1 style={style}>{children}</h1>;
         case "heading-two":
-          return <h2  style={style}>{children}</h2>;
+          return <h2 style={style}>{children}</h2>;
         case "heading-three":
-          return <h3  style={style}>{children}</h3>;
+          return <h3 style={style}>{children}</h3>;
         case "heading-four":
-          return <h4  style={style}>{children}</h4>;
+          return <h4 style={style}>{children}</h4>;
         case "heading-five":
-          return <h5  style={style}>{children}</h5>;
+          return <h5 style={style}>{children}</h5>;
         case "heading-six":
-          return <h6  style={style}>{children}</h6>;
+          return <h6 style={style}>{children}</h6>;
         case "link":
           return <a>{children}</a>;
       }
@@ -139,7 +163,11 @@ const RULES = [
       if (object.type != "link") {
         return;
       }
-      return <a target="_blank" href={object.data.get("href")}>{children}</a>;
+      return (
+        <a target="_blank" href={object.data.get("href")}>
+          {children}
+        </a>
+      );
     }
   }
 ];
@@ -158,7 +186,6 @@ const BLOCK_TAGS = {
   h5: "heading-five",
   h6: "heading-six"
 };
-
 
 const MARK_TAGS = {
   strong: "bold",

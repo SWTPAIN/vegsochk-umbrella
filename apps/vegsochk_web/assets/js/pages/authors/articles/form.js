@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Editor, getEventTransfer } from "slate-react";
 import { isKeyHotkey } from "is-hotkey";
-import { Value, Block } from "slate";
+import { Value, Block, Data } from "slate";
 import Select, { Option } from "rc-select";
 import styles from "./form.css";
 import htmlSerializer from "./htmlSerializer";
@@ -105,7 +105,7 @@ const schema = {
     image: {
       isVoid: true
     }
-  }
+  },
 };
 
 export default class ArticleForm extends Component {
@@ -344,8 +344,10 @@ export default class ArticleForm extends Component {
   handleClickStyle = (event, style) => {
     event.preventDefault();
     // const firstBlockType = state.blocks.first().type;
+    console.log("style", style);
+    // this.editor.insertText("oooo!!")
     this.editor.setBlocks({
-      data: { style }
+      data: Data.create({ style })
     });
   };
 
@@ -422,8 +424,11 @@ export default class ArticleForm extends Component {
 
   renderNode = (props, editor, next) => {
     const { attributes, children, node, isFocused } = props;
-    console.log('props.data', props.data)
+    console.log("props.data", props.data);
 
+    // const style = props.node.data.get("style") || {}
+    const style = props.node.data.get("style") || {}
+    console.log('style', style)
     switch (node.type) {
       case "quote":
         return <blockquote {...attributes}>{children}</blockquote>;
@@ -434,23 +439,25 @@ export default class ArticleForm extends Component {
           </pre>
         );
       case "bulleted-list":
-        return <ul {...attributes}>{children}</ul>;
+        return <ul style={style} {...attributes}>{children}</ul>;
+      case "paragraph":
+        return <p  style={style}>{children}</p>;
       case "heading-one":
-        return <h1 {...attributes}>{children}</h1>;
+        return <h1 style={style} {...attributes}>{children}</h1>;
       case "heading-two":
-        return <h2 {...attributes}>{children}</h2>;
+        return <h2 style={style} {...attributes}>{children}</h2>;
       case "heading-three":
-        return <h3 {...attributes}>{children}</h3>;
+        return <h3 style={style} {...attributes}>{children}</h3>;
       case "heading-four":
-        return <h4 {...attributes}>{children}</h4>;
+        return <h4 style={style} {...attributes}>{children}</h4>;
       case "heading-five":
-        return <h5 {...attributes}>{children}</h5>;
+        return <h5 style={style} {...attributes}>{children}</h5>;
       case "heading-six":
-        return <h6 {...attributes}>{children}</h6>;
+        return <h6 style={style} {...attributes}>{children}</h6>;
       case "list-item":
-        return <li {...attributes}>{children}</li>;
+        return <li style={style} {...attributes}>{children}</li>;
       case "numbered-list":
-        return <ol {...attributes}>{children}</ol>;
+        return <ol style={style} {...attributes}>{children}</ol>;
       case "image": {
         const src = node.data.get("src");
         return <Image src={src} selected={isFocused} {...attributes} />;
