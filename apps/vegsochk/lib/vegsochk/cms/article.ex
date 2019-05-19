@@ -3,13 +3,14 @@ defmodule Vegsochk.CMS.Article do
 
   alias Vegsochk.CMS.{Article, Author, Tag}
 
-  @required_fields ~w(title tldr body cover_image author_id)a
+  @required_fields ~w(title tldr body cover_image author_id is_draft)a
   schema "articles" do
     field :title, :string
     field :tldr, :string
     field :cover_image, :string
     field :body, :string
     field :slug, :string
+    field :is_draft, :boolean
 
     belongs_to :author, Author
     many_to_many :tags, Tag, join_through: "articles_tags", on_delete: :delete_all
@@ -31,6 +32,11 @@ defmodule Vegsochk.CMS.Article do
     from q in query,
       join: t in assoc(q, :tags),
       where: t.id == ^author.id
+  end
+
+  def exclude_draft(query) do
+    from q in query,
+    where: q.is_draft == false
   end
 
   def preload_author(query) do

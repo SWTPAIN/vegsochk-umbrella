@@ -7,9 +7,16 @@ defmodule Vegsochk.CMS do
   alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Tag, NewsItem}
   alias Vegsochk.Account.User
 
+  def list_all_latest_articles(%Author{} = author) do
+    Article
+    |> Article.newest_first
+    |> where([a], a.author_id == ^author.id)
+    |> Repo.all()
+  end
   def list_latest_articles(%Author{} = author) do
     Article
     |> Article.newest_first
+    |> Article.exclude_draft
     |> where([a], a.author_id == ^author.id)
     |> Repo.all()
   end
@@ -17,6 +24,7 @@ defmodule Vegsochk.CMS do
   def list_latest_articles(page_params) do
     Article
     |> Article.newest_first
+    |> Article.exclude_draft
     |> Article.preload_tags
     |> Article.preload_author
     |> Repo.paginate(page_params)
@@ -25,6 +33,7 @@ defmodule Vegsochk.CMS do
   def list_latest_articles(%{tag: %Tag{} = tag}, page_params) do
     Article
     |> Article.newest_first
+    |> Article.exclude_draft
     |> Article.with_tag(tag)
     |> Article.preload_author
     |> Repo.paginate(page_params)
@@ -33,6 +42,7 @@ defmodule Vegsochk.CMS do
   def list_latest_articles(%{author: %Author{} = author}, page_params) do
     Article
     |> Article.newest_first
+    |> Article.exclude_draft
     |> Article.with_author(author)
     |> Article.preload_author
     |> Article.preload_tags
@@ -49,6 +59,7 @@ defmodule Vegsochk.CMS do
       where: u.id == ^article.author.id or t.id in ^tag_ids
 
     query
+    |> Article.exclude_draft
     |> Article.preload_author
     |> limit(^limit_num)
     |> Repo.all()

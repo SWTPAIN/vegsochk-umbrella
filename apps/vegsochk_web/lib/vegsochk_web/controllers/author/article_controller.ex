@@ -10,7 +10,7 @@ defmodule VegsochkWeb.Author.ArticleController do
   end
 
   def index(conn, _params) do
-    articles = CMS.list_latest_articles(conn.assigns.current_author)
+    articles = CMS.list_all_latest_articles(conn.assigns.current_author)
     render conn, "index.html", articles: articles
   end
 

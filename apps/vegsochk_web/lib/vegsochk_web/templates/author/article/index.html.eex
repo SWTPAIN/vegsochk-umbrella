@@ -5,6 +5,7 @@
 		<tr>
 			<th>Article Title</th>
 			<th>Created At</th>
+			<th>Is Draft?</th>
       <th>Actions</th>
 		</tr>
 	</thead>
@@ -13,6 +14,7 @@
 			<tr>
 				<td><%= article.title %></td>
 				<td><%= article.inserted_at %></td>
+				<td><%= article.is_draft %></td>
         <td>
           <span><%= link "Edit", to: author_article_path(@conn, :edit, article), class: "uk-button uk-button-secondary" %></span>
           <span>

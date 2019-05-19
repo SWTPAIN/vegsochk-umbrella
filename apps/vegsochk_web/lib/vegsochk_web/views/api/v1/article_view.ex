@@ -5,7 +5,7 @@ defmodule VegsochkWeb.Api.V1.ArticleView do
 
   def render("show.json",
              %Article{
-               id: id, title: title, tldr: tldr, body: body,
+               id: id, title: title, tldr: tldr, body: body, is_draft: is_draft,
                tags: tags, cover_image: cover_image
              })
   do
@@ -13,6 +13,7 @@ defmodule VegsochkWeb.Api.V1.ArticleView do
       title: title,
       cover_image: cover_image,
       tldr: tldr,
+      is_draft: is_draft,
       body: body,
       tag_ids: Enum.map(tags, &(&1.id))
     }

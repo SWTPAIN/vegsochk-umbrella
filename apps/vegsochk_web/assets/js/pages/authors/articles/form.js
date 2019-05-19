@@ -134,6 +134,10 @@ export default class ArticleForm extends Component {
     this.props.handleCoverImageChange(e.target.value);
   }
 
+  handleIsDraftChange(e) {
+    this.props.handleIsDraftChange(e.target.checked);
+  }
+
   componentWillReceiveProps(nextProps) {
     // You don't have to do this check first, but it can help prevent an unneeded render
     const editorValue = htmlSerializer.deserialize(nextProps.bodyHtml);
@@ -144,10 +148,11 @@ export default class ArticleForm extends Component {
 
   handleCreateButtonClick(e) {
     e.preventDefault();
-    const { bodyState, title, tldr, coverImage, selectedTagIds } = this.props;
+    const { bodyState, title, isDraft, tldr, coverImage, selectedTagIds } = this.props;
     this.props.handleSubmit({
       title,
       tldr,
+      isDraft,
       coverImage,
       bodyState,
       tagIds: selectedTagIds
@@ -166,7 +171,8 @@ export default class ArticleForm extends Component {
       submitButtonText,
       tags,
       selectedTagIds,
-      coverImage
+      coverImage,
+      isDraft
     } = this.props;
     return (
       <div>
@@ -238,6 +244,17 @@ export default class ArticleForm extends Component {
                 onKeyDown={this.onKeyDown}
                 renderNode={this.renderNode}
                 renderMark={this.renderMark}
+              />
+            </div>
+            <legend className="uk-legend">Is Draft?</legend>
+            <div className="uk-margin">
+              <input
+                name="isDraft"
+                type="checkbox"
+                checked={isDraft}
+                onChange={this.handleIsDraftChange.bind(this)}
+                className="uk-checkbox"
+                type="checkbox"
               />
             </div>
           </fieldset>

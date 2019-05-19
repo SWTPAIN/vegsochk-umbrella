@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       title: "",
       tldr: "",
+      isDraft: false,
       coverImage: "",
       // bodyState: EditorState.createEmpty(),
       bodyHtml: "",
@@ -33,18 +34,19 @@ class App extends Component {
         const {
           title,
           tldr,
+          isDraft,
           coverImage,
           body: bodyHtml,
           tagIds: selectedTagIds
         } = response.data;
-        this.setState({ title, tldr, coverImage, bodyHtml, selectedTagIds });
+        this.setState({ title, tldr, isDraft, coverImage, bodyHtml, selectedTagIds });
       })
       .catch(error => {
         console.log(error);
       });
   }
 
-  handleFormSubmit({ title, tldr, coverImage, bodyState, tagIds }) {
+  handleFormSubmit({ title, tldr, isDraft, coverImage, bodyState, tagIds }) {
     const body = htmlSerializer.serialize(this.formRef.editor.value)
     console.log('body', body)
 
@@ -52,6 +54,7 @@ class App extends Component {
       title,
       tldr,
       coverImage,
+      isDraft,
       body,
       tagIds
     })
@@ -70,6 +73,7 @@ class App extends Component {
       coverImage,
       bodyHtml,
       tags,
+      isDraft,
       selectedTagIds
     } = this.state;
     return (
@@ -80,11 +84,13 @@ class App extends Component {
         submitButtonText="Edit"
         title={title}
         tldr={tldr}
+        isDraft={isDraft}
         coverImage={coverImage}
         bodyHtml={bodyHtml}
         handleTagsChange={selectedTagIds => this.setState({ selectedTagIds })}
         handleTitleChange={title => this.setState({ title })}
         handleTldrChange={tldr => this.setState({ tldr })}
+        handleIsDraftChange={isDraft => this.setState({ isDraft })}
         handleCoverImageChange={coverImage => this.setState({ coverImage })}
         handleSubmit={this.handleFormSubmit.bind(this)}
       />

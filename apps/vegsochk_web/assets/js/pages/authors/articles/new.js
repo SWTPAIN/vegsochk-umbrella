@@ -14,7 +14,8 @@ class App extends Component {
       coverImage: '',
       bodyState: EditorState.createEmpty(),
       tags: [],
-      selectedTagIds: []
+      selectedTagIds: [],
+      isDraft: false
     }
   }
 
@@ -25,12 +26,13 @@ class App extends Component {
       })
   }
 
-  handleFormSubmit ({title, tldr, coverImage, bodyState, tagIds}) {
+  handleFormSubmit ({title, tldr, isDraft, coverImage, bodyState, tagIds}) {
     const body = draftToHtml(convertToRaw(bodyState.getCurrentContent()))
 
     agent.Article.create({
       title,
       tldr,
+      isDraft: isDraft,
       coverImage,
       body,
       tagIds
@@ -44,7 +46,7 @@ class App extends Component {
   }
 
   render () {
-    const {title, tldr, bodyState,
+    const {title, tldr, bodyState, isDraft,
       tags, selectedTagIds, coverImage
     } = this.state
     return (
@@ -56,9 +58,11 @@ class App extends Component {
         tldr={tldr}
         coverImage={coverImage}
         bodyState={bodyState}
+        isDraft={isDraft}
         handleTagsChange={selectedTagIds => this.setState({selectedTagIds})}
         handleTitleChange={title => this.setState({title})}
         handleTldrChange={tldr => this.setState({tldr})}
+        handleIsDraftChange={isDraft => this.setState({ isDraft })}
         handleCoverImageChange={coverImage => this.setState({coverImage})}
         handleBodyStateChange={bodyState => this.setState({bodyState})}
         handleSubmit={this.handleFormSubmit.bind(this)} />)

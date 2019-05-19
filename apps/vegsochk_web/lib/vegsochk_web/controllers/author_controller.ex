@@ -1,6 +1,6 @@
 defmodule VegsochkWeb.AuthorController do
   use VegsochkWeb, :controller
-  
+
   alias Vegsochk.{CMS, Repo}
 
   def show(conn, %{"id" => id} = params) do
