@@ -6,7 +6,7 @@ import Select, { Option } from "rc-select";
 import styles from "./form.css";
 import htmlSerializer from "./htmlSerializer";
 import styled from "@emotion/styled";
-import { GithubPicker } from "react-color";
+import { ChromePicker } from "react-color";
 
 const isBoldHotkey = isKeyHotkey("mod+b");
 const isItalicHotkey = isKeyHotkey("mod+i");
@@ -113,7 +113,8 @@ export default class ArticleForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorValue: htmlSerializer.deserialize(props.bodyHtml)
+      editorValue: htmlSerializer.deserialize(props.bodyHtml),
+      isColorPickerShown: false,
     };
   }
 
@@ -182,7 +183,7 @@ export default class ArticleForm extends Component {
                 placeholder="Input"
               />
             </div>
-            <legend className="uk-legend">TLDR</legend>
+            <legend className="uk-legend">文章簡述</legend>
             <div className="uk-margin">
               <input
                 onChange={this.handleTldrInputChange.bind(this)}
@@ -343,15 +344,18 @@ export default class ArticleForm extends Component {
   };
 
   handleClickStyle = (event, style) => {
-    if (event) {
-      event.preventDefault();
-    }
+    // if (event) {
+    //   event.preventDefault();
+    // }
     // const firstBlockType = state.blocks.first().type;
-    console.log("style", style);
-    // this.editor.insertText("oooo!!")
-    this.editor.setBlocks({
-      data: Data.create({ style })
-    });
+    this.setState({
+      colorPickerColor: style.color
+    }, () => {
+      this.editor.setBlocks({
+        data: Data.create({ style })
+      });
+    })
+
   };
 
   renderBlockButton = (type, icon) => {
@@ -401,18 +405,26 @@ export default class ArticleForm extends Component {
   renderColorButton = () => {
     return (
       <span style={{ position: "relative" }}>
-        <span className={styles.button}>
+        <span
+          onClick={() => this.setState({
+            isColorPickerShown: !this.state.isColorPickerShown
+          })}
+          className={styles.button}>
           <span className={`${styles.materialIcons} material-icons`}>
             color_lens
           </span>
         </span>
-        <span style={{ position: "absolute", top: 30, left: -5 }}>
-          <GithubPicker
-            onChangeComplete={color =>
-              this.handleClickStyle(null, { color: color.hex })
-            }
-          />
-        </span>
+        {
+          this.state.isColorPickerShown &&
+          <span style={{ position: "absolute", top: 30, left: -5 }}>
+            <ChromePicker
+              color={this.state.colorPickerColor}
+              onChangeComplete={color =>
+                this.handleClickStyle(null, { color: color.hex })
+              }
+            />
+          </span>
+        }
       </span>
     );
   };

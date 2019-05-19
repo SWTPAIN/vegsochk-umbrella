@@ -7,6 +7,13 @@ defmodule Vegsochk.CMS do
   alias Vegsochk.CMS.{Author, Article, Image, Restaurant, Tag, NewsItem}
   alias Vegsochk.Account.User
 
+  def list_latest_articles(%Author{} = author) do
+    Article
+    |> Article.newest_first
+    |> where([a], a.author_id == ^author.id)
+    |> Repo.all()
+  end
+
   def list_latest_articles(page_params) do
     Article
     |> Article.newest_first
@@ -32,12 +39,6 @@ defmodule Vegsochk.CMS do
     |> Repo.paginate(page_params)
   end
 
-  def list_articles(%Author{} = author) do
-    Article
-    |> where([a], a.author_id == ^author.id)
-    |> Repo.all()
-  end
-
   def list_related_articles(article_id, limit_num) do
     article = get_article!(article_id)
     tag_ids = Enum.map(article.tags, &(&1.id))
@@ -45,7 +46,7 @@ defmodule Vegsochk.CMS do
       join: t in assoc(a, :tags),
       join: au in assoc(a, :author),
       join: u in assoc(au, :user),
-      where: u.id == ^article.author.id or t.id in ^tag_ids 
+      where: u.id == ^article.author.id or t.id in ^tag_ids
 
     query
     |> Article.preload_author
@@ -80,7 +81,7 @@ defmodule Vegsochk.CMS do
     Article
     |> Article.preload_author
     |> Article.preload_tags
-    |> Repo.get!(id) 
+    |> Repo.get!(id)
   end
 
   def get_article!(slug) when is_bitstring(slug) do
@@ -118,7 +119,7 @@ defmodule Vegsochk.CMS do
   end
 
   def get_restaurant!(id) do
-    Repo.get!(Restaurant, id) 
+    Repo.get!(Restaurant, id)
   end
 
   def list_tags() do
@@ -153,7 +154,7 @@ defmodule Vegsochk.CMS do
   end
 
   def get_tag!(id) do
-    Repo.get!(Tag, id) 
+    Repo.get!(Tag, id)
   end
 
   def list_images(%Author{} = author) do
@@ -229,7 +230,7 @@ defmodule Vegsochk.CMS do
 
   def is_author?(%User{} = user) do
     !!get_author(user)
-  end 
+  end
 
   def list_news_items() do
     NewsItem
@@ -258,7 +259,7 @@ defmodule Vegsochk.CMS do
   end
 
   def get_news_item!(id) do
-    Repo.get!(NewsItem, id) 
+    Repo.get!(NewsItem, id)
   end
 
   def list_latest_news_items(limit_num \\ 10) do

@@ -10,7 +10,7 @@ defmodule VegsochkWeb.Author.ArticleController do
   end
 
   def index(conn, _params) do
-    articles = CMS.list_articles(conn.assigns.current_author)
+    articles = CMS.list_latest_articles(conn.assigns.current_author)
     render conn, "index.html", articles: articles
   end
 
@@ -23,7 +23,7 @@ defmodule VegsochkWeb.Author.ArticleController do
 
   def edit(conn, _params) do
     render conn, "edit.html", article: conn.assigns.article
-  end 
+  end
 
   defp authorize_article(conn, _) do
     article = CMS.get_article!(conn.params["id"])
