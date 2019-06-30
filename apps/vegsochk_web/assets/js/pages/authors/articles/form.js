@@ -174,7 +174,6 @@ export default class ArticleForm extends Component {
       coverImage,
       isDraft
     } = this.props;
-    console.log("this.state.editorValue", this.state.editorValue)
     return (
       <div>
         <form>
@@ -477,7 +476,6 @@ export default class ArticleForm extends Component {
 
   renderNode = (props, editor, next) => {
     const { attributes, children, node, isFocused } = props;
-    console.log("props.data", props.data);
 
     // const style = props.node.data.get("style") || {}
     const style = props.node.data.get("style") || {};

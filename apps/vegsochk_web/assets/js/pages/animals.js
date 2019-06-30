@@ -49,7 +49,6 @@ const bootstrap = () => {
     }
   }
   const hash = location.hash
-  console.log('hash: ', hash)
   if (hash) {
     const overlayElement = document.getElementById(hash.substr(1) + '-overlay')
     overlayElement && showElement(overlayElement, overlayContainer)

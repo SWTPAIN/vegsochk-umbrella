@@ -24,13 +24,10 @@ class App extends Component {
 
   componentDidMount() {
     agent.Tag.getAll().then(tags => {
-      console.log("tags", tags);
       this.setState({ tags });
     });
     agent.Article.get(this.articleId)
       .then(response => {
-        console.log("response", response);
-
         const {
           title,
           tldr,
