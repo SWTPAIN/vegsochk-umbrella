@@ -113,8 +113,8 @@ export default class ArticleForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      editorValue: htmlSerializer.deserialize(props.bodyHtml),
-      isColorPickerShown: false,
+      editorValue: htmlSerializer.deserialize(props.bodyHtml || ""),
+      isColorPickerShown: false
     };
   }
 
@@ -174,6 +174,7 @@ export default class ArticleForm extends Component {
       coverImage,
       isDraft
     } = this.props;
+    console.log("this.state.editorValue", this.state.editorValue)
     return (
       <div>
         <form>

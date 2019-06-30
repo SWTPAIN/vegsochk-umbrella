@@ -4,6 +4,7 @@ import { EditorState, convertToRaw } from 'draft-js'
 import ArticleForm from './form.js'
 import agent from '../../../agent'
 import draftToHtml from 'draftjs-to-html'
+import htmlSerializer from './htmlSerializer'
 
 class App extends Component {
   constructor (props) {
@@ -26,8 +27,8 @@ class App extends Component {
       })
   }
 
-  handleFormSubmit ({title, tldr, isDraft, coverImage, bodyState, tagIds}) {
-    const body = draftToHtml(convertToRaw(bodyState.getCurrentContent()))
+  handleFormSubmit ({title, tldr, isDraft, coverImage, tagIds}) {
+    const body = htmlSerializer.serialize(this.formRef.editor.value)
 
     agent.Article.create({
       title,
@@ -51,6 +52,7 @@ class App extends Component {
     } = this.state
     return (
       <ArticleForm
+        ref={ref => {this.formRef = ref}}
         tags={tags}
         selectedTagIds={selectedTagIds}
         submitButtonText='Create'

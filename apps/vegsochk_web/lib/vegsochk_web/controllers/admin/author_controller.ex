@@ -21,7 +21,8 @@ defmodule VegsochkWeb.Admin.AuthorController do
   def create(conn, %{"author" => author_params}) do
     %{"user" => user_params, "bio" => bio} = author_params
     image_params = user_params["avatar"]
-    image_url = Uploader.upload_image!(image_params)
+    # image_url = Uploader.upload_image!(image_params)
+    image_url = "http://via.placeholder.com/640x360"
     user_params = Map.put(user_params, "avatar", image_url)
     with {:ok, user}    <- Account.register_user(user_params),
          {:ok, _}  <- CMS.add_author(user, %{bio: bio, role: "writer"})
@@ -47,7 +48,7 @@ defmodule VegsochkWeb.Admin.AuthorController do
   def edit(conn, _params) do
     author = conn.assigns.author
     render conn, "edit.html", changeset: CMS.change_author(author)
-  end 
+  end
 
   def update(conn, %{"author" => author_params}) do
     %{"user" => user_params, "bio" => bio} = author_params
